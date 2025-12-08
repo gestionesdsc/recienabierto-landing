@@ -50,11 +50,22 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
     }
 
-    .logo-image {
-      height: 52px;
+    /* Tarjetita blanca con bordes redondeados para el logo */
+    .logo-badge {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 8px 14px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Logo dentro del recuadro */
+    .logo-badge img {
+      height: 60px;   /* ajusta aquí el tamaño si lo quieres más grande o más pequeño */
       width: auto;
       display: block;
     }
@@ -488,8 +499,10 @@
   <div class="page">
     <header>
       <div class="logo">
-        <!-- Usa aquí tu archivo del logo -->
-        <img src="logo-recien-abierto.png" alt="Logotipo Recién Abierto" class="logo-image" />
+        <!-- Usa aquí tu archivo del logo dentro de la “tarjeta” -->
+        <div class="logo-badge">
+          <img src="logo-recien-abierto.png" alt="Logotipo Recién Abierto" />
+        </div>
       </div>
       <div class="header-cta">
         <div class="pill">Lanzamiento en Castellón</div>
