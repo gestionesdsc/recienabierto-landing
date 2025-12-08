@@ -53,51 +53,10 @@
       gap: 10px;
     }
 
-    .logo-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 14px;
-      background: conic-gradient(from 200deg, #0ea5e9, #22c55e, #f59e0b, #f97316, #0ea5e9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
-    }
-
-    .logo-icon span {
-      width: 24px;
-      height: 24px;
-      border-radius: 999px;
-      background: #ffffff;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .logo-icon span::before {
-      content: "";
-      position: absolute;
-      inset: 25% 18%;
-      border-radius: 999px;
-      border: 2px solid #22c55e;
-      border-bottom-color: transparent;
-    }
-
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .logo-text-title {
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      font-size: 0.92rem;
-      text-transform: uppercase;
-    }
-
-    .logo-text-sub {
-      font-size: 0.8rem;
-      color: var(--text-soft);
+    .logo-image {
+      height: 52px;
+      width: auto;
+      display: block;
     }
 
     .header-cta {
@@ -105,6 +64,8 @@
       align-items: center;
       gap: 10px;
       font-size: 0.8rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .pill {
@@ -135,6 +96,9 @@
       header {
         flex-direction: column;
         align-items: flex-start;
+      }
+      .header-cta {
+        justify-content: flex-start;
       }
     }
 
@@ -230,6 +194,16 @@
       margin-bottom: 28px;
     }
 
+    .hero-note a {
+      color: var(--primary);
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(34,197,94,0.5);
+    }
+
+    .hero-note a:hover {
+      border-bottom-style: solid;
+    }
+
     .hero-footer {
       display: flex;
       flex-wrap: wrap;
@@ -282,48 +256,91 @@
       color: #0369a1;
     }
 
-    .device-map {
-      border-radius: 18px;
-      background: radial-gradient(circle at 20% 0, #e0f2fe 0, #bae6fd 18%, #0ea5e9 30%, #0f766e 70%, #082f49 100%);
-      height: 230px;
+    /* Mockup de móvil con mapa real */
+    .phone {
+      background: #020617;
+      border-radius: 26px;
+      padding: 6px;
       position: relative;
+    }
+
+    .phone-screen {
+      border-radius: 20px;
       overflow: hidden;
+      height: 260px;
+      background-image: url("map-preview.jpg");
+      background-size: cover;
+      background-position: center;
+      position: relative;
     }
 
-    .map-grid {
+    .phone-top-bar {
       position: absolute;
-      inset: 0;
-      opacity: 0.28;
-      background-image: linear-gradient(to right, rgba(248, 250, 252, 0.7) 1px, transparent 1px),
-                        linear-gradient(to bottom, rgba(248, 250, 252, 0.7) 1px, transparent 1px);
-      background-size: 30px 30px;
-    }
-
-    .map-pin {
-      position: absolute;
-      width: 24px;
-      height: 24px;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40%;
+      height: 6px;
       border-radius: 999px;
-      background: #f59e0b;
-      box-shadow: 0 0 0 8px rgba(250, 204, 21, 0.45);
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .phone-chip-row {
+      position: absolute;
+      top: 34px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-flex;
+      gap: 4px;
+      background: rgba(248, 250, 252, 0.96);
+      border-radius: 999px;
+      padding: 4px;
+      font-size: 0.7rem;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.25);
+    }
+
+    .phone-chip {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .phone-chip.active {
+      background: #10b981;
+      color: #ffffff;
+    }
+
+    .phone-chip.inactive {
+      background: #f3f4f6;
+      color: #4b5563;
+    }
+
+    .phone-bottom-bar {
+      position: absolute;
+      bottom: 6px;
+      left: 0;
+      right: 0;
+      padding: 6px 10px;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 0.8rem;
+      background: linear-gradient(to top, rgba(15,23,42,0.8), rgba(15,23,42,0));
+      color: #f9fafb;
+      font-size: 0.72rem;
     }
 
-    .map-pin.pin-1 { top: 35%; left: 24%; }
-    .map-pin.pin-2 { top: 52%; right: 20%; background:#22c55e; box-shadow:0 0 0 8px rgba(74,222,128,0.45);}
-    .map-pin.pin-3 { bottom: 18%; left: 48%; background:#0ea5e9; box-shadow:0 0 0 8px rgba(59,130,246,0.4);}
+    .phone-bottom-center {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
 
-    .map-radius {
-      position: absolute;
-      inset: 18%;
+    .phone-bottom-dot {
+      width: 4px;
+      height: 4px;
       border-radius: 999px;
-      border: 1px dashed rgba(248, 250, 252, 0.85);
-      box-shadow: 0 0 0 18px rgba(15, 23, 42, 0.1);
-      opacity: 0.8;
+      background: #f97316;
     }
 
     .device-footer {
@@ -471,17 +488,12 @@
   <div class="page">
     <header>
       <div class="logo">
-        <div class="logo-icon">
-          <span></span>
-        </div>
-        <div class="logo-text">
-          <div class="logo-text-title">Recién Abierto</div>
-          <div class="logo-text-sub">Nuevos negocios, en tiempo real</div>
-        </div>
+        <!-- Usa aquí tu archivo del logo -->
+        <img src="logo-recien-abierto.png" alt="Logotipo Recién Abierto" class="logo-image" />
       </div>
       <div class="header-cta">
         <div class="pill">Lanzamiento en Castellón</div>
-        <small>Próximamente disponible en tiendas de apps</small>
+        <small>Estamos incorporando negocios antes del lanzamiento oficial.</small>
       </div>
     </header>
 
@@ -496,13 +508,13 @@
 
         <div class="hero-badges">
           <div class="hero-badge">
-            <span class="hero-badge-emoji">📍</span> Mapa con negocios nuevos y próximos
+            <span class="hero-badge-emoji">📍</span> Mapa con negocios nuevos y próximas aperturas
           </div>
           <div class="hero-badge">
-            <span class="hero-badge-emoji">🕒</span> Aperturas recientes y “Recién Llegado”
+            <span class="hero-badge-emoji">🍽️</span> Restaurantes, tiendas, deporte, bienestar y ocio
           </div>
           <div class="hero-badge">
-            <span class="hero-badge-emoji">🏪</span> Pensado para usuarios y negocios locales
+            <span class="hero-badge-emoji">🕒</span> Información clara para decidir dónde ir hoy
           </div>
         </div>
 
@@ -516,7 +528,8 @@
         </div>
 
         <p class="hero-note">
-          Mientras preparamos el lanzamiento en tiendas de apps, estamos incorporando negocios y afinando la experiencia. Muy pronto podrás descargar Recién Abierto en tu móvil.
+          Si eres un negocio y quieres probar la app antes de que esté en las tiendas, escríbenos a
+          <a href="mailto:info@recienabierto.com">info@recienabierto.com</a>. Podemos facilitarte el APK y toda la información.
         </p>
 
         <div class="hero-footer">
@@ -527,19 +540,30 @@
 
       <aside class="device-card">
         <div class="device-header">
-          <div class="device-title">Vista de mapa en la app</div>
-          <div class="device-pill">Negocios recién abiertos</div>
+          <div class="device-title">Vista del mapa en la app</div>
+          <div class="device-pill">16 negocios en el mapa</div>
         </div>
-        <div class="device-map">
-          <div class="map-grid"></div>
-          <div class="map-radius"></div>
-          <div class="map-pin pin-1">🍔</div>
-          <div class="map-pin pin-2">☕</div>
-          <div class="map-pin pin-3">🧘‍♀️</div>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-top-bar"></div>
+            <div class="phone-chip-row">
+              <div class="phone-chip active">Todos</div>
+              <div class="phone-chip inactive">2 km</div>
+              <div class="phone-chip inactive">5 km</div>
+              <div class="phone-chip inactive">10 km</div>
+            </div>
+            <div class="phone-bottom-bar">
+              <span>Leaflet · OpenStreetMap</span>
+              <div class="phone-bottom-center">
+                <span class="phone-bottom-dot"></span>
+                <span>Mapa · Lista · Admin</span>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="device-footer">
-          <span class="device-tag">Filtro por categoría y distancia</span>
-          <span class="device-tag">Próximas aperturas y “Recién Llegado”</span>
+          <span class="device-tag">Mapa real de Castellón</span>
+          <span class="device-tag">Negocios nuevos cerca de ti</span>
         </div>
       </aside>
     </main>
@@ -552,7 +576,7 @@
       <div class="grid">
         <div class="card-mini">
           <strong>1. Explora el mapa</strong>
-          Ves de un vistazo los locales recién abiertos, los que están a punto de abrir y las novedades destacadas en tu zona.
+          Ves de un vistazo los locales recién abiertos y las próximas aperturas en tu zona.
         </div>
         <div class="card-mini">
           <strong>2. Filtra según lo que te apetece</strong>
@@ -568,14 +592,43 @@
     <section class="section" id="negocios">
       <h2>Para negocios: visibilidad justo cuando más la necesitas</h2>
       <p>
-        Abrir un negocio ya es suficientemente complejo. Recién Abierto está diseñado para ayudarte en lo más difícil: que la gente se entere de que existes y se anime a visitarte.
+        Abrir un negocio ya es suficientemente complejo. Recién Abierto está diseñado para ayudarte en lo más difícil: que la gente se entere de que existes y se anime a visitarte desde el primer día.
       </p>
-      <span class="pill-inline">Espacios “Recién Abierto” y “Recién Llegado”</span>
+      <p>
+        Si quieres que tu local aparezca en el mapa o quieres más información, contacta con nosotros en
+        <a href="mailto:info@recienabierto.com">info@recienabierto.com</a>.
+        Te explicaremos cómo aparecer en la app y, si aún no está en las tiendas, te facilitaremos el APK para que puedas probarla.
+      </p>
+      <span class="pill-inline">Lanzamiento: estar en la app es 100% gratis</span>
       <ul class="list">
-        <li><span>✔</span><div><strong>Aparece en el mapa de aperturas</strong><br>Tu negocio se muestra como recién abierto, con ubicación exacta y categoría visible para los usuarios cercanos.</div></li>
-        <li><span>✔</span><div><strong>Destaca tus novedades con “Recién Llegado”</strong><br>Si ya estabas abierto pero lanzas algo nuevo (por ejemplo, una hamburguesa del mes), puedes aparecer en la sección de novedades.</div></li>
-        <li><span>✔</span><div><strong>Información clara y atractiva</strong><br>Fotos, breve descripción, enlaces a redes sociales y web, contacto y datos clave para que te encuentren y reserven.</div></li>
-        <li><span>✔</span><div><strong>Visibilidad en el momento crítico</strong><br>Nos centramos en aperturas, lanzamientos y primeras semanas, cuando más necesitas que la gente te descubra.</div></li>
+        <li>
+          <span>✔</span>
+          <div>
+            <strong>Aparece en el mapa de aperturas</strong><br>
+            Tu negocio se muestra como recién abierto, con ubicación exacta y categoría visible para los usuarios cercanos.
+          </div>
+        </li>
+        <li>
+          <span>✔</span>
+          <div>
+            <strong>Destaca tus primeras semanas</strong><br>
+            Puedes aprovechar el momento de apertura para atraer a los primeros clientes con información clara y actualizada.
+          </div>
+        </li>
+        <li>
+          <span>✔</span>
+          <div>
+            <strong>Información clara y atractiva</strong><br>
+            Fotos, breve descripción, enlaces a redes sociales y web, contacto y datos clave para que te encuentren y reserven.
+          </div>
+        </li>
+        <li>
+          <span>✔</span>
+          <div>
+            <strong>Planes especiales en el futuro</strong><br>
+            Ahora mismo aparecer en la app es totalmente gratuito. Más adelante habrá opciones de visibilidad extra para quien quiera apoyar el proyecto y tener aún más presencia, pero la base seguirá siendo accesible.
+          </div>
+        </li>
       </ul>
     </section>
 
@@ -587,15 +640,15 @@
       <div class="grid">
         <div class="card-mini">
           <strong>Todo gira en torno a lo nuevo</strong>
-          Negocios que acaban de abrir, próximas aperturas y novedades puntuales se convierten en los protagonistas del mapa.
+          Negocios que acaban de abrir y próximas aperturas se convierten en los protagonistas del mapa.
         </div>
         <div class="card-mini">
           <strong>Cercanía real</strong>
           La app está pensada para barrios y ciudades concretas, empezando por Castellón y su entorno. Información local, no ruido.
         </div>
         <div class="card-mini">
-          <strong>Espacio para campañas y lanzamientos</strong>
-          Los negocios pueden destacar promociones de apertura, productos especiales o eventos de inauguración para generar tráfico desde el primer día.
+          <strong>Espacio para campañas de lanzamiento</strong>
+          Los negocios podrán destacar promociones de apertura, productos especiales o eventos de inauguración para generar tráfico desde el primer día.
         </div>
       </div>
     </section>
@@ -608,8 +661,12 @@
           <p>El lanzamiento inicial se centra en Castellón y municipios cercanos. A partir de ahí, iremos ampliando cobertura a más zonas según la demanda y el número de negocios interesados.</p>
         </div>
         <div class="faq-item">
-          <strong>¿Cuánto cuesta aparecer como negocio?</strong>
-          <p>Estamos definiendo distintos planes en función de la visibilidad que necesites: presencia básica, espacio destacado en el mapa y formato “Recién Llegado” para novedades puntuales. Si te interesa, podrás contactar desde esta misma página.</p>
+          <strong>¿Cuánto cuesta aparecer en la app?</strong>
+          <p>
+            En esta fase de lanzamiento, <strong>aparecer en Recién Abierto es 100% gratis</strong>. La app nace precisamente para dar visibilidad al comercio local.
+            Más adelante ofreceremos planes especiales de visibilidad para negocios que quieran aparecer de forma destacada y ayudar a sostener el proyecto,
+            pero la presencia básica seguirá siendo accesible.
+          </p>
         </div>
         <div class="faq-item">
           <strong>¿La app será gratuita para los usuarios?</strong>
@@ -624,7 +681,7 @@
 
     <footer>
       <span>© <span id="year"></span> Recién Abierto. Todos los derechos reservados.</span>
-      <span>Proyecto enfocado en comercio local y aperturas reales.</span>
+      <span>Contacto negocios: <a href="mailto:info@recienabierto.com">info@recienabierto.com</a></span>
     </footer>
   </div>
 
