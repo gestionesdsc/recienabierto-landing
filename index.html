@@ -181,6 +181,12 @@
       transform: translateY(-1px);
     }
 
+    .btn-disabled {
+      opacity: 0.75;
+      cursor: default;
+      pointer-events: none;
+    }
+
     .hero-note {
       font-size: 0.8rem;
       color: var(--text-soft);
@@ -558,8 +564,8 @@
         </div>
       </div>
       <div class="header-cta">
-        <div class="pill">Lanzamiento en Castellón</div>
-        <small>Estamos incorporando negocios antes del lanzamiento oficial.</small>
+        <div class="pill">✅ Ya disponible en Google Play</div>
+        <small>Descárgala y descubre aperturas cerca de ti.</small>
       </div>
     </header>
 
@@ -585,17 +591,23 @@
         </div>
 
         <div class="hero-cta">
-          <a href="#" class="btn btn-primary" aria-disabled="true">
-            Próximamente en App Store y Google Play
+          <a href="https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto" class="btn btn-primary" target="_blank" rel="noopener">
+            <span style="font-size:1.05rem;">📲</span> Descargar en Google Play
           </a>
+
+          <a href="#" class="btn btn-ghost btn-disabled" aria-disabled="true">
+            <span style="font-size:1.05rem;">🍎</span> Próximamente en App Store
+          </a>
+
           <a href="#negocios" class="btn btn-ghost">
-            Soy un negocio y quiero aparecer
+            <span style="font-size:1.05rem;">🏪</span> Soy un negocio y quiero aparecer
           </a>
         </div>
 
         <p class="hero-note">
-          Si eres un negocio y quieres probar la app antes de que esté en las tiendas, escríbenos a
-          <a href="mailto:info@recienabierto.com">info@recienabierto.com</a>. Podemos facilitarte el APK y toda la información.
+          Si eres un negocio y quieres aparecer en Recién Abierto, escríbenos a
+          <a href="mailto:info@recienabierto.com">info@recienabierto.com</a>
+          y te explicamos cómo estar en el mapa desde el primer día.
         </p>
 
         <div class="hero-footer">
@@ -663,7 +675,6 @@
       <p>
         Si quieres que tu local aparezca en el mapa o quieres más información, contacta con nosotros en
         <a href="mailto:info@recienabierto.com">info@recienabierto.com</a>.
-        Te explicaremos cómo aparecer en la app y, si aún no está en las tiendas, te facilitaremos el APK para que puedas probarla.
       </p>
       <span class="pill-inline">Lanzamiento: estar en la app es 100% gratis</span>
       <ul class="list">
@@ -678,7 +689,7 @@
           <span>✔</span>
           <div>
             <strong>Destaca tus primeras semanas</strong><br>
-            Puedes aprovechar el momento de apertura para atraer a los primeros clientes con información clara y actualizada.
+            Aprovecha el momento de apertura para atraer a los primeros clientes con información clara y actualizada.
           </div>
         </li>
         <li>
@@ -740,7 +751,7 @@
         </div>
         <div class="faq-item">
           <strong>¿Cuándo podré descargar la app?</strong>
-          <p>Estamos cerrando detalles, incorporando negocios y puliendo la experiencia. En cuanto esté disponible en App Store y Google Play, actualizaremos esta página con los enlaces directos de descarga.</p>
+          <p>Ya puedes descargarla en Google Play. Para iPhone, estará disponible próximamente en App Store.</p>
         </div>
       </div>
     </section>
@@ -851,7 +862,6 @@
       modal.classList.remove("open");
       modal.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
-      // Si estamos en #privacy, volvemos a la ruta sin hash
       if (location.hash === "#privacy") {
         history.replaceState(null, "", location.pathname + location.search);
       }
@@ -872,7 +882,6 @@
       if (e.key === "Escape" && modal.classList.contains("open")) closeModal();
     });
 
-    // Abrir automáticamente si vienes con #privacy
     if (location.hash === "#privacy") {
       openModal();
     }
