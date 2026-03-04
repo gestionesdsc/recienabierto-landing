@@ -75,10 +75,10 @@
     .pill {
       padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(34, 197, 94, 0.08);
-      color: #15803d;
-      font-weight: 500;
-      border: 1px solid rgba(34, 197, 94, 0.18);
+      background: rgba(14, 165, 233, 0.10);
+      color: #0369a1;
+      font-weight: 600;
+      border: 1px solid rgba(14, 165, 233, 0.22);
       white-space: nowrap;
     }
 
@@ -112,7 +112,7 @@
     .hero-subtitle {
       color: var(--text-soft);
       font-size: 0.98rem;
-      max-width: 480px;
+      max-width: 520px;
       margin-bottom: 18px;
     }
 
@@ -191,6 +191,7 @@
       font-size: 0.8rem;
       color: var(--text-soft);
       margin-bottom: 28px;
+      max-width: 560px;
     }
 
     .hero-note a {
@@ -368,27 +369,6 @@
       font-size: 0.9rem;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 14px;
-    }
-
-    @media (max-width: 880px) {
-      .grid { grid-template-columns: 1fr; }
-    }
-
-    .card-mini {
-      padding: 12px 12px 13px;
-      border-radius: 14px;
-      background: var(--primary-soft);
-      border: 1px solid rgba(34, 197, 184, 0.25);
-      font-size: 0.86rem;
-    }
-
-    .card-mini strong { display: block; margin-bottom: 4px; }
-
     .pill-inline {
       display: inline-flex;
       align-items: center;
@@ -416,25 +396,6 @@
       color: #22c55e;
       font-size: 1rem;
       line-height: 1.2;
-    }
-
-    .faq-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 14px;
-    }
-
-    @media (max-width: 880px) {
-      .faq-grid { grid-template-columns: 1fr; }
-    }
-
-    .faq-item {
-      padding: 10px 10px 12px;
-      border-radius: 12px;
-      background: rgba(15, 23, 42, 0.02);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      font-size: 0.86rem;
     }
 
     footer {
@@ -552,6 +513,26 @@
     }
 
     .policy a:hover { border-bottom-style: solid; }
+
+    /* ====== Modal Beta ====== */
+    .beta-steps {
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
+    .beta-steps li { margin-bottom: 8px; }
+    .beta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      background: rgba(16, 185, 129, 0.10);
+      color: #047857;
+      border: 1px solid rgba(16, 185, 129, 0.22);
+    }
+    .beta-muted { font-size: 0.82rem; color: var(--text-soft); margin-top: 10px; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; }
   </style>
 </head>
 <body>
@@ -563,8 +544,8 @@
         </div>
       </div>
       <div class="header-cta">
-        <div class="pill">✅ Ya disponible en Google Play</div>
-        <small>Descárgala y descubre aperturas cerca de ti.</small>
+        <div class="pill">🧪 En prueba cerrada</div>
+        <small>Disponible pronto en Google Play. Estamos validando estabilidad.</small>
       </div>
     </header>
 
@@ -590,8 +571,9 @@
         </div>
 
         <div class="hero-cta">
-          <a href="https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto" class="btn btn-primary" target="_blank" rel="noopener">
-            <span style="font-size:1.05rem;">📲</span> Descargar en Google Play
+          <!-- En beta: NO link a Play Store -->
+          <a href="#beta" class="btn btn-primary" id="openBeta">
+            <span style="font-size:1.05rem;">🧪</span> Únete a la lista de espera
           </a>
 
           <a href="#" class="btn btn-ghost btn-disabled" aria-disabled="true">
@@ -604,9 +586,10 @@
         </div>
 
         <p class="hero-note">
-          Si eres un negocio y quieres aparecer en Recién Abierto, escríbenos a
-          <a href="mailto:info@recienabierto.com">info@recienabierto.com</a>
-          y te explicamos cómo estar en el mapa desde el primer día.
+          Estamos en <strong>prueba cerrada</strong> y el lanzamiento público llegará en cuanto esté todo estable.
+          Si quieres ser tester o que te avisemos cuando salga:
+          <a href="mailto:info@recienabierto.com?subject=Quiero%20acceso%20a%20la%20beta%20-%20Reci%C3%A9n%20Abierto">info@recienabierto.com</a>.
+          <br><span style="display:inline-block;margin-top:6px;" class="beta-pill">⏳ Estimación: 15-20 días (si todo va bien)</span>
         </p>
 
         <div class="hero-footer">
@@ -671,6 +654,37 @@
         · <a href="#eliminar-cuenta" id="openDeletion">Eliminar cuenta</a>
       </span>
     </footer>
+  </div>
+
+  <!-- ====== MODAL: Beta / lista de espera ====== -->
+  <div class="modal-overlay" id="betaModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="betaTitle">
+      <div class="modal-header">
+        <div class="modal-title" id="betaTitle">🧪 Prueba cerrada · Recién Abierto</div>
+        <button class="modal-close" id="closeBeta" type="button">Cerrar</button>
+      </div>
+      <div class="modal-body">
+        <div class="policy">
+          <div class="meta">Estado: <strong>Prueba cerrada</strong> · <span class="beta-pill">Lanzamiento público en ~15-20 días (si todo va bien)</span></div>
+
+          <p>
+            Ahora mismo la app <strong>todavía no está disponible públicamente en Google Play</strong>.
+            Estamos validando estabilidad y corrigiendo detalles con un grupo limitado.
+          </p>
+
+          <h3>¿Quieres acceso como tester?</h3>
+          <ol class="beta-steps">
+            <li>Escríbenos a <a href="mailto:info@recienabierto.com?subject=Quiero%20ser%20tester%20-%20Reci%C3%A9n%20Abierto">info@recienabierto.com</a> con el asunto <code>Quiero ser tester</code>.</li>
+            <li>Indica el <strong>correo de Google</strong> con el que usarás Play Store (el que se usa para “entrar” al enlace de pruebas).</li>
+            <li>Te enviaremos el enlace de acceso cuando estés dentro del grupo de testers.</li>
+          </ol>
+
+          <p class="beta-muted">
+            Si prefieres, también puedes escribirnos simplemente para que te avisemos el día del lanzamiento.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ====== MODAL: Política de Privacidad ====== -->
@@ -781,11 +795,7 @@
     document.getElementById("privacyDate").textContent = new Date().toLocaleDateString("es-ES");
     document.getElementById("deletionDate").textContent = new Date().toLocaleDateString("es-ES");
 
-    // Privacy modal
-    const privacyModal = document.getElementById("privacyModal");
-    const openPrivacy = document.getElementById("openPrivacy");
-    const closePrivacy = document.getElementById("closePrivacy");
-
+    // Modal helpers
     function openModal(modalEl, hash) {
       modalEl.classList.add("open");
       modalEl.setAttribute("aria-hidden", "false");
@@ -801,6 +811,11 @@
         history.replaceState(null, "", location.pathname + location.search);
       }
     }
+
+    // Privacy modal
+    const privacyModal = document.getElementById("privacyModal");
+    const openPrivacy = document.getElementById("openPrivacy");
+    const closePrivacy = document.getElementById("closePrivacy");
 
     openPrivacy.addEventListener("click", (e) => {
       e.preventDefault();
@@ -829,17 +844,35 @@
       if (e.target === deletionModal) closeModal(deletionModal, "#eliminar-cuenta");
     });
 
+    // Beta modal
+    const betaModal = document.getElementById("betaModal");
+    const openBeta = document.getElementById("openBeta");
+    const closeBeta = document.getElementById("closeBeta");
+
+    openBeta.addEventListener("click", (e) => {
+      e.preventDefault();
+      openModal(betaModal, "#beta");
+    });
+
+    closeBeta.addEventListener("click", () => closeModal(betaModal, "#beta"));
+
+    betaModal.addEventListener("click", (e) => {
+      if (e.target === betaModal) closeModal(betaModal, "#beta");
+    });
+
     // Escape
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         if (privacyModal.classList.contains("open")) closeModal(privacyModal, "#privacy");
         if (deletionModal.classList.contains("open")) closeModal(deletionModal, "#eliminar-cuenta");
+        if (betaModal.classList.contains("open")) closeModal(betaModal, "#beta");
       }
     });
 
     // Auto-open if arriving with hash
     if (location.hash === "#privacy") openModal(privacyModal, "#privacy");
     if (location.hash === "#eliminar-cuenta") openModal(deletionModal, "#eliminar-cuenta");
+    if (location.hash === "#beta") openModal(betaModal, "#beta");
   </script>
 </body>
 </html>
