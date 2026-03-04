@@ -3,11 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Recién Abierto · Descubre los nuevos negocios de tu ciudad</title>
-  <meta name="description" content="Recién Abierto es la app que te muestra los negocios recién abiertos y las próximas aperturas cerca de ti. Descubre novedades, apoya el comercio local y encuentra nuevos sitios que encajan contigo.">
+
+  <title>Recién Abierto · Descubre nuevos negocios y próximas aperturas</title>
+  <meta name="description" content="Recién Abierto es la app que te muestra negocios recién abiertos y próximas aperturas cerca de ti. Mapa, fichas claras y avisos al seguir tus sitios favoritos." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.recienabierto.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Recién Abierto · Descubre nuevos negocios cerca de ti" />
+  <meta property="og:description" content="Mapa con negocios recién abiertos y próximas aperturas. Sigue tus favoritos y recibe avisos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.recienabierto.com/" />
+  <meta property="og:image" content="https://www.recienabierto.com/og-recien-abierto.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Recién Abierto · Descubre nuevos negocios cerca de ti" />
+  <meta name="twitter:description" content="Mapa con negocios recién abiertos y próximas aperturas. Sigue tus favoritos y recibe avisos." />
+  <meta name="twitter:image" content="https://www.recienabierto.com/og-recien-abierto.jpg" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD: Organization + MobileApplication + FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Recién Abierto",
+        "url": "https://www.recienabierto.com/",
+        "email": "info@recienabierto.com",
+        "logo": "https://www.recienabierto.com/logo-recien-abierto.png"
+      },
+      {
+        "@type": "MobileApplication",
+        "name": "Recién Abierto",
+        "operatingSystem": "Android, iOS",
+        "applicationCategory": "LifestyleApplication",
+        "description": "App para descubrir negocios recién abiertos y próximas aperturas cerca de ti. Mapa, fichas y avisos al seguir negocios.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Está ya disponible en Google Play?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Todavía no. Ahora mismo estamos en beta cerrada y afinando los últimos detalles. Puedes unirte a la lista de espera para enterarte el primero."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿En qué zona funciona?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cobertura inicial: Castellón y alrededores. Iremos ampliando por fases."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuánto cuesta aparecer como negocio?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Durante el lanzamiento, aparecer en la app es gratis. Más adelante habrá opciones de visibilidad extra para quien quiera destacar."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo se verifican las aperturas?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Priorizamos aperturas reales y datos útiles: categoría, dirección y una ficha clara. Si detectamos datos dudosos, se revisan antes de mostrarlos."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <style>
     :root {
       --bg: #fdf8f2;
@@ -20,33 +104,25 @@
       --border-soft: #e4e4e7;
       --radius-lg: 18px;
       --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.06);
+      --warning-bg: rgba(249, 115, 22, 0.10);
+      --warning-border: rgba(249, 115, 22, 0.35);
+      --warning-text: #9a3412;
+      --success-bg: rgba(34, 197, 94, 0.08);
+      --success-border: rgba(34, 197, 94, 0.18);
+      --success-text: #15803d;
     }
-
     * { box-sizing: border-box; }
-
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       background: radial-gradient(circle at top, #fef3e7 0, #fdf8f2 40%, #f9fafb 100%);
       color: var(--text-main);
     }
-
-    .page {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 24px 16px 64px;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 28px;
-      gap: 16px;
-    }
-
+    a { color: inherit; }
+    .page { max-width: 1080px; margin: 0 auto; padding: 24px 16px 64px; }
+    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; gap: 16px; }
     .logo { display: flex; align-items: center; }
-
     .logo-badge {
       background: #ffffff;
       border-radius: 20px;
@@ -56,94 +132,57 @@
       align-items: center;
       justify-content: center;
     }
+    .logo-badge img { height: 75px; width: auto; display: block; }
 
-    .logo-badge img {
-      height: 75px;
-      width: auto;
-      display: block;
-    }
-
-    .header-cta {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.8rem;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
+    .header-cta { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; flex-wrap: wrap; justify-content: flex-end; }
     .pill {
       padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(34, 197, 94, 0.08);
-      color: #15803d;
-      font-weight: 500;
-      border: 1px solid rgba(34, 197, 94, 0.18);
+      background: var(--warning-bg);
+      color: var(--warning-text);
+      font-weight: 600;
+      border: 1px solid var(--warning-border);
       white-space: nowrap;
     }
-
     .header-cta small { color: var(--text-soft); }
 
-    main {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-      gap: 32px;
-      align-items: center;
+    .top-banner {
+      margin: 0 0 22px;
+      background: rgba(14, 165, 233, 0.08);
+      border: 1px solid rgba(14, 165, 233, 0.25);
+      color: #0c4a6e;
+      border-radius: 14px;
+      padding: 12px 12px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      line-height: 1.35;
     }
+    .top-banner strong { display: inline-block; }
+    .top-banner a { color: #0369a1; text-decoration: none; border-bottom: 1px dashed rgba(3, 105, 161, 0.45); }
+    .top-banner a:hover { border-bottom-style: solid; }
 
+    main { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 32px; align-items: center; }
     @media (max-width: 880px) {
       main { grid-template-columns: 1fr; }
       header { flex-direction: column; align-items: flex-start; }
       .header-cta { justify-content: flex-start; }
     }
 
-    .hero-title {
-      font-size: 2.4rem;
-      line-height: 1.1;
-      margin-bottom: 12px;
-    }
-
-    .hero-title span {
-      background: linear-gradient(135deg, #0ea5e9, #22c55e, #f97316);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-subtitle {
-      color: var(--text-soft);
-      font-size: 0.98rem;
-      max-width: 480px;
-      margin-bottom: 18px;
-    }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 18px;
-    }
-
+    .hero-title { font-size: 2.4rem; line-height: 1.1; margin-bottom: 12px; }
+    .hero-title span { background: linear-gradient(135deg, #0ea5e9, #22c55e, #f97316); -webkit-background-clip: text; color: transparent; }
+    .hero-subtitle { color: var(--text-soft); font-size: 0.98rem; max-width: 520px; margin-bottom: 18px; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 10px;
-      border-radius: 999px;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 10px; border-radius: 999px;
       background: rgba(15, 23, 42, 0.02);
       border: 1px solid rgba(148, 163, 184, 0.35);
-      font-size: 0.78rem;
-      color: var(--text-soft);
+      font-size: 0.78rem; color: var(--text-soft);
     }
-
     .hero-badge-emoji { font-size: 1rem; }
 
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
     .btn {
       border-radius: 999px;
       padding: 10px 18px;
@@ -158,70 +197,23 @@
       transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
       white-space: nowrap;
     }
-
     .btn-primary {
       background: linear-gradient(135deg, #0ea5e9, #22c55e);
       color: #ffffff;
       box-shadow: 0 14px 30px rgba(16, 185, 129, 0.35);
     }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 36px rgba(16, 185, 129, 0.45); }
+    .btn-ghost { background: rgba(15, 23, 42, 0.03); color: var(--text-main); border: 1px solid rgba(148, 163, 184, 0.6); }
+    .btn-ghost:hover { background: rgba(148, 163, 184, 0.12); transform: translateY(-1px); }
+    .btn-disabled { opacity: 0.75; cursor: default; pointer-events: none; }
 
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 36px rgba(16, 185, 129, 0.45);
-    }
-
-    .btn-ghost {
-      background: rgba(15, 23, 42, 0.03);
-      color: var(--text-main);
-      border: 1px solid rgba(148, 163, 184, 0.6);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(148, 163, 184, 0.12);
-      transform: translateY(-1px);
-    }
-
-    .btn-disabled {
-      opacity: 0.75;
-      cursor: default;
-      pointer-events: none;
-    }
-
-    .hero-note {
-      font-size: 0.8rem;
-      color: var(--text-soft);
-      margin-bottom: 28px;
-    }
-
-    .hero-note a {
-      color: var(--primary);
-      text-decoration: none;
-      border-bottom: 1px dashed rgba(34,197,94,0.5);
-    }
-
+    .hero-note { font-size: 0.8rem; color: var(--text-soft); margin-bottom: 22px; }
+    .hero-note a { color: var(--primary); text-decoration: none; border-bottom: 1px dashed rgba(34,197,94,0.5); }
     .hero-note a:hover { border-bottom-style: solid; }
 
-    .hero-footer {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      font-size: 0.78rem;
-      color: var(--text-soft);
-    }
-
-    .hero-footer span {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-footer-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: #22c55e;
-    }
+    .hero-footer { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; font-size: 0.78rem; color: var(--text-soft); }
+    .hero-footer span { display: inline-flex; align-items: center; gap: 6px; }
+    .hero-footer-dot { width: 6px; height: 6px; border-radius: 999px; background: #22c55e; }
 
     .device-card {
       background: var(--card);
@@ -232,119 +224,39 @@
       position: relative;
       overflow: hidden;
     }
-
-    .device-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .device-title { font-size: 0.86rem; font-weight: 600; }
-
-    .device-pill {
-      font-size: 0.72rem;
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(14, 165, 233, 0.08);
-      color: #0369a1;
-    }
-
-    .phone {
-      background: #020617;
-      border-radius: 26px;
-      padding: 6px;
-      position: relative;
-    }
-
+    .device-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .device-title { font-size: 0.86rem; font-weight: 700; }
+    .device-pill { font-size: 0.72rem; padding: 4px 8px; border-radius: 999px; background: rgba(14, 165, 233, 0.08); color: #0369a1; }
+    .phone { background: #020617; border-radius: 26px; padding: 6px; position: relative; }
     .phone-screen {
       border-radius: 20px;
       overflow: hidden;
       height: 260px;
-      background-image: url("map-preview.jpg");
+      background-image: url("map-preview.jpg"); /* Pon aquí una captura real cuando puedas */
       background-size: cover;
       background-position: center;
       position: relative;
     }
-
-    .phone-top-bar {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 40%;
-      height: 6px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.7);
-    }
-
+    .phone-top-bar { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 40%; height: 6px; border-radius: 999px; background: rgba(15, 23, 42, 0.7); }
     .phone-chip-row {
-      position: absolute;
-      top: 34px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: inline-flex;
-      gap: 4px;
-      background: rgba(248, 250, 252, 0.96);
-      border-radius: 999px;
-      padding: 4px;
-      font-size: 0.7rem;
+      position: absolute; top: 34px; left: 50%; transform: translateX(-50%);
+      display: inline-flex; gap: 4px; background: rgba(248, 250, 252, 0.96);
+      border-radius: 999px; padding: 4px; font-size: 0.7rem;
       box-shadow: 0 8px 18px rgba(15, 23, 42, 0.25);
     }
-
-    .phone-chip {
-      padding: 3px 8px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      white-space: nowrap;
-    }
-
+    .phone-chip { padding: 3px 8px; border-radius: 999px; border: 1px solid transparent; white-space: nowrap; }
     .phone-chip.active { background: #10b981; color: #ffffff; }
     .phone-chip.inactive { background: #f3f4f6; color: #4b5563; }
-
     .phone-bottom-bar {
-      position: absolute;
-      bottom: 6px;
-      left: 0;
-      right: 0;
-      padding: 6px 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: absolute; bottom: 6px; left: 0; right: 0; padding: 6px 10px;
+      display: flex; justify-content: space-between; align-items: center;
       background: linear-gradient(to top, rgba(15,23,42,0.8), rgba(15,23,42,0));
-      color: #f9fafb;
-      font-size: 0.72rem;
+      color: #f9fafb; font-size: 0.72rem;
     }
-
-    .phone-bottom-center {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-    }
-
-    .phone-bottom-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 999px;
-      background: #f97316;
-    }
-
-    .device-footer {
-      margin-top: 10px;
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      font-size: 0.78rem;
-      color: var(--text-soft);
-    }
-
-    .device-tag {
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.04);
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      white-space: nowrap;
-    }
+    .phone-bottom-center { display: flex; gap: 24px; align-items: center; }
+    .phone-bottom-dot { width: 4px; height: 4px; border-radius: 999px; background: #f97316; }
+    .device-footer { margin-top: 10px; display: flex; justify-content: space-between; gap: 8px; font-size: 0.78rem; color: var(--text-soft); }
+    .device-tag { padding: 4px 8px; border-radius: 999px; background: rgba(15, 23, 42, 0.04); border: 1px solid rgba(148, 163, 184, 0.5); white-space: nowrap; }
 
     .section {
       margin-top: 40px;
@@ -354,88 +266,34 @@
       box-shadow: var(--shadow-soft);
       border: 1px solid var(--border-soft);
     }
+    .section h2 { margin-top: 0; font-size: 1.25rem; margin-bottom: 10px; }
+    .section p { margin-top: 0; margin-bottom: 12px; color: var(--text-soft); font-size: 0.9rem; }
 
-    .section h2 {
-      margin-top: 0;
-      font-size: 1.25rem;
-      margin-bottom: 10px;
-    }
-
-    .section p {
-      margin-top: 0;
-      margin-bottom: 12px;
-      color: var(--text-soft);
-      font-size: 0.9rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 14px;
-    }
-
-    @media (max-width: 880px) {
-      .grid { grid-template-columns: 1fr; }
-    }
-
-    .card-mini {
-      padding: 12px 12px 13px;
-      border-radius: 14px;
-      background: var(--primary-soft);
-      border: 1px solid rgba(34, 197, 184, 0.25);
-      font-size: 0.86rem;
-    }
-
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 14px; }
+    @media (max-width: 880px) { .grid { grid-template-columns: 1fr; } }
+    .card-mini { padding: 12px 12px 13px; border-radius: 14px; background: var(--primary-soft); border: 1px solid rgba(34, 197, 184, 0.25); font-size: 0.86rem; }
     .card-mini strong { display: block; margin-bottom: 4px; }
 
     .pill-inline {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 8px;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      background: rgba(249, 115, 22, 0.06);
-      color: #c05621;
-      border: 1px solid rgba(249, 115, 22, 0.4);
-      margin-bottom: 6px;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 8px; border-radius: 999px; font-size: 0.75rem;
+      background: rgba(249, 115, 22, 0.06); color: #c05621;
+      border: 1px solid rgba(249, 115, 22, 0.4); margin-bottom: 6px;
+    }
+    .pill-success {
+      background: var(--success-bg);
+      color: var(--success-text);
+      border: 1px solid var(--success-border);
     }
 
-    .list {
-      list-style: none;
-      padding-left: 0;
-      margin: 8px 0 0;
-      font-size: 0.9rem;
-      color: var(--text-soft);
-    }
+    .list { list-style: none; padding-left: 0; margin: 8px 0 0; font-size: 0.9rem; color: var(--text-soft); }
+    .list li { margin-bottom: 8px; display: flex; gap: 8px; }
+    .list li span { color: #22c55e; font-size: 1rem; line-height: 1.2; }
 
-    .list li { margin-bottom: 6px; display: flex; gap: 6px; }
-
-    .list li span {
-      color: #22c55e;
-      font-size: 1rem;
-      line-height: 1.2;
-    }
-
-    .faq-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 14px;
-    }
-
-    @media (max-width: 880px) {
-      .faq-grid { grid-template-columns: 1fr; }
-    }
-
-    .faq-item {
-      padding: 10px 10px 12px;
-      border-radius: 12px;
-      background: rgba(15, 23, 42, 0.02);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      font-size: 0.86rem;
-    }
+    .faq-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 14px; }
+    @media (max-width: 880px) { .faq-grid { grid-template-columns: 1fr; } }
+    .faq-item { padding: 10px 10px 12px; border-radius: 12px; background: rgba(15, 23, 42, 0.02); border: 1px solid rgba(148, 163, 184, 0.4); font-size: 0.86rem; color: var(--text-soft); }
+    .faq-item strong { color: var(--text-main); }
 
     footer {
       margin-top: 26px;
@@ -446,33 +304,18 @@
       flex-wrap: wrap;
       gap: 8px;
     }
-
-    footer a {
-      color: var(--text-soft);
-      text-decoration: none;
-      border-bottom: 1px dashed rgba(148, 163, 184, 0.6);
-    }
-
-    footer a:hover {
-      color: var(--text-main);
-      border-bottom-style: solid;
-    }
+    footer a { color: var(--text-soft); text-decoration: none; border-bottom: 1px dashed rgba(148, 163, 184, 0.6); }
+    footer a:hover { color: var(--text-main); border-bottom-style: solid; }
 
     /* ====== Modal genérico ====== */
     .modal-overlay {
-      position: fixed;
-      inset: 0;
+      position: fixed; inset: 0;
       background: rgba(2, 6, 23, 0.55);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      z-index: 9999;
+      display: none; align-items: center; justify-content: center;
+      padding: 18px; z-index: 9999;
       backdrop-filter: blur(3px);
     }
-
     .modal-overlay.open { display: flex; }
-
     .modal {
       width: min(920px, 100%);
       background: var(--card);
@@ -481,22 +324,13 @@
       box-shadow: 0 20px 60px rgba(2, 6, 23, 0.25);
       overflow: hidden;
     }
-
     .modal-header {
       padding: 14px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
       border-bottom: 1px solid var(--border-soft);
       background: rgba(15, 23, 42, 0.02);
     }
-
-    .modal-title {
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
+    .modal-title { font-weight: 700; font-size: 0.95rem; }
     .modal-close {
       appearance: none;
       border: 1px solid rgba(148, 163, 184, 0.6);
@@ -509,169 +343,218 @@
       font-size: 0.82rem;
       transition: transform 0.12s ease, background 0.12s ease;
     }
-
-    .modal-close:hover {
-      background: rgba(148, 163, 184, 0.12);
-      transform: translateY(-1px);
-    }
-
-    .modal-body {
-      padding: 16px 16px 18px;
-      max-height: 70vh;
-      overflow: auto;
-      color: var(--text-soft);
-      font-size: 0.9rem;
-      line-height: 1.55;
-    }
-
-    .policy h3 {
-      margin: 14px 0 6px;
-      color: var(--text-main);
-      font-size: 1rem;
-    }
-
+    .modal-close:hover { background: rgba(148, 163, 184, 0.12); transform: translateY(-1px); }
+    .modal-body { padding: 16px 16px 18px; max-height: 70vh; overflow: auto; color: var(--text-soft); font-size: 0.9rem; line-height: 1.55; }
+    .policy h3 { margin: 14px 0 6px; color: var(--text-main); font-size: 1rem; }
     .policy p { margin: 0 0 10px; }
-
-    .policy ul {
-      margin: 6px 0 12px 18px;
-      padding: 0;
-    }
-
+    .policy ul { margin: 6px 0 12px 18px; padding: 0; }
     .policy li { margin-bottom: 6px; }
-
-    .policy .meta {
-      font-size: 0.82rem;
-      color: var(--text-soft);
-      margin-bottom: 10px;
-    }
-
-    .policy a {
-      color: var(--primary);
-      text-decoration: none;
-      border-bottom: 1px dashed rgba(34,197,94,0.5);
-    }
-
+    .policy .meta { font-size: 0.82rem; color: var(--text-soft); margin-bottom: 10px; }
+    .policy a { color: var(--primary); text-decoration: none; border-bottom: 1px dashed rgba(34,197,94,0.5); }
     .policy a:hover { border-bottom-style: solid; }
+
+    /* Accesibilidad: foco visible */
+    .btn:focus, .modal-close:focus, a:focus {
+      outline: 2px solid rgba(14,165,233,0.45);
+      outline-offset: 2px;
+    }
   </style>
 </head>
+
 <body>
   <div class="page">
+
     <header>
       <div class="logo">
         <div class="logo-badge">
           <img src="logo-recien-abierto.png" alt="Logotipo Recién Abierto" />
         </div>
       </div>
+
       <div class="header-cta">
-        <!-- CAMBIO: antes decía "Ya disponible en Google Play" -->
-        <div class="pill">🧪 En prueba cerrada (aún no disponible en Google Play)</div>
-        <small>Estamos validando la versión inicial. Publicación prevista en ~15–20 días si todo va bien.</small>
+        <div class="pill">🧪 Beta cerrada · Aún no disponible en Google Play</div>
+        <small>Últimos ajustes antes del lanzamiento.</small>
       </div>
     </header>
+
+    <div class="top-banner" role="note" aria-label="Estado del lanzamiento">
+      <div style="font-size:1.05rem; line-height:1;">ℹ️</div>
+      <div>
+        <strong>Estamos en fase final de pruebas.</strong>
+        Si quieres enterarte el primero cuando salga en Google Play, apúntate a la lista de espera.
+        <a href="#espera">Ir a lista de espera</a>.
+      </div>
+    </div>
 
     <main>
       <section>
         <h1 class="hero-title">
           Descubre los negocios <span>recién abiertos</span> cerca de ti
         </h1>
+
         <p class="hero-subtitle">
-          Recién Abierto es la app que te enseña, en un mapa, los locales que acaban de abrir y las próximas aperturas de tu ciudad. Restaurantes, cafeterías, tiendas, gimnasios y mucho más, siempre actualizados.
+          Recién Abierto te enseña en un mapa los locales que acaban de abrir y las próximas aperturas.
+          Restaurantes, cafeterías, tiendas, gimnasios y más, con fichas claras para decidir dónde ir hoy.
         </p>
 
         <div class="hero-badges">
-          <div class="hero-badge">
-            <span class="hero-badge-emoji">📍</span> Mapa con negocios nuevos y próximas aperturas
-          </div>
-          <div class="hero-badge">
-            <span class="hero-badge-emoji">🍽️</span> Restaurantes, tiendas, deporte, bienestar y ocio
-          </div>
-          <div class="hero-badge">
-            <span class="hero-badge-emoji">🕒</span> Información clara para decidir dónde ir hoy
-          </div>
+          <div class="hero-badge"><span class="hero-badge-emoji">📍</span> Mapa con aperturas reales y próximas</div>
+          <div class="hero-badge"><span class="hero-badge-emoji">⭐</span> Sigue favoritos y recibe avisos</div>
+          <div class="hero-badge"><span class="hero-badge-emoji">🕒</span> Info rápida: qué es, dónde está y cuándo abre</div>
         </div>
 
         <div class="hero-cta">
-          <!-- CAMBIO: antes era link real a Play Store -->
-          <a href="#" class="btn btn-primary btn-disabled" aria-disabled="true" title="Aún no está disponible en Google Play">
-            <span style="font-size:1.05rem;">📲</span> Próximamente en Google Play
+          <a href="#espera" class="btn btn-primary">
+            <span style="font-size:1.05rem;">📩</span> Unirme a la lista de espera
           </a>
-
-          <a href="#" class="btn btn-ghost btn-disabled" aria-disabled="true">
-            <span style="font-size:1.05rem;">🍎</span> Próximamente en App Store
+          <a href="#como-funciona" class="btn btn-ghost">
+            <span style="font-size:1.05rem;">🧭</span> Cómo funciona
           </a>
-
           <a href="#negocios" class="btn btn-ghost">
             <span style="font-size:1.05rem;">🏪</span> Soy un negocio y quiero aparecer
+          </a>
+
+          <!-- Botones deshabilitados mientras no esté en Play -->
+          <a href="#" class="btn btn-ghost btn-disabled" aria-disabled="true" title="Aún no disponible en Google Play">
+            <span style="font-size:1.05rem;">🤖</span> Google Play (próximamente)
+          </a>
+          <a href="#" class="btn btn-ghost btn-disabled" aria-disabled="true">
+            <span style="font-size:1.05rem;">🍎</span> App Store (más adelante)
           </a>
         </div>
 
         <p class="hero-note">
-          Estamos en <strong>prueba cerrada</strong>. Si quieres participar como tester o enterarte del lanzamiento,
-          escríbenos a <a href="mailto:info@recienabierto.com">info@recienabierto.com</a>.
-          <br>
-          Si eres un negocio y quieres aparecer en Recién Abierto, escríbenos y te explicamos cómo estar en el mapa desde el primer día.
+          Si eres un negocio y quieres aparecer en Recién Abierto, escríbenos a
+          <a href="mailto:info@recienabierto.com?subject=Quiero%20aparecer%20en%20Reci%C3%A9n%20Abierto&body=Hola%2C%20quiero%20dar%20de%20alta%20mi%20negocio.%0A%0A%20-%20Nombre%3A%0A%20-%20Direcci%C3%B3n%3A%0A%20-%20Ciudad%3A%0A%20-%20Categor%C3%ADa%3A%0A%20-%20Instagram%20%2F%20Web%3A%0A%20-%20Tel%C3%A9fono%20(opcional)%3A%0A">
+            info@recienabierto.com
+          </a>
+          y te decimos cómo estar en el mapa desde el primer día.
         </p>
 
         <div class="hero-footer">
           <span><span class="hero-footer-dot"></span> Cobertura inicial: Castellón y alrededores</span>
-          <span>Enfoque en aperturas reales, verificadas.</span>
+          <span>Enfoque en aperturas útiles y verificables.</span>
         </div>
       </section>
 
-      <aside class="device-card">
+      <aside class="device-card" aria-label="Vista previa de la app">
         <div class="device-header">
           <div class="device-title">Vista del mapa en la app</div>
-          <div class="device-pill">16 negocios en el mapa</div>
+          <div class="device-pill">Preview (beta)</div>
         </div>
         <div class="phone">
           <div class="phone-screen">
             <div class="phone-top-bar"></div>
-            <div class="phone-chip-row">
+            <div class="phone-chip-row" aria-hidden="true">
               <div class="phone-chip active">Todos</div>
               <div class="phone-chip inactive">2 km</div>
               <div class="phone-chip inactive">5 km</div>
               <div class="phone-chip inactive">10 km</div>
             </div>
-            <div class="phone-bottom-bar">
-              <span>Leaflet · OpenStreetMap</span>
+            <div class="phone-bottom-bar" aria-hidden="true">
+              <span>Mapa · Lista · Guardados</span>
               <div class="phone-bottom-center">
                 <span class="phone-bottom-dot"></span>
-                <span>Mapa · Lista · Admin</span>
+                <span>Negocios · Próximas · Eventos</span>
               </div>
             </div>
           </div>
         </div>
         <div class="device-footer">
-          <span class="device-tag">Mapa real de Castellón</span>
-          <span class="device-tag">Negocios nuevos cerca de ti</span>
+          <span class="device-tag">Mapa real</span>
+          <span class="device-tag">Fichas claras</span>
         </div>
       </aside>
     </main>
 
+    <section class="section" id="como-funciona">
+      <h2>Cómo funciona (sin misterio)</h2>
+      <p>
+        La idea es simple: que no te enteres tarde de los sitios nuevos que te interesan.
+      </p>
+
+      <div class="grid">
+        <div class="card-mini">
+          <strong>1) Descubre en el mapa</strong>
+          Filtra por distancia y encuentra aperturas y próximas aperturas cerca de ti.
+        </div>
+        <div class="card-mini">
+          <strong>2) Entra en la ficha</strong>
+          Mira categoría, dirección, fotos y lo esencial para decidir rápido.
+        </div>
+        <div class="card-mini">
+          <strong>3) Guarda y recibe avisos</strong>
+          Sigue tus negocios favoritos y te avisaremos cuando haya novedades relevantes (si lo activas).
+        </div>
+      </div>
+
+      <span class="pill-inline pill-success" style="margin-top:14px;">Objetivo: menos “¿cómo no me enteré?” y más “vamos hoy”.</span>
+
+      <ul class="list" style="margin-top:10px;">
+        <li><span>✔</span><div><strong>Recién abiertos</strong><br>Para descubrir sitios nuevos que ya puedes visitar.</div></li>
+        <li><span>✔</span><div><strong>Próximas aperturas</strong><br>Para anticiparte y guardarlo antes de que se llene.</div></li>
+        <li><span>✔</span><div><strong>Eventos y temporales</strong><br>Cuando toca, aparece; cuando pasa, desaparece.</div></li>
+      </ul>
+    </section>
+
+    <section class="section" id="espera">
+      <h2>Lista de espera (para enterarte el primero)</h2>
+      <p>
+        Estamos en beta cerrada afinando detalles. Si quieres que te avisemos en cuanto esté publicada en Google Play:
+      </p>
+      <div class="hero-cta" style="margin-bottom:0;">
+        <a class="btn btn-primary"
+           href="mailto:info@recienabierto.com?subject=Lista%20de%20espera%20-%20Reci%C3%A9n%20Abierto&body=Hola%2C%20quiero%20apuntarme%20a%20la%20lista%20de%20espera.%0A%0A%20-%20Nombre%3A%0A%20-%20Ciudad%3A%0A%20-%20Android%20%2F%20iPhone%3A%0A">
+          <span style="font-size:1.05rem;">📩</span> Apuntarme por email
+        </a>
+        <a class="btn btn-ghost" href="#faq">
+          <span style="font-size:1.05rem;">❓</span> Ver preguntas frecuentes
+        </a>
+      </div>
+      <p class="hero-note" style="margin-top:10px;">
+        Consejo sano: si nos dices tu ciudad, afinamos la cobertura por fases con datos reales (no por fe).
+      </p>
+    </section>
+
     <section class="section" id="negocios">
       <h2>Para negocios: visibilidad justo cuando más la necesitas</h2>
       <p>
-        Abrir un negocio ya es suficientemente complejo. Recién Abierto está diseñado para ayudarte en lo más difícil: que la gente se entere de que existes y se anime a visitarte desde el primer día.
+        Abrir un negocio ya es bastante duro. Recién Abierto está pensado para lo peor: que la gente se entere de que existes
+        y se anime a visitarte desde el primer día.
       </p>
+
       <p>
-        Si quieres que tu local aparezca en el mapa o quieres más información, contacta con nosotros en
-        <a href="mailto:info@recienabierto.com">info@recienabierto.com</a>.
+        Para aparecer en el mapa o pedir más info: <a href="mailto:info@recienabierto.com">info@recienabierto.com</a>.
       </p>
-      <span class="pill-inline">Lanzamiento: estar en la app es 100% gratis</span>
+
+      <span class="pill-inline">Lanzamiento: aparecer en la app es 100% gratis</span>
+
       <ul class="list">
-        <li><span>✔</span><div><strong>Aparece en el mapa de aperturas</strong><br>Tu negocio se muestra como recién abierto, con ubicación exacta y categoría visible para los usuarios cercanos.</div></li>
-        <li><span>✔</span><div><strong>Destaca tus primeras semanas</strong><br>Aprovecha el momento de apertura para atraer a los primeros clientes con información clara y actualizada.</div></li>
-        <li><span>✔</span><div><strong>Información clara y atractiva</strong><br>Fotos, breve descripción, enlaces a redes sociales y web, contacto y datos clave para que te encuentren y reserven.</div></li>
-        <li><span>✔</span><div><strong>Planes especiales en el futuro</strong><br>Ahora mismo aparecer en la app es totalmente gratuito. Más adelante habrá opciones de visibilidad extra para quien quiera apoyar el proyecto.</div></li>
+        <li><span>✔</span><div><strong>Aparece cuando importa</strong><br>Tu negocio se muestra como recién abierto o próxima apertura, con ubicación y categoría clara.</div></li>
+        <li><span>✔</span><div><strong>Fichas que convierten</strong><br>Fotos, descripción breve, enlaces y datos clave para que te encuentren y reserven.</div></li>
+        <li><span>✔</span><div><strong>Seguidores y avisos</strong><br>Los usuarios pueden seguirte para enterarse de novedades (si activan notificaciones).</div></li>
+        <li><span>✔</span><div><strong>Opciones premium más adelante</strong><br>Cuando haya tracción, habrá visibilidad extra para quien quiera destacar sin molestar al usuario.</div></li>
       </ul>
+    </section>
+
+    <section class="section" id="faq">
+      <h2>Preguntas frecuentes</h2>
+      <p>Las dudas típicas, resueltas sin dramatismos.</p>
+
+      <div class="faq-grid">
+        <div class="faq-item"><strong>¿Está ya en Google Play?</strong><br>No todavía. Estamos en beta cerrada y preparando el lanzamiento. Apúntate a la lista de espera para enterarte el primero.</div>
+        <div class="faq-item"><strong>¿En qué zona funciona?</strong><br>Cobertura inicial: Castellón y alrededores. Iremos ampliando por fases.</div>
+        <div class="faq-item"><strong>¿Cuesta dinero?</strong><br>Para usuarios: no. Para negocios: durante el lanzamiento, aparecer es gratis. Más adelante habrá opciones de visibilidad extra.</div>
+        <div class="faq-item"><strong>¿Cómo cuidáis la privacidad?</strong><br>Solo tratamos lo necesario para que funcione la app. Tienes política de privacidad y opción de eliminar cuenta.</div>
+      </div>
     </section>
 
     <footer>
       <span>© <span id="year"></span> Recién Abierto. Todos los derechos reservados.</span>
       <span>
-        Contacto negocios: <a href="mailto:info@recienabierto.com">info@recienabierto.com</a>
-        · <a href="#privacy" id="openPrivacy">Política de privacidad</a>
-        · <a href="#eliminar-cuenta" id="openDeletion">Eliminar cuenta</a>
+        Contacto: <a href="mailto:info@recienabierto.com">info@recienabierto.com</a> ·
+        <a href="#privacy" id="openPrivacy">Política de privacidad</a> ·
+        <a href="#eliminar-cuenta" id="openDeletion">Eliminar cuenta</a>
       </span>
     </footer>
   </div>
@@ -708,10 +591,7 @@
           </ul>
 
           <h3>4. Contacto</h3>
-          <p>
-            Para consultas o solicitudes sobre privacidad:
-            <a href="mailto:info@recienabierto.com">info@recienabierto.com</a>
-          </p>
+          <p>Para consultas o solicitudes sobre privacidad: <a href="mailto:info@recienabierto.com">info@recienabierto.com</a></p>
 
           <h3>5. Cambios</h3>
           <p>Podemos actualizar esta política para reflejar cambios en la App. La versión vigente estará siempre disponible en esta URL.</p>
@@ -731,19 +611,14 @@
         <div class="policy">
           <div class="meta">Última actualización: <span id="deletionDate"></span></div>
 
-          <p>
-            Si quieres solicitar la eliminación de tu cuenta y tus datos asociados en <strong>Recién Abierto</strong>,
-            puedes hacerlo de forma sencilla:
-          </p>
+          <p>Si quieres solicitar la eliminación de tu cuenta y tus datos asociados en <strong>Recién Abierto</strong>, puedes hacerlo así:</p>
 
           <h3>1. Cómo solicitar la eliminación</h3>
           <p>
             Envíanos un email desde la dirección con la que te registraste a:
             <a href="mailto:info@recienabierto.com?subject=Solicitud%20de%20eliminaci%C3%B3n%20de%20cuenta%20-%20Reci%C3%A9n%20Abierto">info@recienabierto.com</a>
           </p>
-          <p>
-            Incluye en el mensaje: <strong>“Quiero eliminar mi cuenta”</strong> y el email de la cuenta (si no coincide).
-          </p>
+          <p>Incluye en el mensaje: <strong>“Quiero eliminar mi cuenta”</strong> y el email de la cuenta (si no coincide).</p>
 
           <h3>2. Qué datos se eliminan</h3>
           <ul>
@@ -753,26 +628,17 @@
           </ul>
 
           <h3>3. Qué datos pueden conservarse</h3>
-          <p>
-            Podemos conservar temporalmente <strong>registros técnicos mínimos</strong> (por seguridad y prevención de abuso)
-            durante un máximo de <strong>30 días</strong>.
-          </p>
+          <p>Podemos conservar temporalmente <strong>registros técnicos mínimos</strong> (por seguridad y prevención de abuso) durante un máximo de <strong>30 días</strong>.</p>
 
           <h3>4. Plazo</h3>
-          <p>
-            Procesamos la solicitud normalmente en un plazo de <strong>hasta 7 días</strong>.
-            Te confirmaremos por email cuando esté completada.
-          </p>
+          <p>Procesamos la solicitud normalmente en un plazo de <strong>hasta 7 días</strong>. Te confirmaremos por email cuando esté completada.</p>
 
           <h3>5. Contacto</h3>
-          <p>
-            Si tienes dudas, escríbenos a:
-            <a href="mailto:info@recienabierto.com">info@recienabierto.com</a>
-          </p>
+          <p>Si tienes dudas, escríbenos a: <a href="mailto:info@recienabierto.com">info@recienabierto.com</a></p>
 
           <p style="margin-top:12px;">
-            <strong>URL para Play Console:</strong> usa esta misma página con el hash
-            <code>#eliminar-cuenta</code>, por ejemplo: <strong>https://www.recienabierto.com/#eliminar-cuenta</strong>
+            <strong>URL para Play Console:</strong> usa esta misma página con el hash <code>#eliminar-cuenta</code>, por ejemplo:
+            <strong>https://www.recienabierto.com/#eliminar-cuenta</strong>
           </p>
         </div>
       </div>
@@ -795,7 +661,6 @@
       document.body.style.overflow = "hidden";
       if (hash) history.replaceState(null, "", hash);
     }
-
     function closeModal(modalEl, hashToClear) {
       modalEl.classList.remove("open");
       modalEl.setAttribute("aria-hidden", "true");
@@ -805,32 +670,18 @@
       }
     }
 
-    openPrivacy.addEventListener("click", (e) => {
-      e.preventDefault();
-      openModal(privacyModal, "#privacy");
-    });
-
+    openPrivacy.addEventListener("click", (e) => { e.preventDefault(); openModal(privacyModal, "#privacy"); });
     closePrivacy.addEventListener("click", () => closeModal(privacyModal, "#privacy"));
-
-    privacyModal.addEventListener("click", (e) => {
-      if (e.target === privacyModal) closeModal(privacyModal, "#privacy");
-    });
+    privacyModal.addEventListener("click", (e) => { if (e.target === privacyModal) closeModal(privacyModal, "#privacy"); });
 
     // Deletion modal
     const deletionModal = document.getElementById("deletionModal");
     const openDeletion = document.getElementById("openDeletion");
     const closeDeletion = document.getElementById("closeDeletion");
 
-    openDeletion.addEventListener("click", (e) => {
-      e.preventDefault();
-      openModal(deletionModal, "#eliminar-cuenta");
-    });
-
+    openDeletion.addEventListener("click", (e) => { e.preventDefault(); openModal(deletionModal, "#eliminar-cuenta"); });
     closeDeletion.addEventListener("click", () => closeModal(deletionModal, "#eliminar-cuenta"));
-
-    deletionModal.addEventListener("click", (e) => {
-      if (e.target === deletionModal) closeModal(deletionModal, "#eliminar-cuenta");
-    });
+    deletionModal.addEventListener("click", (e) => { if (e.target === deletionModal) closeModal(deletionModal, "#eliminar-cuenta"); });
 
     // Escape
     document.addEventListener("keydown", (e) => {
