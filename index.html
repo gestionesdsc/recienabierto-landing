@@ -59,7 +59,7 @@
             "name": "¿Está ya disponible en Google Play?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Todavía no. Ahora mismo estamos en beta cerrada y afinando los últimos detalles. Puedes unirte a la lista de espera para enterarte el primero."
+              "text": "Sí. Recién Abierto ya está disponible en Google Play en acceso anticipado."
             }
           },
           {
@@ -227,34 +227,16 @@
     .device-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
     .device-title { font-size: 0.86rem; font-weight: 700; }
     .device-pill { font-size: 0.72rem; padding: 4px 8px; border-radius: 999px; background: rgba(14, 165, 233, 0.08); color: #0369a1; }
-    .phone { background: #020617; border-radius: 26px; padding: 6px; position: relative; }
-    .phone-screen {
+
+    .preview-image {
+      width: 100%;
+      display: block;
       border-radius: 20px;
-      overflow: hidden;
-      height: 260px;
-      background-image: url("map-preview.jpg"); /* Pon aquí una captura real cuando puedas */
-      background-size: cover;
-      background-position: center;
-      position: relative;
+      object-fit: cover;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      background: #f8fafc;
     }
-    .phone-top-bar { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 40%; height: 6px; border-radius: 999px; background: rgba(15, 23, 42, 0.7); }
-    .phone-chip-row {
-      position: absolute; top: 34px; left: 50%; transform: translateX(-50%);
-      display: inline-flex; gap: 4px; background: rgba(248, 250, 252, 0.96);
-      border-radius: 999px; padding: 4px; font-size: 0.7rem;
-      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.25);
-    }
-    .phone-chip { padding: 3px 8px; border-radius: 999px; border: 1px solid transparent; white-space: nowrap; }
-    .phone-chip.active { background: #10b981; color: #ffffff; }
-    .phone-chip.inactive { background: #f3f4f6; color: #4b5563; }
-    .phone-bottom-bar {
-      position: absolute; bottom: 6px; left: 0; right: 0; padding: 6px 10px;
-      display: flex; justify-content: space-between; align-items: center;
-      background: linear-gradient(to top, rgba(15,23,42,0.8), rgba(15,23,42,0));
-      color: #f9fafb; font-size: 0.72rem;
-    }
-    .phone-bottom-center { display: flex; gap: 24px; align-items: center; }
-    .phone-bottom-dot { width: 4px; height: 4px; border-radius: 999px; background: #f97316; }
+
     .device-footer { margin-top: 10px; display: flex; justify-content: space-between; gap: 8px; font-size: 0.78rem; color: var(--text-soft); }
     .device-tag { padding: 4px 8px; border-radius: 999px; background: rgba(15, 23, 42, 0.04); border: 1px solid rgba(148, 163, 184, 0.5); white-space: nowrap; }
 
@@ -372,17 +354,17 @@
       </div>
 
       <div class="header-cta">
-        <div class="pill">🧪 Beta cerrada · Aún no disponible en Google Play</div>
-        <small>Últimos ajustes antes del lanzamiento.</small>
+        <div class="pill">🚀 Acceso anticipado · Disponible en Google Play</div>
+        <small>Ya puedes descargarla y probarla.</small>
       </div>
     </header>
 
     <div class="top-banner" role="note" aria-label="Estado del lanzamiento">
       <div style="font-size:1.05rem; line-height:1;">ℹ️</div>
       <div>
-        <strong>Estamos en fase final de pruebas.</strong>
-        Si quieres enterarte el primero cuando salga en Google Play, apúntate a la lista de espera.
-        <a href="#espera">Ir a lista de espera</a>.
+        <strong>Recién Abierto ya está disponible en Google Play en acceso anticipado.</strong>
+        Puedes descargarla y empezar a descubrir negocios recién abiertos y próximas aperturas cerca de ti.
+        <a href="https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto" target="_blank" rel="noopener noreferrer">Ir a Google Play</a>.
       </div>
     </div>
 
@@ -414,9 +396,8 @@
             <span style="font-size:1.05rem;">🏪</span> Soy un negocio y quiero aparecer
           </a>
 
-          <!-- Botones deshabilitados mientras no esté en Play -->
-          <a href="#" class="btn btn-ghost btn-disabled" aria-disabled="true" title="Aún no disponible en Google Play">
-            <span style="font-size:1.05rem;">🤖</span> Google Play (próximamente)
+          <a href="https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+            <span style="font-size:1.05rem;">🤖</span> Google Play
           </a>
           <a href="#" class="btn btn-ghost btn-disabled" aria-disabled="true">
             <span style="font-size:1.05rem;">🍎</span> App Store (más adelante)
@@ -442,24 +423,7 @@
           <div class="device-title">Vista del mapa en la app</div>
           <div class="device-pill">Preview (beta)</div>
         </div>
-        <div class="phone">
-          <div class="phone-screen">
-            <div class="phone-top-bar"></div>
-            <div class="phone-chip-row" aria-hidden="true">
-              <div class="phone-chip active">Todos</div>
-              <div class="phone-chip inactive">2 km</div>
-              <div class="phone-chip inactive">5 km</div>
-              <div class="phone-chip inactive">10 km</div>
-            </div>
-            <div class="phone-bottom-bar" aria-hidden="true">
-              <span>Mapa · Lista · Guardados</span>
-              <div class="phone-bottom-center">
-                <span class="phone-bottom-dot"></span>
-                <span>Negocios · Próximas · Eventos</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <img src="map-preview.jpg" alt="Vista del mapa en la app" class="preview-image" />
         <div class="device-footer">
           <span class="device-tag">Mapa real</span>
           <span class="device-tag">Fichas claras</span>
@@ -498,14 +462,15 @@
     </section>
 
     <section class="section" id="espera">
-      <h2>Lista de espera (para enterarte el primero)</h2>
+      <h2>Acceso anticipado en Google Play</h2>
       <p>
-        Estamos en beta cerrada afinando detalles. Si quieres que te avisemos en cuanto esté publicada en Google Play:
+        Recién Abierto ya está disponible en acceso anticipado. Si quieres probarla desde ya, puedes descargarla en Google Play:
       </p>
       <div class="hero-cta" style="margin-bottom:0;">
         <a class="btn btn-primary"
-           href="mailto:info@recienabierto.com?subject=Lista%20de%20espera%20-%20Reci%C3%A9n%20Abierto&body=Hola%2C%20quiero%20apuntarme%20a%20la%20lista%20de%20espera.%0A%0A%20-%20Nombre%3A%0A%20-%20Ciudad%3A%0A%20-%20Android%20%2F%20iPhone%3A%0A">
-          <span style="font-size:1.05rem;">📩</span> Apuntarme por email
+           href="https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto"
+           target="_blank" rel="noopener noreferrer">
+          <span style="font-size:1.05rem;">🤖</span> Descargar en Google Play
         </a>
         <a class="btn btn-ghost" href="#faq">
           <span style="font-size:1.05rem;">❓</span> Ver preguntas frecuentes
@@ -542,7 +507,7 @@
       <p>Las dudas típicas, resueltas sin dramatismos.</p>
 
       <div class="faq-grid">
-        <div class="faq-item"><strong>¿Está ya en Google Play?</strong><br>No todavía. Estamos en beta cerrada y preparando el lanzamiento. Apúntate a la lista de espera para enterarte el primero.</div>
+        <div class="faq-item"><strong>¿Está ya en Google Play?</strong><br>Sí. Recién Abierto ya está disponible en Google Play en acceso anticipado.</div>
         <div class="faq-item"><strong>¿En qué zona funciona?</strong><br>Cobertura inicial: Castellón y alrededores. Iremos ampliando por fases.</div>
         <div class="faq-item"><strong>¿Cuesta dinero?</strong><br>Para usuarios: no. Para negocios: durante el lanzamiento, aparecer es gratis. Más adelante habrá opciones de visibilidad extra.</div>
         <div class="faq-item"><strong>¿Cómo cuidáis la privacidad?</strong><br>Solo tratamos lo necesario para que funcione la app. Tienes política de privacidad y opción de eliminar cuenta.</div>
