@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cargando negocio...</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      text-align: center;
+      padding: 40px 20px;
+      color: #334155;
+    }
+    .spinner {
+      margin: 20px auto;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #18B7C6;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    a {
+      color: #18B7C6;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="spinner"></div>
+  <p>Abriendo en Recién Abierto...</p>
+  <p style="font-size: 14px; margin-top: 20px;">
+    Si no tienes la app, <a href="https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto">descárgala gratis aquí</a>.
+  </p>
+  <script>
+    const path = window.location.pathname;
+    const schemeUrl = "recienabierto://" + path.replace(/^\//, "");
+    const storeUrl = "https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto";
+
+    window.location.replace(schemeUrl);
+
+    setTimeout(function () {
+      window.location.replace(storeUrl);
+    }, 3000);
+  </script>
+</body>
+</html>
