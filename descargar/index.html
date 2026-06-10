@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Descarga la App Recién Abierto · Android e iPhone</title>
+  <meta name="description" content="Descarga gratis la app de Recién Abierto para Android y iPhone. Explora el mapa de tu ciudad, descubre nuevas aperturas, eventos y planes locales cerca de ti." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://www.recienabierto.com/descargar" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Descarga la App Recién Abierto · Android e iPhone" />
+  <meta property="og:description" content="Negocios recién abiertos, próximas aperturas, eventos y planes locales en un solo mapa. Descarga la app gratis." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.recienabierto.com/descargar" />
+  <meta property="og:image" content="https://www.recienabierto.com/og-recien-abierto.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    // Platform redirection script in head to prevent layout flash on mobile devices
+    (function () {
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      
+      // Detection of iOS devices (iPhone, iPad, iPod)
+      var isIOS = /iPad|iPhone|iPod/i.test(userAgent) && !window.MSStream;
+      // Detection of Android devices
+      var isAndroid = /Android/i.test(userAgent);
+
+      if (isIOS) {
+        window.location.replace("https://apps.apple.com/es/app/recien-abierto/id6766087032");
+      } else if (isAndroid) {
+        window.location.replace("https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto");
+      } else {
+        // Desktop or other platform: add class to html element to display the page body
+        document.documentElement.className += " is-desktop";
+      }
+    })();
+  </script>
+
+  <style>
+    :root {
+      --bg: #fcfbfa; /* Warm neutral */
+      --primary: #18a4a4;
+      --primary-hover: #138585;
+      --primary-light: #e6f6f6;
+      --secondary: #0ea5e9;
+      --text-main: #0f172a;
+      --text-soft: #64748b;
+      --border: #e2e8f0;
+      
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 32px;
+      
+      --shadow-md: 0 12px 32px rgba(15,23,42,0.06);
+      --shadow-lg: 0 24px 48px rgba(15,23,42,0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* By default, hide the body to avoid flashing the page before redirecting on mobile */
+    body {
+      display: none;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at top right, rgba(24, 164, 164, 0.08), transparent 50%),
+        radial-gradient(circle at bottom left, rgba(249, 115, 22, 0.05), transparent 50%);
+      color: var(--text-main);
+      line-height: 1.6;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Show body only if the device is confirmed to be desktop */
+    .is-desktop body {
+      display: flex;
+    }
+
+    .container {
+      max-width: 480px;
+      width: 90%;
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    /* Glassmorphic card styling */
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      border-radius: var(--radius-lg);
+      padding: 48px 32px;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 56px rgba(15,23,42,0.14);
+    }
+
+    .logo-container {
+      margin-bottom: 24px;
+    }
+
+    .logo {
+      height: 64px;
+      width: auto;
+      display: block;
+    }
+
+    h1 {
+      font-family: 'Outfit', system-ui, sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0 0 12px 0;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: var(--text-soft);
+      margin: 0 0 32px 0;
+      max-width: 320px;
+      line-height: 1.5;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      margin-bottom: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-playstore {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #ffffff;
+      box-shadow: 0 8px 20px rgba(24, 164, 164, 0.25);
+    }
+
+    .btn-playstore:hover {
+      box-shadow: 0 12px 24px rgba(24, 164, 164, 0.35);
+    }
+
+    .btn-appstore {
+      background: var(--text-main);
+      color: #ffffff;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
+    }
+
+    .btn-appstore:hover {
+      background: #1e293b;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.3);
+    }
+
+    .btn svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .footer-link {
+      font-size: 0.9rem;
+      color: var(--primary);
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: var(--primary-hover);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <main class="card">
+      <div class="logo-container">
+        <img class="logo" src="/logo-recien-abierto.png" alt="Recién Abierto Logo" />
+      </div>
+      
+      <h1 id="main-title">Descarga Recién Abierto</h1>
+      <p class="subtitle">Descubre negocios recién abiertos, próximas aperturas y eventos cerca de ti.</p>
+      
+      <div class="button-group">
+        <a id="btn-playstore" href="https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto" class="btn btn-playstore" target="_blank" rel="noopener noreferrer">
+          <!-- Google Play Icon (SVG) -->
+          <svg viewBox="0 0 24 24">
+            <path d="M5 3c-.28 0-.56.08-.81.25-.53.3-.85.86-.85 1.47v14.56c0,.61.32 1.17.85 1.47.25.17.53.25.81.25.26,0,.52-.07.75-.2L18.42 12.7c.48-.28.78-.8.78-1.35s-.3-1.07-.78-1.35L5.75 3.2c-.23-.13-.49-.2-.75-.2Z"/>
+          </svg>
+          Descargar en Google Play
+        </a>
+        
+        <a id="btn-appstore" href="https://apps.apple.com/es/app/recien-abierto/id6766087032" class="btn btn-appstore" target="_blank" rel="noopener noreferrer">
+          <!-- Apple Store Icon (SVG) -->
+          <svg viewBox="0 0 24 24">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-.96.04-2.13.64-2.82 1.45-.6.69-1.12 1.83-.98 2.94 1.07.08 2.16-.52 2.81-1.33z"/>
+          </svg>
+          Descargar en App Store
+        </a>
+      </div>
+      
+      <a href="/" class="footer-link">
+        <span>Ir a la web principal</span>
+        <span>&rarr;</span>
+      </a>
+    </main>
+  </div>
+</body>
+</html>

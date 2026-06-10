@@ -35,17 +35,35 @@
   <div class="spinner"></div>
   <p>Abriendo en Recién Abierto...</p>
   <p style="font-size: 14px; margin-top: 20px;">
-    Si no tienes la app, <a href="https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto">descárgala gratis aquí</a>.
+    Si no tienes la app, <a id="download-link" href="/descargar">descárgala gratis aquí</a>.
   </p>
   <script>
+    // Extract the business path (e.g. negocio/<id>) to form the custom scheme URL
     const path = window.location.pathname;
     const schemeUrl = "recienabierto://" + path.replace(/^\//, "");
-    const storeUrl = "https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto";
 
+    // Attempt to open the mobile application using deep linking
     window.location.replace(schemeUrl);
 
+    // Platform-specific fallback detection
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const isIOS = /iPad|iPhone|iPod/i.test(userAgent) && !window.MSStream;
+    const isAndroid = /Android/i.test(userAgent);
+
+    // Determine target URL in case the app is not installed (3-second timeout fallback)
+    let fallbackUrl = "/descargar"; // Default fallback for desktop/others
+    if (isIOS) {
+      fallbackUrl = "https://apps.apple.com/es/app/recien-abierto/id6766087032";
+    } else if (isAndroid) {
+      fallbackUrl = "https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto";
+    }
+
+    // Update the manual download link's href to point directly to the correct platform link
+    document.getElementById("download-link").href = fallbackUrl;
+
+    // Redirect to the appropriate fallback after 3 seconds
     setTimeout(function () {
-      window.location.replace(storeUrl);
+      window.location.replace(fallbackUrl);
     }, 3000);
   </script>
 </body>
