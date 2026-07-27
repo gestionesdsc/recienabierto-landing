@@ -40,7 +40,8 @@
   <script>
     // Extract the business path (e.g. negocio/<id>) to form the custom scheme URL
     const path = window.location.pathname;
-    const schemeUrl = "recienabierto://" + path.replace(/^\//, "");
+    const search = window.location.search || "";
+    const schemeUrl = "recienabierto://" + path.replace(/^\//, "") + search;
 
     // Attempt to open the mobile application using deep linking
     window.location.replace(schemeUrl);
