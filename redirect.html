@@ -37,13 +37,42 @@
   <p style="font-size: 14px; margin-top: 20px;">
     Si no tienes la app, <a id="download-link" href="/descargar">descárgala gratis aquí</a>.
   </p>
+  <script src="/promotion-referrals.js"></script>
   <script>
-    // Extract the business path (e.g. negocio/<id>) to form the custom scheme URL
-    const path = window.location.pathname;
-    const schemeUrl = "recienabierto://" + path.replace(/^\//, "");
+    // Process referral visits (if ref is valid) and obtain the target deep linking URL
+    const fallbackScheme =
+      "recienabierto://" +
+      (window.location.pathname + window.location.search).replace(/^\//, "");
 
-    // Attempt to open the mobile application using deep linking
-    window.location.replace(schemeUrl);
+    let appNavigationAttempted = false;
+
+    function navigateToAppOnce(url) {
+      if (appNavigationAttempted) return;
+      appNavigationAttempted = true;
+      window.location.replace(url || fallbackScheme);
+    }
+
+    try {
+      if (
+        window.PromotionReferrals &&
+        window.PromotionReferrals.processAndRedirect
+      ) {
+        Promise.resolve(
+          window.PromotionReferrals.processAndRedirect(window.location)
+        ).then(
+          function (res) {
+            navigateToAppOnce((res && res.schemeUrl) || fallbackScheme);
+          },
+          function () {
+            navigateToAppOnce(fallbackScheme);
+          }
+        );
+      } else {
+        navigateToAppOnce(fallbackScheme);
+      }
+    } catch (e) {
+      navigateToAppOnce(fallbackScheme);
+    }
 
     // Platform-specific fallback detection
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
