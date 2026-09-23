@@ -3,60 +3,141 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cargando negocio...</title>
+  <title>Recién Abierto</title>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
-      font-family: system-ui, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       text-align: center;
-      padding: 40px 20px;
+      padding: 40px 24px;
       color: #334155;
+      background-color: #F8FAFC;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      background: #FFFFFF;
+      border-radius: 24px;
+      padding: 36px 24px;
+      max-width: 360px;
+      width: 100%;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      border: 1px solid #E2E8F0;
     }
     .spinner {
       margin: 20px auto;
       border: 4px solid #f3f3f3;
       border-top: 4px solid #18B7C6;
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       animation: spin 1s linear infinite;
     }
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    a {
-      color: #18B7C6;
-      font-weight: bold;
+    .app-logo {
+      width: 88px;
+      height: 88px;
+      border-radius: 20px;
+      margin: 0 auto 16px auto;
+      display: block;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      object-fit: cover;
+    }
+    .app-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #0F172A;
+      margin-bottom: 8px;
+    }
+    .app-desc {
+      font-size: 15px;
+      line-height: 1.45;
+      color: #64748B;
+      margin-bottom: 28px;
+    }
+    .btn-download {
+      display: block;
+      width: 100%;
+      padding: 16px 20px;
+      background-color: #18B7C6;
+      color: #FFFFFF !important;
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       text-decoration: none;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(24, 183, 198, 0.35);
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.15s ease;
+    }
+    .btn-download:active {
+      background-color: #139ca9;
+      transform: translateY(1px);
+    }
+    .status-text {
+      font-size: 16px;
+      font-weight: 500;
+      color: #475569;
     }
   </style>
 </head>
 <body>
-  <div class="spinner"></div>
-  <p>Abriendo en Recién Abierto...</p>
-  <p style="font-size: 14px; margin-top: 20px;">
-    Si no tienes la app, <a id="download-link" href="/descargar">descárgala gratis aquí</a>.
-  </p>
+  <!-- Estado de carga inicial (mientras se intenta abrir la app si está instalada) -->
+  <div id="loading-state">
+    <div class="spinner"></div>
+    <p class="status-text">Abriendo en Recién Abierto...</p>
+  </div>
+
+  <!-- Landing Android mínima mobile-first (se muestra si la app no está instalada) -->
+  <div id="android-card" class="card" style="display: none;">
+    <img src="/logo-recien-abierto.png" alt="Recién Abierto" class="app-logo">
+    <h1 class="app-title">Recién Abierto</h1>
+    <p class="app-desc">Descarga la app gratis para ver esta ficha y descubrir lo nuevo cerca de ti.</p>
+    <a id="btn-download-android" href="intent://details?id=com.recienabierto.recienabierto#Intent;scheme=market;package=com.android.vending;end" class="btn-download">DESCARGAR RECIÉN ABIERTO</a>
+  </div>
+
+  <!-- Mensaje limpio para Desktop -->
+  <div id="desktop-state" class="card" style="display: none;">
+    <img src="/logo-recien-abierto.png" alt="Recién Abierto" class="app-logo">
+    <h1 class="app-title">Recién Abierto</h1>
+    <p class="app-desc" style="margin-bottom: 0;">Recién Abierto es una app móvil.<br><br>Para ver este negocio, abre el enlace desde tu teléfono móvil.</p>
+  </div>
+
   <script src="/promotion-referrals.js"></script>
   <script>
-    // Process referral visits (if ref is valid) and obtain the target deep linking URL
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const isIOS = /iPad|iPhone|iPod/i.test(userAgent) && !window.MSStream;
+    const isAndroid = /Android/i.test(userAgent);
+
     const fallbackScheme =
       "recienabierto://" +
       (window.location.pathname + window.location.search).replace(/^\//, "");
 
     let appNavigationAttempted = false;
     let hasLeftPage = false;
-    let fallbackTimer = null;
+    let iosFallbackTimer = null;
 
     function cancelFallback() {
       hasLeftPage = true;
-      if (fallbackTimer) {
-        clearTimeout(fallbackTimer);
-        fallbackTimer = null;
+      if (iosFallbackTimer) {
+        clearTimeout(iosFallbackTimer);
+        iosFallbackTimer = null;
       }
     }
 
-    // Detect if app opened and browser went into background
+    // Detectar si el SO abre la app nativa y el navegador pasa a segundo plano
     window.addEventListener("pagehide", cancelFallback);
     window.addEventListener("blur", cancelFallback);
     document.addEventListener("visibilitychange", function () {
@@ -69,70 +150,75 @@
       window.location.replace(url || fallbackScheme);
     }
 
-    try {
-      if (
-        window.PromotionReferrals &&
-        window.PromotionReferrals.processAndRedirect
-      ) {
-        Promise.resolve(
-          window.PromotionReferrals.processAndRedirect(window.location)
-        ).then(
-          function (res) {
-            navigateToAppOnce((res && res.schemeUrl) || fallbackScheme);
-          },
-          function () {
-            navigateToAppOnce(fallbackScheme);
-          }
-        );
-      } else {
+    // 1) Si es móvil (iOS o Android), intentar abrir inmediatamente la app por custom scheme
+    if (isIOS || isAndroid) {
+      try {
+        if (
+          window.PromotionReferrals &&
+          window.PromotionReferrals.processAndRedirect
+        ) {
+          Promise.resolve(
+            window.PromotionReferrals.processAndRedirect(window.location)
+          ).then(
+            function (res) {
+              navigateToAppOnce((res && res.schemeUrl) || fallbackScheme);
+            },
+            function () {
+              navigateToAppOnce(fallbackScheme);
+            }
+          );
+        } else {
+          navigateToAppOnce(fallbackScheme);
+        }
+      } catch (e) {
         navigateToAppOnce(fallbackScheme);
       }
-    } catch (e) {
-      navigateToAppOnce(fallbackScheme);
     }
 
-    // Platform-specific fallback detection
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    const isIOS = /iPad|iPhone|iPod/i.test(userAgent) && !window.MSStream;
-    const isAndroid = /Android/i.test(userAgent);
+    // 2) Tratamiento diferenciado por plataforma si la app no está instalada:
 
-    // Update the manual download link's href
-    const downloadLink = document.getElementById("download-link");
     if (isAndroid) {
-      downloadLink.href = "market://details?id=com.recienabierto.recienabierto";
+      // ANDROID: Mostrar tras breve espera la landing mobile-first con el botón directo a Play Store
+      // Sin redirección automática por temporizador a market:// (evita bloqueos del navegador)
+      setTimeout(function () {
+        if (!hasLeftPage && !document.hidden) {
+          document.getElementById("loading-state").style.display = "none";
+          document.getElementById("android-card").style.display = "block";
+        }
+      }, 1000);
+
+      const downloadBtn = document.getElementById("btn-download-android");
+      if (downloadBtn) {
+        downloadBtn.addEventListener("click", function (e) {
+          // El enlace href ya contiene el intent directo a Google Play Store
+          // Programamos un fallback secundario a la web de Play Store únicamente si el intent no responde
+          setTimeout(function () {
+            if (!document.hidden) {
+              window.location.href = "https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto";
+            }
+          }, 1500);
+        });
+      }
     } else if (isIOS) {
-      downloadLink.href = "https://apps.apple.com/es/app/recien-abierto/id6766087032";
-    } else {
-      downloadLink.href = "/descargar";
-    }
+      // IOS: Mantener el flujo existente intacto (sin landing intermedia, directo a App Store)
+      iosFallbackTimer = setTimeout(function () {
+        if (hasLeftPage || document.hidden) return;
 
-    // Execute fallback to store if app is not installed (after 1800ms)
-    fallbackTimer = setTimeout(function () {
-      if (hasLeftPage || document.hidden) return;
-
-      if (isAndroid) {
-        // Intento 1 (principal): abrir directamente la app nativa Google Play Store
-        window.location.href = "market://details?id=com.recienabierto.recienabierto";
-        // Intento 2 (fallback secundario): URL web de Google Play solo si market:// no responde
-        setTimeout(function () {
-          if (!hasLeftPage && !document.hidden) {
-            window.location.replace("https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto");
-          }
-        }, 1000);
-      } else if (isIOS) {
-        // Intento 1 (principal): esquema directo hacia App Store
+        // Intento 1 (principal): abrir directamente App Store
         window.location.href = "itms-apps://apps.apple.com/app/id6766087032";
-        // Intento 2 (fallback secundario): URL HTTPS oficial de App Store
+
+        // Intento 2 (fallback): URL HTTPS oficial de App Store
         setTimeout(function () {
           if (!hasLeftPage && !document.hidden) {
             window.location.replace("https://apps.apple.com/es/app/recien-abierto/id6766087032");
           }
         }, 1000);
-      } else {
-        // Desktop / otros dispositivos
-        window.location.replace("/descargar");
-      }
-    }, 1800);
+      }, 1800);
+    } else {
+      // DESKTOP: Ocultar spinner y mostrar aviso limpio
+      document.getElementById("loading-state").style.display = "none";
+      document.getElementById("desktop-state").style.display = "block";
+    }
   </script>
 </body>
 </html>
