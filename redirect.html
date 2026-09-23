@@ -45,6 +45,23 @@
       (window.location.pathname + window.location.search).replace(/^\//, "");
 
     let appNavigationAttempted = false;
+    let hasLeftPage = false;
+    let fallbackTimer = null;
+
+    function cancelFallback() {
+      hasLeftPage = true;
+      if (fallbackTimer) {
+        clearTimeout(fallbackTimer);
+        fallbackTimer = null;
+      }
+    }
+
+    // Detect if app opened and browser went into background
+    window.addEventListener("pagehide", cancelFallback);
+    window.addEventListener("blur", cancelFallback);
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) cancelFallback();
+    });
 
     function navigateToAppOnce(url) {
       if (appNavigationAttempted) return;
@@ -79,21 +96,43 @@
     const isIOS = /iPad|iPhone|iPod/i.test(userAgent) && !window.MSStream;
     const isAndroid = /Android/i.test(userAgent);
 
-    // Determine target URL in case the app is not installed (3-second timeout fallback)
-    let fallbackUrl = "/descargar"; // Default fallback for desktop/others
-    if (isIOS) {
-      fallbackUrl = "https://apps.apple.com/es/app/recien-abierto/id6766087032";
-    } else if (isAndroid) {
-      fallbackUrl = "https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto";
+    // Update the manual download link's href
+    const downloadLink = document.getElementById("download-link");
+    if (isAndroid) {
+      downloadLink.href = "market://details?id=com.recienabierto.recienabierto";
+    } else if (isIOS) {
+      downloadLink.href = "https://apps.apple.com/es/app/recien-abierto/id6766087032";
+    } else {
+      downloadLink.href = "/descargar";
     }
 
-    // Update the manual download link's href to point directly to the correct platform link
-    document.getElementById("download-link").href = fallbackUrl;
+    // Execute fallback to store if app is not installed (after 1800ms)
+    fallbackTimer = setTimeout(function () {
+      if (hasLeftPage || document.hidden) return;
 
-    // Redirect to the appropriate fallback after 3 seconds
-    setTimeout(function () {
-      window.location.replace(fallbackUrl);
-    }, 3000);
+      if (isAndroid) {
+        // Intento 1 (principal): abrir directamente la app nativa Google Play Store
+        window.location.href = "market://details?id=com.recienabierto.recienabierto";
+        // Intento 2 (fallback secundario): URL web de Google Play solo si market:// no responde
+        setTimeout(function () {
+          if (!hasLeftPage && !document.hidden) {
+            window.location.replace("https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto");
+          }
+        }, 1000);
+      } else if (isIOS) {
+        // Intento 1 (principal): esquema directo hacia App Store
+        window.location.href = "itms-apps://apps.apple.com/app/id6766087032";
+        // Intento 2 (fallback secundario): URL HTTPS oficial de App Store
+        setTimeout(function () {
+          if (!hasLeftPage && !document.hidden) {
+            window.location.replace("https://apps.apple.com/es/app/recien-abierto/id6766087032");
+          }
+        }, 1000);
+      } else {
+        // Desktop / otros dispositivos
+        window.location.replace("/descargar");
+      }
+    }, 1800);
   </script>
 </body>
 </html>
