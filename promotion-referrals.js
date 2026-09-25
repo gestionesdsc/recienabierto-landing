@@ -1,7 +1,13 @@
 /**
  * promotion-referrals.js
- * Helper independiente y comprobable para gestionar el registro de visitas de referidos
- * desde la landing web en redirect.html sin dependencias de terceros ni frameworks.
+ * Helper independiente y comprobable para gestionar la redirección de enlaces de referidos
+ * desde la página intermedia (redirect.html) hacia la app nativa de Recién Abierto.
+ *
+ * NOTA DE ARQUITECTURA:
+ * El registro web de visitas de referidos está DESACTIVADO por diseño.
+ * Una visita referral SOLO se contabiliza cuando el enlace llega y es procesado
+ * dentro de la APP de Recién Abierto. La página web intermedia no envía peticiones
+ * de registro a la Edge Function de referidos.
  */
 
 (function (global) {
@@ -68,7 +74,6 @@
   /**
    * Recupera o genera un visitor_key anónimo y estable en localStorage.
    * Si localStorage falla o está bloqueado, devuelve un UUID efímero de manera segura.
-   * Utiliza el generador inyectado en pruebas o la fuente criptográfica segura real.
    */
   function getVisitorKey(storageObj, generateIdFunc) {
     const storage = storageObj || (typeof localStorage !== 'undefined' ? localStorage : null);
@@ -155,7 +160,7 @@
     if (params.has('rid')) {
       params.delete('rid');
     }
-    // Se adjunta el nuevo request_id de esta carga de página
+    // Se adjunta el nuevo request_id de esta carga de página para preservar la trazabilidad
     if (requestId) {
       params.set('rid', requestId);
     }
@@ -165,54 +170,23 @@
   }
 
   /**
-   * Envía la visita al endpoint de Supabase mediante fetch con keepalive.
-   * Nunca lanza error ni muestra alertas.
+   * Registro web desactivado: la página web intermedia NO debe registrar visitas de referidos.
+   * Devuelve siempre una promesa resuelta con false sin realizar peticiones de red.
    */
   function sendVisitRequest(referralToken, visitorKey, requestId, fetchFunc) {
-    const fetcher = fetchFunc || (typeof fetch !== 'undefined' ? fetch : null);
-    if (!fetcher) {
-      return Promise.resolve(false);
-    }
-
-    const payload = {
-      action: 'record_visit',
-      referral_token: referralToken,
-      visitor_type: 'web',
-      visitor_key: visitorKey,
-      request_id: requestId,
-    };
-
-    try {
-      return fetcher(ENDPOINT_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-        keepalive: true,
-      })
-      .then(function (response) {
-        return response.json().catch(function () { return {}; });
-      })
-      .then(function () {
-        return true;
-      })
-      .catch(function () {
-        // Error de red manejado de forma segura sin exponer token ni visitor_key
-        return false;
-      });
-    } catch (e) {
-      return Promise.resolve(false);
-    }
+    // Registro web desactivado: 0 llamadas de red al endpoint
+    return Promise.resolve(false);
   }
 
   /**
-   * Flujo principal de procesamiento y navegación con carrera de máximo 250 ms.
+   * Flujo principal de procesamiento y redirección a la app nativa.
+   * Construye el esquema recienabierto://negocio/ID?ref=...&rid=... y resuelve
+   * de forma inmediata para abrir la app sin registrar la visita desde la web.
    */
   function processAndRedirect(urlInput, options) {
     const opts = options || {};
     const storage = opts.storage || (typeof localStorage !== 'undefined' ? localStorage : null);
-    const fetchFunc = opts.fetch || (typeof fetch !== 'undefined' ? fetch : null);
     const generateId = opts.generateUuid || function () { return generateUuidV4(opts.crypto); };
-    const maxWaitMs = typeof opts.maxWaitMs === 'number' ? opts.maxWaitMs : 250;
 
     function getFallbackScheme() {
       let path = 'negocio/default';
@@ -238,16 +212,15 @@
       });
     }
 
-    // 1. Identidad web anónima de fuente segura o inyectada
+    // 1. Identidad web para trazabilidad
     const visitorKey = getVisitorKey(storage, generateId);
 
-    // 2. Generar un request_id único y seguro para esta carga
+    // 2. Generar un request_id único para esta carga de página
     const rawRequestId = generateId();
     const requestId = rawRequestId && isValidUuid(rawRequestId) ? rawRequestId.toLowerCase() : null;
 
-    // Si no existe ninguna fuente criptográfica segura o la generación falla:
-    // no llamar al endpoint desde la web; no añadir rid; abrir normalmente la app.
-    if (!visitorKey || !requestId) {
+    // Si la generación falla, abrir normalmente la app con el esquema fallback
+    if (!requestId) {
       return Promise.resolve({
         called: false,
         schemeUrl: getFallbackScheme(),
@@ -258,21 +231,13 @@
     // 3. Construir URL nativa con el mismo request_id como rid y token en minúsculas
     const schemeUrl = buildCustomSchemeUrl(parsed.path, parsed.searchParams, requestId);
 
-    // 4. Iniciar la petición HTTP en segundo plano sin esperar indefinidamente
-    const fetchPromise = sendVisitRequest(parsed.referralToken, visitorKey, requestId, fetchFunc);
-
-    // 5. Carrera de 250 ms máx contra el fetch
-    const timeoutPromise = new Promise(function (resolve) {
-      setTimeout(function () { resolve('timeout'); }, maxWaitMs);
-    });
-
-    return Promise.race([fetchPromise, timeoutPromise]).then(function (result) {
-      return {
-        called: true,
-        schemeUrl: schemeUrl,
-        requestId: requestId,
-        raceResult: result,
-      };
+    // 4. Registro web desactivado: resolver inmediatamente sin peticiones de red
+    // La visita se registrará única y exclusivamente dentro de la APP al abrir la ficha
+    return Promise.resolve({
+      called: false,
+      schemeUrl: schemeUrl,
+      requestId: requestId,
+      raceResult: 'web_registration_disabled',
     });
   }
 

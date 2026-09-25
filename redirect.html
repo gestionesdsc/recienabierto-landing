@@ -91,6 +91,14 @@
       font-weight: 500;
       color: #475569;
     }
+    .app-note {
+      font-size: 13px;
+      line-height: 1.45;
+      color: #64748B;
+      margin-top: 14px;
+      margin-bottom: 0;
+      font-weight: 500;
+    }
   </style>
 </head>
 <body>
@@ -103,9 +111,10 @@
   <!-- Landing Android mínima mobile-first (se muestra si la app no está instalada) -->
   <div id="android-card" class="card" style="display: none;">
     <img src="/logo-recien-abierto.png" alt="Recién Abierto" class="app-logo">
-    <h1 class="app-title">Recién Abierto</h1>
-    <p class="app-desc">Descarga la app gratis para ver esta ficha y descubrir lo nuevo cerca de ti.</p>
+    <h1 class="app-title">¿Aún no tienes Recién Abierto?</h1>
+    <p class="app-desc">Instala la app y, cuando termine, vuelve a abrir este mismo enlace para acceder directamente a la ficha.</p>
     <a id="btn-download-android" href="intent://details?id=com.recienabierto.recienabierto#Intent;scheme=market;package=com.android.vending;end" class="btn-download">DESCARGAR RECIÉN ABIERTO</a>
+    <p class="app-note">Importante: después de instalarla, vuelve a este enlace.</p>
   </div>
 
   <!-- Mensaje limpio para Desktop -->
