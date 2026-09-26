@@ -10,6 +10,10 @@
       margin: 0;
       padding: 0;
     }
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       text-align: center;
@@ -17,10 +21,13 @@
       color: #334155;
       background-color: #F8FAFC;
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      overflow-x: hidden;
+      overflow-y: auto;
     }
     .card {
       background: #FFFFFF;
@@ -28,8 +35,11 @@
       padding: 36px 24px;
       max-width: 360px;
       width: 100%;
+      margin: auto;
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
       border: 1px solid #E2E8F0;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
     }
     .spinner {
       margin: 20px auto;
@@ -52,18 +62,24 @@
       display: block;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
       object-fit: cover;
+      flex-shrink: 0;
     }
     .app-title {
       font-size: 22px;
+      line-height: 1.25;
       font-weight: 700;
       color: #0F172A;
       margin-bottom: 8px;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
     }
     .app-desc {
       font-size: 15px;
       line-height: 1.45;
       color: #64748B;
       margin-bottom: 28px;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
     }
     .btn-download {
       display: block;
@@ -72,6 +88,7 @@
       background-color: #18B7C6;
       color: #FFFFFF !important;
       font-size: 15px;
+      line-height: 1.35;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -81,6 +98,8 @@
       cursor: pointer;
       border: none;
       transition: background-color 0.15s ease;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
     }
     .btn-download:active {
       background-color: #139ca9;
@@ -98,6 +117,8 @@
       margin-top: 14px;
       margin-bottom: 0;
       font-weight: 500;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
     }
   </style>
 </head>
@@ -108,13 +129,22 @@
     <p class="status-text">Abriendo en Recién Abierto...</p>
   </div>
 
-  <!-- Landing Android mínima mobile-first (se muestra si la app no está instalada) -->
+  <!-- Landing Android mínima mobile-first (se muestra si la app no está instalada en Android) -->
   <div id="android-card" class="card" style="display: none;">
     <img src="/logo-recien-abierto.png" alt="Recién Abierto" class="app-logo">
     <h1 class="app-title">¿Aún no tienes Recién Abierto?</h1>
     <p class="app-desc">Instala la app y, cuando termine, vuelve a abrir este mismo enlace para acceder directamente a la ficha.</p>
     <a id="btn-download-android" href="intent://details?id=com.recienabierto.recienabierto#Intent;scheme=market;package=com.android.vending;end" class="btn-download">DESCARGAR RECIÉN ABIERTO</a>
     <p class="app-note">Importante: después de instalarla, vuelve a este enlace.</p>
+  </div>
+
+  <!-- Landing iOS mínima mobile-first (se muestra si la app no está instalada en iOS) -->
+  <div id="ios-card" class="card" style="display: none;">
+    <img src="/logo-recien-abierto.png" alt="Recién Abierto" class="app-logo">
+    <h1 class="app-title">¿Aún no tienes Recién Abierto?</h1>
+    <p class="app-desc">Instala la app y después vuelve a abrir este enlace para acceder directamente a la ficha.</p>
+    <a id="btn-download-ios" href="itms-apps://apps.apple.com/app/id6766087032" class="btn-download">DESCARGAR RECIÉN ABIERTO</a>
+    <p class="app-note">Después de instalarla, vuelve a este enlace.</p>
   </div>
 
   <!-- Mensaje limpio para Desktop -->
@@ -136,14 +166,9 @@
 
     let appNavigationAttempted = false;
     let hasLeftPage = false;
-    let iosFallbackTimer = null;
 
     function cancelFallback() {
       hasLeftPage = true;
-      if (iosFallbackTimer) {
-        clearTimeout(iosFallbackTimer);
-        iosFallbackTimer = null;
-      }
     }
 
     // Detectar si el SO abre la app nativa y el navegador pasa a segundo plano
@@ -188,7 +213,6 @@
 
     if (isAndroid) {
       // ANDROID: Mostrar tras breve espera la landing mobile-first con el botón directo a Play Store
-      // Sin redirección automática por temporizador a market:// (evita bloqueos del navegador)
       setTimeout(function () {
         if (!hasLeftPage && !document.hidden) {
           document.getElementById("loading-state").style.display = "none";
@@ -196,9 +220,9 @@
         }
       }, 1000);
 
-      const downloadBtn = document.getElementById("btn-download-android");
-      if (downloadBtn) {
-        downloadBtn.addEventListener("click", function (e) {
+      const downloadBtnAndroid = document.getElementById("btn-download-android");
+      if (downloadBtnAndroid) {
+        downloadBtnAndroid.addEventListener("click", function (e) {
           // El enlace href ya contiene el intent directo a Google Play Store
           // Programamos un fallback secundario a la web de Play Store únicamente si el intent no responde
           setTimeout(function () {
@@ -209,20 +233,27 @@
         });
       }
     } else if (isIOS) {
-      // IOS: Mantener el flujo existente intacto (sin landing intermedia, directo a App Store)
-      iosFallbackTimer = setTimeout(function () {
-        if (hasLeftPage || document.hidden) return;
+      // IOS: Mostrar tras breve espera la tarjeta equivalente con el botón directo a App Store
+      // NO mandar automáticamente al App Store: el usuario lee las instrucciones y pulsa cuando decida
+      setTimeout(function () {
+        if (!hasLeftPage && !document.hidden) {
+          document.getElementById("loading-state").style.display = "none";
+          document.getElementById("ios-card").style.display = "block";
+        }
+      }, 1000);
 
-        // Intento 1 (principal): abrir directamente App Store
-        window.location.href = "itms-apps://apps.apple.com/app/id6766087032";
-
-        // Intento 2 (fallback): URL HTTPS oficial de App Store
-        setTimeout(function () {
-          if (!hasLeftPage && !document.hidden) {
-            window.location.replace("https://apps.apple.com/es/app/recien-abierto/id6766087032");
-          }
-        }, 1000);
-      }, 1800);
+      const downloadBtnIos = document.getElementById("btn-download-ios");
+      if (downloadBtnIos) {
+        downloadBtnIos.addEventListener("click", function (e) {
+          // El enlace href ya contiene el esquema directo itms-apps://apps.apple.com/app/id6766087032
+          // Programamos fallback secundario a la URL web HTTPS de App Store si no responde
+          setTimeout(function () {
+            if (!document.hidden) {
+              window.location.href = "https://apps.apple.com/es/app/recien-abierto/id6766087032";
+            }
+          }, 1500);
+        });
+      }
     } else {
       // DESKTOP: Ocultar spinner y mostrar aviso limpio
       document.getElementById("loading-state").style.display = "none";
