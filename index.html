@@ -3199,13 +3199,83 @@
        ========================================================================= */
     @media (max-width: 1024px) {
       html, body { max-width: 100%; overflow-x: hidden; }
-      .header {
-        background: #fbf8f3;
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        transform: translateZ(0);
-        border-bottom: 1px solid rgba(11, 19, 36, 0.1);
+
+      /* Desactivar backdrop-filter en dispositivos móviles para máxima fluidez y estabilidad */
+      *, *::before, *::after {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
       }
+
+      /* Cabecera móvil limpia y 100% estable, sin translateZ(0) ni transiciones de scroll */
+      .header,
+      .header.is-scrolled {
+        background: #fbf8f3 !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        transform: none !important;
+        border-bottom: 1px solid rgba(11, 19, 36, 0.1) !important;
+        box-shadow: 0 2px 8px rgba(11, 19, 36, 0.06) !important;
+        transition: none !important;
+      }
+
+      /* Fondos sólidos o de alto contraste para componentes que usaban desenfoque */
+      .stage-secondary-label { background: rgba(11, 19, 36, 0.94) !important; }
+      .stage-pill-top { background: rgba(11, 19, 36, 0.96) !important; }
+      .stage-card-opening { background: #ffffff !important; }
+      .club-municipality-pill { background: rgba(11, 19, 36, 0.92) !important; }
+      .tag-badge { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important; }
+      .tag-open { background: #18a4a4 !important; }
+      .tag-soon { background: #f97316 !important; }
+      .tag-route { background: #0b1324 !important; }
+      .tag-event { background: #ea580c !important; }
+      .tag-sponsored { background: #ffffff !important; }
+      .tag-loc { background: rgba(11, 19, 36, 0.90) !important; }
+      .lightbox-hint-pill { background: rgba(11, 19, 36, 0.92) !important; }
+      .ra-lightbox-backdrop { background: rgba(5, 11, 22, 0.97) !important; }
+      .closing-qr-card { background: rgba(255, 255, 255, 0.12) !important; }
+      .modal-overlay { background: rgba(11, 19, 36, 0.92) !important; }
+      .reel-cat-pill { background: rgba(11, 19, 36, 0.90) !important; }
+
+      /* Desactivar transformaciones y animaciones :hover en dispositivos móviles táctiles */
+      .club-promo-card:hover,
+      .club-promo-card:hover .club-promo-media img,
+      .club-promo-card:hover .club-promo-cta,
+      .live-card:hover,
+      .live-card:hover .live-card-media img,
+      .live-card:hover .live-card-action,
+      .biz-rotator-card:hover,
+      .biz-rotator-card:hover .biz-rotator-media img,
+      .reel-card:hover,
+      .reel-card:hover .reel-media-bg,
+      .reel-card:hover .reel-play-btn,
+      .inst-carousel-track .inst-carousel-card:hover,
+      .inst-dual-split .vilafames-col:hover,
+      .inst-dual-split .sabores-col:hover,
+      .inst-media-stage[data-lightbox-id]:hover,
+      .inst-journey-img-wrap[data-lightbox-id]:hover,
+      .stage-card-opening:hover,
+      .stage-card-club:hover,
+      .hero-stage:hover .stage-secondary-card,
+      .hero-stage:hover .hero-phone-chassis,
+      .btn-header:hover,
+      .btn-editorial-primary:hover,
+      .btn-editorial-dark:hover,
+      .btn-editorial-orange:hover,
+      .btn-editorial-outline:hover,
+      .ra-carousel-side-btn:hover:not(:disabled),
+      .ra-carousel-side-btn.dark-theme:hover:not(:disabled),
+      .biz-editorial-pillar:hover,
+      .org-benefit-row:hover,
+      .vilafames-col:hover .lightbox-hint-pill,
+      .sabores-col:hover .lightbox-hint-pill,
+      .inst-media-stage:hover .lightbox-hint-pill,
+      .inst-journey-img-wrap:hover .lightbox-hint-pill,
+      .live-card-media:hover .lightbox-hint-pill,
+      .club-raffle-card:hover .lightbox-hint-pill {
+        transform: none !important;
+        transition: none !important;
+      }
+
       .nav-links { display: none; }
       .header-inner { padding: 8px 10px; gap: 4px; box-sizing: border-box; width: 100%; }
       .brand-group { gap: 5px; flex-shrink: 1; min-width: 0; }
@@ -5505,6 +5575,7 @@
 
       const siteHeader = document.getElementById("siteHeader");
       window.addEventListener("scroll", function () {
+        if (window.innerWidth <= 1024) return;
         if (window.scrollY > 24) siteHeader.classList.add("is-scrolled");
         else siteHeader.classList.remove("is-scrolled");
       }, { passive: true });
@@ -6678,8 +6749,9 @@
           const prefersReduced =
             (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) ||
             document.body.classList.contains("clean-shot");
+          const isMobile = window.innerWidth <= 1024 || (typeof isMobileDevice === "function" && isMobileDevice());
 
-          if (!animate || prefersReduced) {
+          if (!animate || prefersReduced || isMobile) {
             gridEl.innerHTML = slice.map(renderBizRotatorCardHtml).join("");
             bindCardClicks(gridEl);
             updateDots();
@@ -6704,7 +6776,8 @@
           const prefersReduced =
             (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) ||
             document.body.classList.contains("clean-shot");
-          if (prefersReduced || getTotalPages() <= 1) return;
+          const isMobile = window.innerWidth <= 1024 || (typeof isMobileDevice === "function" && isMobileDevice());
+          if (prefersReduced || isMobile || getTotalPages() <= 1) return;
 
           timerId = setInterval(function () {
             if (!isPaused && !document.hidden && !isTransitioning) {
