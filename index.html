@@ -2834,6 +2834,11 @@
       color: rgba(255, 255, 255, 0.9);
       border-color: rgba(255, 255, 255, 0.24);
     }
+    .inst-source-badge.demo {
+      background: rgba(56, 189, 248, 0.14);
+      color: #38bdf8;
+      border-color: rgba(56, 189, 248, 0.32);
+    }
     .inst-municipality-tag {
       font-size: 0.76rem;
       font-weight: 700;
@@ -3968,11 +3973,11 @@
         <div class="club-live-bar reveal">
           <div class="club-live-status">
             <span class="live-pulse-dot"></span>
-            <span id="clubLiveStatusLabel">5 establecimientos con recompensas activas hoy en el Club Recién Abierto · Castellón</span>
+            <span id="clubLiveStatusLabel">Recompensas exclusivas y ventajas con código QR en comercios locales</span>
           </div>
           <div style="display:flex;align-items:center;gap:12px;">
-            <span class="club-live-note">Desliza para ver todos los negocios participantes</span>
-            <span class="ra-carousel-counter dark-theme" id="clubCarouselCounter">1 / 5</span>
+            <span class="club-live-note">Desliza para conocer el funcionamiento del Club</span>
+            <span class="ra-carousel-counter dark-theme" id="clubCarouselCounter">1 / 3</span>
           </div>
         </div>
 
@@ -3986,187 +3991,101 @@
                id="clubCarouselViewport"
                tabindex="0"
                role="region"
-               aria-label="Carrusel de negocios y recompensas activas en el Club Recién Abierto">
+               aria-label="Carrusel de ventajas y recompensas activas en el Club Recién Abierto">
             <div class="ra-carousel-track club-carousel-track" id="clubPromotionsGrid" aria-live="polite">
-              <!-- 1. MOKKA~ -->
-              <article class="club-promo-card">
+              <!-- Tarjeta 1: Fidelización y estrellas QR -->
+              <article class="club-promo-card club-promo-neutral">
                 <div class="club-promo-media">
-                  <img src="https://ioghcoouqehcpplhspyd.supabase.co/storage/v1/object/public/business-images/covers/690139e7-c646-4997-ba17-19211e512817/cover_1773772530760.jpg?t=1773772530760"
+                  <img src="/assets/club-mokka-recompensas.png"
                        onerror="this.src='/placeholder-recien-abierto.jpg'"
-                       alt="MOKKA~ en el Club Recién Abierto" loading="lazy" />
+                       alt="Fidelidad y premios con código QR en comercios locales" loading="lazy" />
                   <div class="club-promo-top-badges">
-                    <span class="club-stars-pill">★ 5 estrellas</span>
-                    <span class="club-municipality-pill">📍 Castelló de la Plana</span>
+                    <span class="club-stars-pill">★ Recompensas QR</span>
+                    <span class="club-municipality-pill">📍 Comercios locales</span>
                   </div>
                   <div class="club-promo-biz-header">
-                    <strong class="club-promo-biz-name">MOKKA~</strong>
-                    <span class="club-promo-biz-cat">Cafetería y Pastelería · Club activo</span>
+                    <strong class="club-promo-biz-name">Fidelidad y ventajas directas</strong>
+                    <span class="club-promo-biz-cat">Club Recién Abierto · Ventajas en tu ciudad</span>
                   </div>
                 </div>
                 <div class="club-promo-body">
                   <div class="club-reward-highlight-box">
-                    <span class="club-reward-label">🎁 Recompensa real en el local</span>
-                    <strong class="club-reward-title">Cookie casera a elegir entre 4 sabores</strong>
+                    <span class="club-reward-label">📱 Sin cupones en papel</span>
+                    <strong class="club-reward-title">Suma estrellas en tus compras y visitas</strong>
                   </div>
                   <div class="club-condition-row">
-                    <strong>Cómo se consigue:</strong> Visita con consumo mínimo de 6 € (1 estrella por visita validada con QR).
+                    <strong>Cómo funciona:</strong> Escanea el código QR en los mostradores adheridos al realizar tu consumo o compra mínima y acumula estrellas en tu perfil.
                   </div>
                   <div class="club-promo-footer">
-                    <span class="club-validity-tag">🗓️ Vigente hasta 20 nov 2026</span>
-                    <a href="/negocio/690139e7-c646-4997-ba17-19211e512817"
-                       class="club-promo-cta"
-                       data-club-biz-id="690139e7-c646-4997-ba17-19211e512817"
-                       data-club-biz-name="MOKKA~"
-                       data-club-reward="Cookie casera a elegir entre 4 sabores">
-                      <span>Ver ventaja en la app</span>
+                    <span class="club-validity-tag">✨ Siempre disponible en la app</span>
+                    <a href="#descarga" class="club-promo-cta download-trigger-btn">
+                      <span>Descubrir en la app</span>
                       <span aria-hidden="true">→</span>
                     </a>
                   </div>
                 </div>
               </article>
 
-              <!-- 2. Bar cafetería Respect -->
-              <article class="club-promo-card">
+              <!-- Tarjeta 2: Recompensas en mostrador -->
+              <article class="club-promo-card club-promo-neutral">
                 <div class="club-promo-media">
-                  <img src="https://ioghcoouqehcpplhspyd.supabase.co/storage/v1/object/public/business-images/covers/f6d7ecf8-5581-41d8-8452-0f2c73e3f343/cover_1776770177448.jpg?t=1776770177448"
+                  <img src="/placeholder-recien-abierto.jpg"
                        onerror="this.src='/placeholder-recien-abierto.jpg'"
-                       alt="Bar cafetería Respect en el Club Recién Abierto" loading="lazy" />
+                       alt="Premios directos y consumiciones en establecimientos adheridos" loading="lazy" />
                   <div class="club-promo-top-badges">
-                    <span class="club-stars-pill">★ 2 estrellas</span>
-                    <span class="club-municipality-pill">📍 Castelló de la Plana</span>
+                    <span class="club-stars-pill">🎁 Premios reales</span>
+                    <span class="club-municipality-pill">📍 Hostelería y comercio</span>
                   </div>
                   <div class="club-promo-biz-header">
-                    <strong class="club-promo-biz-name">Bar cafetería Respect</strong>
-                    <span class="club-promo-biz-cat">Hostelería y Restauración · Club activo</span>
+                    <strong class="club-promo-biz-name">Recompensas en mostrador</strong>
+                    <span class="club-promo-biz-cat">Promociones verificadas · Canje presencial</span>
                   </div>
                 </div>
                 <div class="club-promo-body">
                   <div class="club-reward-highlight-box">
-                    <span class="club-reward-label">🎁 Recompensa real en el local</span>
-                    <strong class="club-reward-title">Carajillo o postre gratis en tu 2.ª visita</strong>
+                    <span class="club-reward-label">🎁 Ventajas exclusivas</span>
+                    <strong class="club-reward-title">Detalles caseros, consumiciones y descuentos</strong>
                   </div>
                   <div class="club-condition-row">
-                    <strong>Cómo se consigue:</strong> Compra mínima de 25 € en cada almuerzo, comida o cena (1 estrella por visita).
+                    <strong>Cómo se canjea:</strong> Al completar las estrellas indicadas en cada local, desbloqueas tu premio y lo disfrutas al momento mostrando tu pantalla.
                   </div>
                   <div class="club-promo-footer">
-                    <span class="club-validity-tag">🗓️ Vigente hasta 26 oct 2026</span>
-                    <a href="/negocio/f6d7ecf8-5581-41d8-8452-0f2c73e3f343"
-                       class="club-promo-cta"
-                       data-club-biz-id="f6d7ecf8-5581-41d8-8452-0f2c73e3f343"
-                       data-club-biz-name="Bar cafetería Respect"
-                       data-club-reward="Carajillo o postre gratis">
-                      <span>Ver ventaja en la app</span>
+                    <span class="club-validity-tag">🎯 Condiciones transparentes</span>
+                    <a href="#descarga" class="club-promo-cta download-trigger-btn">
+                      <span>Ver comercios adheridos</span>
                       <span aria-hidden="true">→</span>
                     </a>
                   </div>
                 </div>
               </article>
 
-              <!-- 3. La Esencia -->
-              <article class="club-promo-card">
+              <!-- Tarjeta 3: Sorteos participativos -->
+              <article class="club-promo-card club-promo-neutral">
                 <div class="club-promo-media">
-                  <img src="https://ioghcoouqehcpplhspyd.supabase.co/storage/v1/object/public/business-images/covers/0f51a952-40f2-4f9e-9f87-cd054314b919/cover_1792685830294.jpg?t=1792685830294"
+                  <img src="/assets/sorteo-circo-raluy.jpg"
                        onerror="this.src='/placeholder-recien-abierto.jpg'"
-                       alt="La Esencia en el Club Recién Abierto" loading="lazy" />
+                       alt="Sorteos participativos compartiendo tus planes favoritos" loading="lazy" />
                   <div class="club-promo-top-badges">
-                    <span class="club-stars-pill">★ 2 estrellas</span>
-                    <span class="club-municipality-pill">📍 Castelló de la Plana</span>
+                    <span class="club-stars-pill">🎟️ Dinamización</span>
+                    <span class="club-municipality-pill">📍 Eventos y planes</span>
                   </div>
                   <div class="club-promo-biz-header">
-                    <strong class="club-promo-biz-name">La Esencia</strong>
-                    <span class="club-promo-biz-cat">Comercio local · Club activo</span>
+                    <strong class="club-promo-biz-name">Sorteos por enlace compartido</strong>
+                    <span class="club-promo-biz-cat">Comunidad local · Ocio y cultura</span>
                   </div>
                 </div>
                 <div class="club-promo-body">
                   <div class="club-reward-highlight-box">
-                    <span class="club-reward-label">🎁 Recompensa real en el local</span>
-                    <strong class="club-reward-title">15 % de descuento en tu siguiente compra</strong>
+                    <span class="club-reward-label">🔗 Descubre y participa</span>
+                    <strong class="club-reward-title">Entradas y experiencias en la ciudad</strong>
                   </div>
                   <div class="club-condition-row">
-                    <strong>Cómo se consigue:</strong> Completa 2 estrellas realizando compras mínimas de 15 € validadas con QR.
+                    <strong>Cómo participar:</strong> Comparte enlaces a nuevos comercios o eventos desde la app y suma papeletas para los sorteos mensuales de la plataforma.
                   </div>
                   <div class="club-promo-footer">
-                    <span class="club-validity-tag">🗓️ Vigente hasta 31 oct 2026</span>
-                    <a href="/negocio/0f51a952-40f2-4f9e-9f87-cd054314b919"
-                       class="club-promo-cta"
-                       data-club-biz-id="0f51a952-40f2-4f9e-9f87-cd054314b919"
-                       data-club-biz-name="La Esencia"
-                       data-club-reward="15 % de descuento en tu siguiente compra">
-                      <span>Ver ventaja en la app</span>
-                      <span aria-hidden="true">→</span>
-                    </a>
-                  </div>
-                </div>
-              </article>
-
-              <!-- 4. Móvil Express -->
-              <article class="club-promo-card">
-                <div class="club-promo-media">
-                  <img src="https://ioghcoouqehcpplhspyd.supabase.co/storage/v1/object/public/business-images/covers/50759350-b245-4184-80d6-731c03c1d43d/cover_1787567908811.jpg?t=1787567908811"
-                       onerror="this.src='/placeholder-recien-abierto.jpg'"
-                       alt="Móvil Express en el Club Recién Abierto" loading="lazy" />
-                  <div class="club-promo-top-badges">
-                    <span class="club-stars-pill">★ 2 estrellas</span>
-                    <span class="club-municipality-pill">📍 Castelló de la Plana</span>
-                  </div>
-                  <div class="club-promo-biz-header">
-                    <strong class="club-promo-biz-name">Móvil Express</strong>
-                    <span class="club-promo-biz-cat">Tecnología y Reparación · Club activo</span>
-                  </div>
-                </div>
-                <div class="club-promo-body">
-                  <div class="club-reward-highlight-box">
-                    <span class="club-reward-label">🎁 Recompensa real en el local</span>
-                    <strong class="club-reward-title">Protector de pantalla con instalación gratuita</strong>
-                  </div>
-                  <div class="club-condition-row">
-                    <strong>Cómo se consigue:</strong> Compra o reparación desde 15 € validando tu código QR en tienda.
-                  </div>
-                  <div class="club-promo-footer">
-                    <span class="club-validity-tag">🗓️ Vigente hasta 20 nov 2026</span>
-                    <a href="/negocio/50759350-b245-4184-80d6-731c03c1d43d"
-                       class="club-promo-cta"
-                       data-club-biz-id="50759350-b245-4184-80d6-731c03c1d43d"
-                       data-club-biz-name="Móvil Express"
-                       data-club-reward="Protector de pantalla con instalación gratuita">
-                      <span>Ver ventaja en la app</span>
-                      <span aria-hidden="true">→</span>
-                    </a>
-                  </div>
-                </div>
-              </article>
-
-              <!-- 5. Velyo Hair Cosmetics -->
-              <article class="club-promo-card">
-                <div class="club-promo-media">
-                  <img src="https://ioghcoouqehcpplhspyd.supabase.co/storage/v1/object/public/business-images/71fad4a5-0ba1-4f54-92fd-4e77decbba75/hero_1776960479002.jpg"
-                       onerror="this.src='/placeholder-recien-abierto.jpg'"
-                       alt="Velyo Hair Cosmetics en el Club Recién Abierto" loading="lazy" />
-                  <div class="club-promo-top-badges">
-                    <span class="club-stars-pill">★ 5 estrellas</span>
-                    <span class="club-municipality-pill">📍 Castelló de la Plana</span>
-                  </div>
-                  <div class="club-promo-biz-header">
-                    <strong class="club-promo-biz-name">Velyo Hair Cosmetics</strong>
-                    <span class="club-promo-biz-cat">Belleza y Estética · Club activo</span>
-                  </div>
-                </div>
-                <div class="club-promo-body">
-                  <div class="club-reward-highlight-box">
-                    <span class="club-reward-label">🎁 Recompensa real en el local</span>
-                    <strong class="club-reward-title">6.º tinte gratis</strong>
-                  </div>
-                  <div class="club-condition-row">
-                    <strong>Cómo se consigue:</strong> Suma 1 estrella con cada compra de tinte y consigue gratis el 6.º.
-                  </div>
-                  <div class="club-promo-footer">
-                    <span class="club-validity-tag">🗓️ Vigente hasta 2 dic 2026</span>
-                    <a href="/negocio/71fad4a5-0ba1-4f54-92fd-4e77decbba75"
-                       class="club-promo-cta"
-                       data-club-biz-id="71fad4a5-0ba1-4f54-92fd-4e77decbba75"
-                       data-club-biz-name="Velyo Hair Cosmetics"
-                       data-club-reward="6.º tinte gratis">
-                      <span>Ver ventaja en la app</span>
+                    <span class="club-validity-tag">🎉 Sorteos periódicos</span>
+                    <a href="#sorteos-club" class="club-promo-cta">
+                      <span>Ver sorteos activos</span>
                       <span aria-hidden="true">→</span>
                     </a>
                   </div>
@@ -4420,7 +4339,7 @@
                     <p class="live-card-desc">Descubre todos los locales participantes y las fotografías reales de cada tapa (tapa + bebida 6 €) geolocalizados en el mapa de Recién Abierto.</p>
                     <div class="live-card-footer">
                       <a href="/descargar" class="live-card-action" data-card-kind="campaign" data-card-title="Ruta de Tapas Sabores Castellón 2026" data-card-href="/descargar">
-                        <span>Explorar mapa en la app</span>
+                        <span>Abrir o descargar la app</span>
                         <span aria-hidden="true">→</span>
                       </a>
                     </div>
@@ -4443,7 +4362,7 @@
                     <p class="live-card-desc">Conciertos, festejos taurinos, mesón gastronómico, teatro y actividades infantiles ubicadas punto por punto en el mapa.</p>
                     <div class="live-card-footer">
                       <a href="/descargar" class="live-card-action" data-card-kind="campaign" data-card-title="Fira d’Onda 2026" data-card-href="/descargar">
-                        <span>Explorar mapa en la app</span>
+                        <span>Abrir o descargar la app</span>
                         <span aria-hidden="true">→</span>
                       </a>
                     </div>
@@ -4549,12 +4468,12 @@
                 <a href="/negocio/653a92d1-03a0-4983-97ff-508bdc91ed25" class="biz-rotator-media" data-card-kind="business" data-card-title="Vibra Veterinaria Castellón" data-card-href="/negocio/653a92d1-03a0-4983-97ff-508bdc91ed25">
                   <img src="https://images.pexels.com/photos/6235111/pexels-photo-6235111.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Vibra Veterinaria Castellón" loading="lazy" />
                   <div class="live-card-badges">
-                    <span class="tag-badge tag-soon">Próxima apertura</span>
+                    <span class="tag-badge tag-open">Recién abierto</span>
                     <span class="tag-badge tag-loc">📍 Castelló de la Plana</span>
                   </div>
                 </a>
                 <div class="biz-rotator-body">
-                  <div class="biz-rotator-meta">🗓️ Apertura: 26 oct 2026 · Mascotas y Veterinaria</div>
+                  <div class="biz-rotator-meta">🗓️ Abierto: 26 oct 2026 · Mascotas y Veterinaria</div>
                   <h4 class="biz-rotator-title">Vibra Veterinaria Castellón</h4>
                   <p class="biz-rotator-desc">Clínica veterinaria en Castellón con atención cercana, medicina preventiva y cuidado integral para mascotas.</p>
                   <div class="live-card-footer">
@@ -4779,16 +4698,16 @@
         <!-- Escaparate Institucional Interactivo con flechas laterales y contexto temporal riguroso -->
         <div class="inst-carousel-header reveal">
           <div class="inst-carousel-title-group">
-            <h3>Casos reales de rutas, ferias y programaciones municipales</h3>
+            <h3>Casos reales y ejemplos demostrativos de programaciones municipales</h3>
             <p>
-              Desliza para ver ejemplos reales de campañas activas y campañas realizadas en distintos municipios de Castellón dentro de Recién Abierto.
+              Desliza para ver casos reales realizados, campañas activas y ejemplos demostrativos de cómo Recién Abierto digitaliza fiestas patronales, ferias y rutas sobre el mapa.
             </p>
           </div>
           <span class="ra-carousel-counter dark-theme" id="instCarouselCounter">1 / 7</span>
         </div>
 
         <div class="ra-carousel-shell reveal">
-          <button type="button" class="ra-carousel-side-btn dark-theme prev" id="instCarouselPrev" aria-label="Anterior caso real institucional">
+          <button type="button" class="ra-carousel-side-btn dark-theme prev" id="instCarouselPrev" aria-label="Anterior caso institucional">
             <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
           </button>
 
@@ -4796,10 +4715,10 @@
                id="instCarouselViewport"
                tabindex="0"
                role="region"
-               aria-label="Carrusel de casos reales de eventos, rutas gastronómicas y programaciones municipales en Recién Abierto">
+               aria-label="Carrusel de casos reales y ejemplos demostrativos de programaciones municipales en Recién Abierto">
             <div class="ra-carousel-track inst-carousel-track" id="instCarouselTrack">
 
-              <!-- 1. Fira d'Onda 2026 (Campaña activa del 16 al 25 de octubre de 2026) -->
+              <!-- 1. Fira d'Onda 2026 (Caso real · Campaña realizada del 16 al 25 de octubre de 2026) -->
               <article class="inst-carousel-card">
                 <div class="inst-media-stage">
                   <div style="position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;" data-lightbox-id="inst-onda" role="button" tabindex="0" aria-label="Ampliar cartel de la Fira d'Onda 2026">
@@ -4814,7 +4733,7 @@
                 </div>
                 <div class="inst-card-body">
                   <div class="inst-card-meta-row">
-                    <span class="inst-source-badge">● Campaña activa · Guía en la app</span>
+                    <span class="inst-source-badge completed">Caso real · Campaña realizada</span>
                     <span class="inst-municipality-tag">📍 Onda · 16–25 oct 2026</span>
                   </div>
                   <h4>Fira d'Onda 2026 · Programación geolocalizada</h4>
@@ -4853,7 +4772,7 @@
                 </div>
                 <div class="inst-card-body">
                   <div class="inst-card-meta-row">
-                    <span class="inst-source-badge orange">● Campaña activa · Ruta gastronómica</span>
+                    <span class="inst-source-badge orange">Caso real · Campaña activa</span>
                     <span class="inst-municipality-tag">📍 Castelló de la Plana · 15 oct–7 nov 2026</span>
                   </div>
                   <h4>17.ª Ruta de Tapas · Sabores Castellón</h4>
@@ -4907,27 +4826,27 @@
                 </div>
               </article>
 
-              <!-- 4. Fiestas de Benicàssim (Caso real · Campaña realizada) -->
+              <!-- 4. Fiestas de Benicàssim (Ejemplo demostrativo · Simulación de formato) -->
               <article class="inst-carousel-card">
                 <div class="inst-media-stage">
-                  <div style="position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;" data-lightbox-id="inst-benicassim" role="button" tabindex="0" aria-label="Ampliar fiestas de Benicàssim en el mapa">
+                  <div style="position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;" data-lightbox-id="inst-benicassim" role="button" tabindex="0" aria-label="Ampliar simulación de fiestas de Benicàssim en el mapa">
                     <img src="/assets/institucional-benicassim-4x3.png"
                          width="1600"
                          height="1200"
                          class="inst-single-img"
-                         alt="Fiestas de Benicàssim en el mapa de Recién Abierto"
+                         alt="Simulación de fiestas de Benicàssim en el mapa de Recién Abierto"
                          loading="lazy" />
                     <span class="lightbox-hint-pill"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg> Ampliar</span>
                   </div>
                 </div>
                 <div class="inst-card-body">
                   <div class="inst-card-meta-row">
-                    <span class="inst-source-badge completed">Caso real · Campaña realizada</span>
-                    <span class="inst-municipality-tag">📍 Benicàssim</span>
+                    <span class="inst-source-badge demo">Ejemplo demostrativo</span>
+                    <span class="inst-municipality-tag">📍 Benicàssim · Formato festivo</span>
                   </div>
-                  <h4>Fiestas de Benicàssim · Mapa de actos y recintos</h4>
+                  <h4>Benicàssim · Simulación de fiestas y recintos</h4>
                   <p>
-                    Consulta visual de conciertos, eventos taurinos, programación infantil, actos tradicionales y gastronomía repartidos por el municipio.
+                    Ejemplo demostrativo de cómo estructurar en el mapa interactivo los recintos de conciertos, actos tradicionales, zonas infantiles y paradas gastronómicas.
                   </p>
                   <div class="inst-card-points">
                     <span class="inst-point-pill">🎪 Recintos y escenarios</span>
@@ -4937,27 +4856,27 @@
                 </div>
               </article>
 
-              <!-- 5. Festes del Roser · Almassora (Caso real · Campaña realizada) -->
+              <!-- 5. Festes del Roser · Almassora (Ejemplo demostrativo · Simulación de formato) -->
               <article class="inst-carousel-card">
                 <div class="inst-media-stage">
-                  <div style="position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;" data-lightbox-id="inst-almassora" role="button" tabindex="0" aria-label="Ampliar Festes del Roser de Almassora">
+                  <div style="position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;" data-lightbox-id="inst-almassora" role="button" tabindex="0" aria-label="Ampliar ejemplo demostrativo de Almassora">
                     <img src="/assets/institucional-almassora-4x3.png"
                          width="1448"
                          height="1086"
                          class="inst-single-img"
-                         alt="Festes del Roser de Almassora en Recién Abierto"
+                         alt="Ejemplo demostrativo de programación municipal de Almassora en Recién Abierto"
                          loading="lazy" />
                     <span class="lightbox-hint-pill"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg> Ampliar</span>
                   </div>
                 </div>
                 <div class="inst-card-body">
                   <div class="inst-card-meta-row">
-                    <span class="inst-source-badge completed">Caso real · Campaña realizada</span>
-                    <span class="inst-municipality-tag">📍 Almassora</span>
+                    <span class="inst-source-badge demo">Ejemplo demostrativo</span>
+                    <span class="inst-municipality-tag">📍 Almassora · Formato festivo</span>
                   </div>
-                  <h4>Festes del Roser · Almassora en el mapa</h4>
+                  <h4>Almassora · Formato de fiestas y agenda en mapa</h4>
                   <p>
-                    Organización por categorías y horarios de los actos festivos, recinto de conciertos, exhibiciones y propuestas gastronómicas locales.
+                    Modelo demostrativo de traslación del programa oficial a categorías y horarios geolocalizados: escenarios musicales, actos taurinos y propuestas de hostelería.
                   </p>
                   <div class="inst-card-points">
                     <span class="inst-point-pill">🗓️ Agenda día a día</span>
@@ -4967,27 +4886,27 @@
                 </div>
               </article>
 
-              <!-- 6. Fiestas de Oropesa del Mar (Caso real · Campaña realizada) -->
+              <!-- 6. Fiestas de Oropesa del Mar (Ejemplo demostrativo · Simulación de formato) -->
               <article class="inst-carousel-card">
                 <div class="inst-media-stage">
-                  <div style="position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;" data-lightbox-id="inst-oropesa" role="button" tabindex="0" aria-label="Ampliar fiestas de Oropesa del Mar">
+                  <div style="position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;" data-lightbox-id="inst-oropesa" role="button" tabindex="0" aria-label="Ampliar ejemplo demostrativo de Oropesa del Mar">
                     <img src="/assets/institucional-oropesa-4x3.png"
                          width="1448"
                          height="1086"
                          class="inst-single-img"
-                         alt="Fiestas de Oropesa del Mar en Recién Abierto"
+                         alt="Ejemplo demostrativo de guía de fiestas de Oropesa del Mar en Recién Abierto"
                          loading="lazy" />
                     <span class="lightbox-hint-pill"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg> Ampliar</span>
                   </div>
                 </div>
                 <div class="inst-card-body">
                   <div class="inst-card-meta-row">
-                    <span class="inst-source-badge completed">Caso real · Campaña realizada</span>
-                    <span class="inst-municipality-tag">📍 Oropesa del Mar</span>
+                    <span class="inst-source-badge demo">Ejemplo demostrativo</span>
+                    <span class="inst-municipality-tag">📍 Oropesa del Mar · Guía turística</span>
                   </div>
-                  <h4>Fiestas de Oropesa del Mar · Guía geolocalizada</h4>
+                  <h4>Oropesa del Mar · Modelo de actos y turismo local</h4>
                   <p>
-                    Ubicación rápida de cada actividad festiva, cultural y gastronómica para facilitar la asistencia tanto de vecinos como de visitantes.
+                    Ejemplo demostrativo para distribuir los escenarios, actos culturales y zonas clave facilitando la asistencia tanto de vecinos como de visitantes.
                   </p>
                   <div class="inst-card-points">
                     <span class="inst-point-pill">🏖️ Planes para visitantes y vecinos</span>
@@ -4996,27 +4915,27 @@
                 </div>
               </article>
 
-              <!-- 7. Festes de Sant Antoni · Moncofa (Caso real · Campaña realizada) -->
+              <!-- 7. Festes de Sant Antoni · Moncofa (Ejemplo demostrativo · Simulación de formato) -->
               <article class="inst-carousel-card">
                 <div class="inst-media-stage">
-                  <div style="position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;" data-lightbox-id="inst-moncofa" role="button" tabindex="0" aria-label="Ampliar Festes de Sant Antoni de Moncofa">
+                  <div style="position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;" data-lightbox-id="inst-moncofa" role="button" tabindex="0" aria-label="Ampliar ejemplo demostrativo de Moncofa">
                     <img src="/assets/institucional-moncofa-4x3.png"
                          width="1448"
                          height="1086"
                          class="inst-single-img"
-                         alt="Festes de Sant Antoni de Moncofa en Recién Abierto"
+                         alt="Ejemplo demostrativo de actos tradicionales de Moncofa en Recién Abierto"
                          loading="lazy" />
                     <span class="lightbox-hint-pill"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg> Ampliar</span>
                   </div>
                 </div>
                 <div class="inst-card-body">
                   <div class="inst-card-meta-row">
-                    <span class="inst-source-badge completed">Caso real · Campaña realizada</span>
-                    <span class="inst-municipality-tag">📍 Moncofa</span>
+                    <span class="inst-source-badge demo">Ejemplo demostrativo</span>
+                    <span class="inst-municipality-tag">📍 Moncofa · Formato tradicional</span>
                   </div>
-                  <h4>Festes de Sant Antoni · Moncofa</h4>
+                  <h4>Moncofa · Eventos tradicionales sobre el mapa</h4>
                   <p>
-                    Recorridos, actos tradicionales, música y encuentros populares trasladados del programa oficial en papel a fichas interactivas en el mapa.
+                    Ejemplo demostrativo de digitalización de festejos populares: ubicación exacta de la hoguera, actos tradicionales y recorridos geolocalizados punto por punto.
                   </p>
                   <div class="inst-card-points">
                     <span class="inst-point-pill">🔥 Tradición y cultura local</span>
@@ -5028,7 +4947,7 @@
             </div>
           </div>
 
-          <button type="button" class="ra-carousel-side-btn dark-theme next" id="instCarouselNext" aria-label="Siguiente caso real institucional">
+          <button type="button" class="ra-carousel-side-btn dark-theme next" id="instCarouselNext" aria-label="Siguiente caso institucional">
             <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
           </button>
 
@@ -5448,7 +5367,7 @@
       <div class="ra-lightbox-footer">
         <span class="ra-lightbox-hint">Pulsa Esc para cerrar · Usa las flechas ← → del teclado para navegar</span>
         <a id="lightboxAppAction" href="/descargar" class="ra-lightbox-cta">
-          <span>Abrir en Recién Abierto</span>
+          <span>Abrir o descargar la app</span>
           <span aria-hidden="true">→</span>
         </a>
       </div>
@@ -5890,18 +5809,69 @@
       // =========================================================================
       const EDITORIAL_CURATION_CONFIG = {
         activeTerritory: "castellon",
-        showSponsoredBadges: false,
-        pinnedSlots: [
-          { kind: "campaign", slug: "ruta-esmorzaret", priorityOrder: 1, territory: "castellon", startsAt: "2026-01-01", endsAt: "2026-12-31", editorialBadge: "Ruta destacada" },
-          { kind: "campaign", slug: "sabores-castellon-2026", priorityOrder: 2, territory: "castellon", startsAt: "2026-10-15", endsAt: "2026-11-08", editorialBadge: "53 locales en el mapa" }
+        showSponsoredBadges: true,
+        // 1. Hero Card Destacada (negocio o campaña comercial)
+        heroSlot: {
+          kind: "business",
+          id: "1ee5dff4-2835-4b63-addc-41eddb522240", // Pase Zero (Vila-real)
+          badgeType: "editorial",
+          badgeLabel: "Destacado de la semana",
+          startsAt: "2026-10-15T00:00:00Z",
+          endsAt: "2026-11-30T23:59:59Z",
+          isActive: true
+        },
+        // 2. Carrusel de Campañas y Rutas (Fila 1)
+        campaignSlots: [
+          {
+            kind: "campaign",
+            slug: "ruta-esmorzaret-castello-2026", // SLUG CORREGIDO
+            priorityOrder: 1,
+            territory: "castellon",
+            badgeType: "editorial",
+            badgeLabel: "Ruta destacada",
+            startsAt: "2026-10-01T00:00:00Z",
+            endsAt: "2026-11-01T23:59:59Z",
+            isActive: true
+          },
+          {
+            kind: "campaign",
+            slug: "sabores-castellon-2026",
+            priorityOrder: 2,
+            territory: "castellon",
+            badgeType: "editorial",
+            badgeLabel: "53 locales en el mapa",
+            startsAt: "2026-10-15T00:00:00Z",
+            endsAt: "2026-11-08T23:59:59Z",
+            isActive: true
+          }
+        ],
+        // 3. Escaparate de Nuevas Aperturas (Fila 2)
+        openingSlots: [
+          {
+            kind: "business",
+            id: "2949a89b-b270-42ee-b938-eb1da0c49665", // Crousty Lyon
+            priorityOrder: 1,
+            territory: "castellon",
+            badgeType: "editorial",
+            badgeLabel: "Recién abierto destacado",
+            startsAt: "2026-10-20T00:00:00Z",
+            endsAt: "2026-11-20T23:59:59Z",
+            isActive: true
+          }
         ]
       };
+      // Compatibilidad con funciones que consulten pinnedSlots
+      EDITORIAL_CURATION_CONFIG.pinnedSlots = [
+        EDITORIAL_CURATION_CONFIG.campaignSlots[0],
+        EDITORIAL_CURATION_CONFIG.campaignSlots[1],
+        EDITORIAL_CURATION_CONFIG.openingSlots[0]
+      ];
       window.RAEditorialCurationConfig = EDITORIAL_CURATION_CONFIG;
 
       const SUPABASE_URL = "https://ioghcoouqehcpplhspyd.supabase.co";
       const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlvZ2hjb291cWVoY3BwbGhzcHlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4NTQ1NDksImV4cCI6MjA3NTQzMDU0OX0.4ynUrBlb1eMZA5gptIxjunfveIwTdVDpSRjeF2mc-g0";
       const OFFICIAL_PLACEHOLDER = "/placeholder-recien-abierto.jpg";
-      const CACHE_KEY = "ra_landing_prop_a_v5_curated_feed";
+      const CACHE_KEY = "ra_landing_prop_a_v6_curated_feed";
       const CACHE_TTL_MS = 10 * 60 * 1000;
 
       const INTERNAL_CAMPAIGN_SLUGS = new Set(["ventajas-recien-abierto"]);
@@ -5947,68 +5917,108 @@
       // =========================================================================
       // 6. CLUB RECIÉN ABIERTO · CARRUSEL DE RECOMPENSAS QR Y SORTEO CIRCO RALUY
       // =========================================================================
-      const VERIFIED_CLUB_PROMOTIONS_FALLBACK = [
-        {
-          businessId: "690139e7-c646-4997-ba17-19211e512817",
-          promotionId: "5fd4237b-8e65-4a1f-a9cb-6b7de7b97d21",
-          businessName: "MOKKA~",
-          municipality: "Castelló de la Plana",
-          categoryLabel: "Cafetería y Pastelería · Club activo",
-          goalCount: 5,
-          rewardTitle: "Cookie casera a elegir entre 4 sabores",
-          actionSummary: "Visita con consumo mínimo de 6 € (1 estrella por visita validada con QR).",
-          endsAt: "2026-11-20T16:27:58.96975+00:00",
-          imageUrl: "https://ioghcoouqehcpplhspyd.supabase.co/storage/v1/object/public/business-images/covers/690139e7-c646-4997-ba17-19211e512817/cover_1773772530760.jpg?t=1773772530760"
-        },
-        {
-          businessId: "f6d7ecf8-5581-41d8-8452-0f2c73e3f343",
-          promotionId: "35170472-876e-4187-8808-f07b5e3fff0a",
-          businessName: "Bar cafetería Respect",
-          municipality: "Castelló de la Plana",
-          categoryLabel: "Hostelería y Restauración · Club activo",
-          goalCount: 2,
-          rewardTitle: "Carajillo o postre gratis en tu 2.ª visita",
-          actionSummary: "Compra mínima de 25 € en cada almuerzo, comida o cena (1 estrella por visita).",
-          endsAt: "2026-10-26T22:59:59.999+00:00",
-          imageUrl: "https://ioghcoouqehcpplhspyd.supabase.co/storage/v1/object/public/business-images/covers/f6d7ecf8-5581-41d8-8452-0f2c73e3f343/cover_1776770177448.jpg?t=1776770177448"
-        },
-        {
-          businessId: "0f51a952-40f2-4f9e-9f87-cd054314b919",
-          promotionId: "06ae94f2-34c7-4508-95cc-128043e82d22",
-          businessName: "La Esencia",
-          municipality: "Castelló de la Plana",
-          categoryLabel: "Comercio local · Club activo",
-          goalCount: 2,
-          rewardTitle: "15 % de descuento en tu siguiente compra",
-          actionSummary: "Completa 2 estrellas realizando compras mínimas de 15 € validadas con QR.",
-          endsAt: "2026-10-31T22:59:59.999+00:00",
-          imageUrl: "https://ioghcoouqehcpplhspyd.supabase.co/storage/v1/object/public/business-images/covers/0f51a952-40f2-4f9e-9f87-cd054314b919/cover_1792685830294.jpg?t=1792685830294"
-        },
-        {
-          businessId: "50759350-b245-4184-80d6-731c03c1d43d",
-          promotionId: "0b216ff9-3eb9-49aa-a065-5cd530fa31ac",
-          businessName: "Móvil Express",
-          municipality: "Castelló de la Plana",
-          categoryLabel: "Tecnología y Reparación · Club activo",
-          goalCount: 2,
-          rewardTitle: "Protector de pantalla con instalación gratuita",
-          actionSummary: "Compra o reparación desde 15 € validando tu código QR en tienda.",
-          endsAt: "2026-11-20T10:33:48.526934+00:00",
-          imageUrl: "https://ioghcoouqehcpplhspyd.supabase.co/storage/v1/object/public/business-images/covers/50759350-b245-4184-80d6-731c03c1d43d/cover_1787567908811.jpg?t=1787567908811"
-        },
-        {
-          businessId: "71fad4a5-0ba1-4f54-92fd-4e77decbba75",
-          promotionId: "d9f86ad7-1229-48ce-bf85-a285208bcc04",
-          businessName: "Velyo Hair Cosmetics",
-          municipality: "Castelló de la Plana",
-          categoryLabel: "Belleza y Estética · Club activo",
-          goalCount: 5,
-          rewardTitle: "6.º tinte gratis",
-          actionSummary: "Suma 1 estrella con cada compra de tinte y consigue gratis el 6.º.",
-          endsAt: "2026-12-02T16:18:16.781982+00:00",
-          imageUrl: "https://ioghcoouqehcpplhspyd.supabase.co/storage/v1/object/public/business-images/71fad4a5-0ba1-4f54-92fd-4e77decbba75/hero_1776960479002.jpg"
+
+      function renderClubNeutralPresentation() {
+        const grid = document.getElementById("clubPromotionsGrid");
+        if (!grid) return;
+
+        grid.innerHTML = (
+          '<article class="club-promo-card club-promo-neutral">' +
+            '<div class="club-promo-media">' +
+              '<img src="/assets/club-mokka-recompensas.png" onerror="this.src=\'/placeholder-recien-abierto.jpg\'" alt="Fidelidad y premios con código QR en comercios locales" loading="lazy" />' +
+              '<div class="club-promo-top-badges">' +
+                '<span class="club-stars-pill">★ Recompensas QR</span>' +
+                '<span class="club-municipality-pill">📍 Comercios locales</span>' +
+              '</div>' +
+              '<div class="club-promo-biz-header">' +
+                '<strong class="club-promo-biz-name">Fidelidad y ventajas directas</strong>' +
+                '<span class="club-promo-biz-cat">Club Recién Abierto · Ventajas en tu ciudad</span>' +
+              '</div>' +
+            '</div>' +
+            '<div class="club-promo-body">' +
+              '<div class="club-reward-highlight-box">' +
+                '<span class="club-reward-label">📱 Sin cupones en papel</span>' +
+                '<strong class="club-reward-title">Suma estrellas en tus compras y visitas</strong>' +
+              '</div>' +
+              '<div class="club-condition-row">' +
+                '<strong>Cómo funciona:</strong> Escanea el código QR en los mostradores adheridos al realizar tu consumo o compra mínima y acumula estrellas en tu perfil.' +
+              '</div>' +
+              '<div class="club-promo-footer">' +
+                '<span class="club-validity-tag">✨ Siempre disponible en la app</span>' +
+                '<a href="#descarga" class="club-promo-cta download-trigger-btn">' +
+                  '<span>Descubrir en la app</span><span aria-hidden="true">→</span>' +
+                '</a>' +
+              '</div>' +
+            '</div>' +
+          '</article>' +
+          '<article class="club-promo-card club-promo-neutral">' +
+            '<div class="club-promo-media">' +
+              '<img src="/placeholder-recien-abierto.jpg" onerror="this.src=\'/placeholder-recien-abierto.jpg\'" alt="Premios directos y consumiciones en establecimientos adheridos" loading="lazy" />' +
+              '<div class="club-promo-top-badges">' +
+                '<span class="club-stars-pill">🎁 Premios reales</span>' +
+                '<span class="club-municipality-pill">📍 Hostelería y comercio</span>' +
+              '</div>' +
+              '<div class="club-promo-biz-header">' +
+                '<strong class="club-promo-biz-name">Recompensas en mostrador</strong>' +
+                '<span class="club-promo-biz-cat">Promociones verificadas · Canje presencial</span>' +
+              '</div>' +
+            '</div>' +
+            '<div class="club-promo-body">' +
+              '<div class="club-reward-highlight-box">' +
+                '<span class="club-reward-label">🎁 Ventajas exclusivas</span>' +
+                '<strong class="club-reward-title">Detalles caseros, consumiciones y descuentos</strong>' +
+              '</div>' +
+              '<div class="club-condition-row">' +
+                '<strong>Cómo se canjea:</strong> Al completar las estrellas indicadas en cada local, desbloqueas tu premio y lo disfrutas al momento mostrando tu pantalla.' +
+              '</div>' +
+              '<div class="club-promo-footer">' +
+                '<span class="club-validity-tag">🎯 Condiciones transparentes</span>' +
+                '<a href="#descarga" class="club-promo-cta download-trigger-btn">' +
+                  '<span>Ver comercios adheridos</span><span aria-hidden="true">→</span>' +
+                '</a>' +
+              '</div>' +
+            '</div>' +
+          '</article>' +
+          '<article class="club-promo-card club-promo-neutral">' +
+            '<div class="club-promo-media">' +
+              '<img src="/assets/sorteo-circo-raluy.jpg" onerror="this.src=\'/placeholder-recien-abierto.jpg\'" alt="Sorteos participativos compartiendo tus planes favoritos" loading="lazy" />' +
+              '<div class="club-promo-top-badges">' +
+                '<span class="club-stars-pill">🎟️ Dinamización</span>' +
+                '<span class="club-municipality-pill">📍 Eventos y planes</span>' +
+              '</div>' +
+              '<div class="club-promo-biz-header">' +
+                '<strong class="club-promo-biz-name">Sorteos por enlace compartido</strong>' +
+                '<span class="club-promo-biz-cat">Comunidad local · Ocio y cultura</span>' +
+              '</div>' +
+            '</div>' +
+            '<div class="club-promo-body">' +
+              '<div class="club-reward-highlight-box">' +
+                '<span class="club-reward-label">🔗 Descubre y participa</span>' +
+                '<strong class="club-reward-title">Entradas y experiencias en la ciudad</strong>' +
+              '</div>' +
+              '<div class="club-condition-row">' +
+                '<strong>Cómo participar:</strong> Comparte enlaces a nuevos comercios o eventos desde la app y suma papeletas para los sorteos mensuales de la plataforma.' +
+              '</div>' +
+              '<div class="club-promo-footer">' +
+                '<span class="club-validity-tag">🎉 Sorteos periódicos</span>' +
+                '<a href="#sorteos-club" class="club-promo-cta">' +
+                  '<span>Ver sorteos activos</span><span aria-hidden="true">→</span>' +
+                '</a>' +
+              '</div>' +
+            '</div>' +
+          '</article>'
+        );
+
+        const statusEl = document.getElementById("clubLiveStatusLabel");
+        if (statusEl) {
+          statusEl.textContent = "Recompensas exclusivas y ventajas con código QR en comercios locales";
         }
-      ];
+        const counterEl = document.getElementById("clubCarouselCounter");
+        if (counterEl) {
+          counterEl.textContent = "1 / 3";
+        }
+        clubCarouselCtrl.refresh(true);
+      }
 
       function bindClubCtaClicks(container) {
         if (!container) return;
@@ -6056,17 +6066,21 @@
 
       function renderClubPromotionsGrid(promos) {
         const grid = document.getElementById("clubPromotionsGrid");
-        if (!grid || !Array.isArray(promos) || promos.length === 0) return;
+        if (!grid) return;
 
         const now = new Date();
-        // Filtramos estrictamente cualquier promoción cuya fecha de fin haya vencido
-        const activePromos = promos.filter(function (p) {
+        // Filtramos estrictamente cualquier promoción cuya fecha de fin haya vencido o no sea válida
+        const activePromos = (Array.isArray(promos) ? promos : []).filter(function (p) {
+          if (!p || !p.businessId) return false;
           if (!p.endsAt) return true;
           const endD = new Date(p.endsAt);
-          return isNaN(endD.getTime()) || endD >= now;
+          return !isNaN(endD.getTime()) && endD >= now;
         });
 
-        if (activePromos.length === 0) return;
+        if (activePromos.length === 0) {
+          renderClubNeutralPresentation();
+          return;
+        }
 
         grid.innerHTML = activePromos.map(function (p) {
           const starsLabel = "★ " + (p.goalCount || 2) + ((p.goalCount === 1) ? " estrella" : " estrellas");
@@ -6112,6 +6126,10 @@
         }).join("");
 
         bindClubCtaClicks(grid);
+        const statusEl = document.getElementById("clubLiveStatusLabel");
+        if (statusEl) {
+          statusEl.textContent = activePromos.length + " promociones reales activas hoy en el Club Recién Abierto · Castellón";
+        }
         clubCarouselCtrl.refresh(false);
       }
 
@@ -6124,63 +6142,58 @@
             "Authorization": "Bearer " + SUPABASE_ANON_KEY,
             "Content-Type": "application/json"
           };
-          const listRes = await fetch(SUPABASE_URL + "/rest/v1/rpc/rpc_club_get_active_public_promotions", {
+          const expRes = await fetch(SUPABASE_URL + "/rest/v1/rpc/rpc_club_get_user_experience", {
             method: "POST",
             headers: headers,
             body: "{}"
           });
-          if (!listRes.ok) return;
-          const activePairs = await listRes.json();
-          if (!Array.isArray(activePairs) || activePairs.length === 0) return;
+          if (!expRes.ok) throw new Error("Error HTTP " + expRes.status);
+          const data = await expRes.json();
+          const items = Array.isArray(data) ? data : (data && Array.isArray(data.items) ? data.items : []);
 
           const now = new Date();
-          const details = await Promise.all(activePairs.slice(0, 10).map(async function (pair) {
-            const expRes = await fetch(SUPABASE_URL + "/rest/v1/rpc/rpc_club_get_user_experience", {
-              method: "POST",
-              headers: headers,
-              body: JSON.stringify({ p_business_id: pair.business_id })
-            });
-            if (!expRes.ok) return null;
-            const rows = await expRes.json();
-            const row = Array.isArray(rows) && rows[0] ? rows[0] : null;
-            if (!row || !row.has_active_promotion) return null;
-            if (row.ends_at && new Date(row.ends_at) < now) return null;
+          const validLivePromos = items.filter(function (row) {
+            if (!row || !row.business_id) return false;
+            if (row.promotion_status && row.promotion_status !== "active") return false;
+            if (row.club_status && row.club_status !== "active") return false;
+            if (!row.ends_at) return true;
+            const endD = new Date(row.ends_at);
+            return !isNaN(endD.getTime()) && endD >= now;
+          }).map(function (row) {
+            const catKey = row.business_category ? String(row.business_category).toLowerCase() : "";
+            const catLabel = CATEGORY_LABELS[catKey] || "Establecimiento adherido · Club activo";
+            const muni = row.business_municipality || row.business_city || "Castelló de la Plana";
 
-            const fallbackMatch = VERIFIED_CLUB_PROMOTIONS_FALLBACK.find(function (f) {
-              return f.businessId === row.business_id;
-            });
+            let reward = row.reward_title;
+            if (!reward || reward === "Producto gratis") {
+              reward = row.reward_description || "Recompensa del Club";
+            }
 
             return {
               businessId: row.business_id,
               promotionId: row.promotion_id,
               businessName: row.business_name,
-              municipality: fallbackMatch ? fallbackMatch.municipality : "Castelló de la Plana",
-              categoryLabel: fallbackMatch ? fallbackMatch.categoryLabel : "Establecimiento adherido · Club activo",
+              municipality: muni,
+              categoryLabel: catLabel,
               goalCount: Number(row.goal_count || 2),
-              rewardTitle: (row.reward_title && row.reward_title !== "Producto gratis")
-                ? row.reward_title
-                : (fallbackMatch ? fallbackMatch.rewardTitle : (row.reward_description || row.reward_title)),
-              actionSummary: row.action_description || row.action_title || (fallbackMatch ? fallbackMatch.actionSummary : ""),
+              rewardTitle: reward,
+              actionSummary: row.action_description || row.action_title || "Visita o compra validada con código QR en el local.",
               endsAt: row.ends_at,
-              imageUrl: row.business_image_url || (fallbackMatch ? fallbackMatch.imageUrl : OFFICIAL_PLACEHOLDER)
+              imageUrl: row.business_image_url || OFFICIAL_PLACEHOLDER
             };
-          }));
+          });
 
-          const validLivePromos = details.filter(Boolean);
-          if (validLivePromos.length >= 3) {
-            validLivePromos.sort(function (a, b) {
-              if (a.businessName.indexOf("MOKKA") !== -1) return -1;
-              if (b.businessName.indexOf("MOKKA") !== -1) return 1;
-              return 0;
-            });
-            renderClubPromotionsGrid(validLivePromos);
-            const statusEl = document.getElementById("clubLiveStatusLabel");
-            if (statusEl) {
-              statusEl.textContent = validLivePromos.length + " promociones reales activas hoy en el Club Recién Abierto · Castellón";
-            }
-          }
+          // Mantenemos MOKKA~ al inicio por identidad de marca si está presente
+          validLivePromos.sort(function (a, b) {
+            if (a.businessName && a.businessName.indexOf("MOKKA") !== -1) return -1;
+            if (b.businessName && b.businessName.indexOf("MOKKA") !== -1) return 1;
+            return 0;
+          });
+
+          renderClubPromotionsGrid(validLivePromos);
         } catch (e) {
-          // Conserva el carrusel pre-renderizado de las 5 promociones verificadas
+          // Si Supabase falla o no hay conexión, mostramos la presentación neutral informativa del Club
+          renderClubNeutralPresentation();
         }
       }
 
@@ -6234,10 +6247,10 @@
           id: "653a92d1-03a0-4983-97ff-508bdc91ed25",
           title: "Vibra Veterinaria Castellón",
           subtitle: "Clínica veterinaria en Castellón con atención cercana, medicina preventiva y cuidado integral para mascotas.",
-          dateLabel: "Apertura prevista: 26 oct 2026",
+          dateLabel: "Abierto: 26 oct 2026",
           location: "Castelló de la Plana",
-          badgeText: "Próxima apertura",
-          badgeClass: "tag-soon",
+          badgeText: "Recién abierto",
+          badgeClass: "tag-open",
           editorialBadge: null,
           imageUrl: "https://images.pexels.com/photos/6235111/pexels-photo-6235111.jpeg?auto=compress&cs=tinysrgb&w=1200",
           ctaLabel: "Ver ficha en la app"
@@ -6366,9 +6379,14 @@
       }
 
       function getEditorialRule(kind, idOrSlug, now) {
-        for (let i = 0; i < EDITORIAL_CURATION_CONFIG.pinnedSlots.length; i++) {
-          const slot = EDITORIAL_CURATION_CONFIG.pinnedSlots[i];
-          if (slot.kind !== kind) continue;
+        if (!EDITORIAL_CURATION_CONFIG) return null;
+        const slots = (kind === "campaign")
+          ? (EDITORIAL_CURATION_CONFIG.campaignSlots || EDITORIAL_CURATION_CONFIG.pinnedSlots || [])
+          : (EDITORIAL_CURATION_CONFIG.openingSlots || EDITORIAL_CURATION_CONFIG.pinnedSlots || []);
+        for (let i = 0; i < slots.length; i++) {
+          const slot = slots[i];
+          if (!slot || slot.isActive === false) continue;
+          if (slot.kind && slot.kind !== kind) continue;
           const match = (kind === "campaign" && slot.slug === idOrSlug) || (kind === "business" && slot.id === idOrSlug);
           if (!match) continue;
           if (slot.startsAt && new Date(slot.startsAt) > now) continue;
@@ -6381,7 +6399,7 @@
       function scoreCampaignQuality(c, now) {
         let score = 0;
         const rule = getEditorialRule("campaign", c.slug, now);
-        if (rule) score += 1000 - (rule.priorityOrder || 1) * 10;
+        if (rule) score += 2000 - (Number(rule.priorityOrder) || 1) * 50;
         if (c.hero_image_url || CAMPAIGN_COVER_FALLBACKS[c.slug]) score += 35;
         if (c.start_date && c.end_date) score += 25;
         if (c.subtitle && c.subtitle.trim().length > 4) score += 15;
@@ -6398,7 +6416,7 @@
       function scoreBusinessQuality(b, now) {
         let score = 0;
         const rule = getEditorialRule("business", b.id, now);
-        if (rule) score += 1000 - (rule.priorityOrder || 1) * 10;
+        if (rule) score += 2000 - (Number(rule.priorityOrder) || 1) * 50;
         if (b.is_featured) score += 50;
         if (b.image_url && b.image_url.includes("supabase.co/storage")) score += 25;
         else if (b.image_url) score += 15;
@@ -6432,20 +6450,47 @@
           .map(function (entry) {
             const c = entry.raw;
             const rule = getEditorialRule("campaign", c.slug, now);
+            const isSpon = rule ? (rule.badgeType === "sponsored" || !!rule.isSponsored) : false;
+            const edBadge = rule ? (rule.badgeLabel || rule.editorialBadge) : null;
+
+            const startD = c.start_date ? new Date(c.start_date) : null;
+            const isFuture = startD && !isNaN(startD.getTime()) && startD > now;
+
+            let badgeText = c.chip_label || "Ruta / Evento";
+            let badgeClass = "tag-route";
+            let dateLabel = c.subtitle || "Campaña activa en el mapa";
+
+            if (isFuture) {
+              badgeText = "Próximamente";
+              badgeClass = "tag-soon";
+              dateLabel = "Comienza el " + formatSpanishDate(c.start_date);
+              if (c.end_date) {
+                dateLabel += " · " + (c.subtitle || ("Hasta el " + formatSpanishDate(c.end_date)));
+              }
+            } else {
+              if (c.subtitle) {
+                dateLabel = c.subtitle;
+              } else if (c.end_date) {
+                dateLabel = "Activa hasta el " + formatSpanishDate(c.end_date);
+              }
+            }
+
             return {
               kind: "campaign",
               id: c.slug,
-              title: c.name,
-              subtitle: c.description || c.banner_text || ("Explora todos los puntos, participantes y ubicaciones de " + c.name + " en el mapa interactivo de Recién Abierto."),
-              dateLabel: c.subtitle || "Campaña activa en el mapa",
+              slug: c.slug,
+              isFuture: isFuture,
+              title: (rule && rule.customTitle) ? rule.customTitle : c.name,
+              subtitle: (rule && rule.customSubtitle) ? rule.customSubtitle : (c.description || c.banner_text || ("Explora todos los puntos, participantes y ubicaciones de " + c.name + " en el mapa interactivo de Recién Abierto.")),
+              dateLabel: dateLabel,
               location: c.map_municipality || "Castellón",
-              badgeText: c.chip_label || "Ruta / Evento",
-              badgeClass: "tag-route",
-              editorialBadge: rule ? rule.editorialBadge : null,
-              isSponsored: rule ? !!rule.isSponsored : false,
-              heroImageUrl: c.hero_image_url || CAMPAIGN_COVER_FALLBACKS[c.slug] || null,
+              badgeText: badgeText,
+              badgeClass: badgeClass,
+              editorialBadge: edBadge,
+              isSponsored: isSpon,
+              heroImageUrl: (rule && rule.customImageUrl) ? rule.customImageUrl : (c.hero_image_url || CAMPAIGN_COVER_FALLBACKS[c.slug] || null),
               logoUrl: c.campaign_marker_logo_url || null,
-              ctaLabel: "Explorar mapa en la app"
+              ctaLabel: "Abrir o descargar la app"
             };
           });
 
@@ -6480,7 +6525,7 @@
             const rule = getEditorialRule("business", b.id, now);
             const loc = b.municipality || b.city || "Castellón";
             const catLabel = CATEGORY_LABELS[b.category] || "Negocio local";
-            const isSoon = b.opening_status === "soon" || (b.opening_date && new Date(b.opening_date) > now);
+            const isSoon = b.opening_status === "soon" || (b.opening_status !== "open" && b.opening_date && new Date(b.opening_date) > now);
 
             let badgeText = "Recién abierto";
             let badgeClass = "tag-open";
@@ -6496,18 +6541,21 @@
               ? String(b.description).replace(/\s+/g, " ").trim()
               : (catLabel + " en " + loc + ". Consulta su ficha completa y ubicación en Recién Abierto.");
 
+            const isSpon = rule ? (rule.badgeType === "sponsored" || !!rule.isSponsored) : false;
+            const edBadge = rule ? (rule.badgeLabel || rule.editorialBadge) : (b.is_featured ? "Destacado" : null);
+
             return {
               kind: "business",
               id: b.id,
-              title: b.name,
-              subtitle: cleanDesc,
+              title: (rule && rule.customTitle) ? rule.customTitle : b.name,
+              subtitle: (rule && rule.customSubtitle) ? rule.customSubtitle : cleanDesc,
               dateLabel: dateLabel,
               location: loc,
               badgeText: badgeText,
               badgeClass: badgeClass,
-              editorialBadge: rule ? rule.editorialBadge : (b.is_featured ? "Destacado" : null),
-              isSponsored: rule ? !!rule.isSponsored : false,
-              imageUrl: b.image_url || OFFICIAL_PLACEHOLDER,
+              editorialBadge: edBadge,
+              isSponsored: isSpon,
+              imageUrl: (rule && rule.customImageUrl) ? rule.customImageUrl : (b.image_url || OFFICIAL_PLACEHOLDER),
               ctaLabel: "Ver ficha en la app"
             };
           });
@@ -6518,7 +6566,8 @@
       function renderMediaHtml(item) {
         let extraBadge = "";
         if (item.isSponsored && EDITORIAL_CURATION_CONFIG.showSponsoredBadges) {
-          extraBadge = '<span class="tag-badge tag-sponsored">Patrocinado</span>';
+          const sponLabel = item.editorialBadge || "Patrocinado";
+          extraBadge = '<span class="tag-badge tag-sponsored">' + escapeHtml(sponLabel) + '</span>';
         } else if (item.editorialBadge) {
           extraBadge = '<span class="tag-badge tag-editorial">★ ' + escapeHtml(item.editorialBadge) + '</span>';
         }
@@ -6567,11 +6616,12 @@
 
         let lbAttr = "";
         if (!isBusiness) {
-          if (item.slug === "ruta-esmorzaret" || (item.title && item.title.includes("Esmorzaret"))) {
+          const s = item.slug || item.id || "";
+          if (s === "ruta-esmorzaret-castello-2026" || s === "ruta-esmorzaret" || (item.title && item.title.includes("Esmorzaret"))) {
             lbAttr = ' data-lightbox-id="camp-esmorzaret"';
-          } else if (item.slug === "sabores-castellon-2026" || (item.title && item.title.includes("Sabores"))) {
+          } else if (s === "sabores-castellon-2026" || (item.title && item.title.includes("Sabores"))) {
             lbAttr = ' data-lightbox-id="camp-sabores-tapa"';
-          } else if (item.slug && item.slug.includes("fira") || (item.title && item.title.includes("Fira"))) {
+          } else if (s.includes("fira") || (item.title && item.title.includes("Fira"))) {
             lbAttr = ' data-lightbox-id="camp-fira-onda"';
           }
         }
@@ -6811,15 +6861,18 @@
         return {
           setBusinesses: function (newBusinesses) {
             if (!Array.isArray(newBusinesses) || newBusinesses.length === 0) return;
-            // Combinamos el escaparate curado de 12 aperturas verificadas de Supabase con nuevas altas sin duplicar fotos ni nombres
+            // Damos prioridad absoluta a los negocios frescos obtenidos de Supabase y completamos con el fallback solo si faltan plazas
             const merged = [];
+            const seenIds = new Set();
             const seenNames = new Set();
             const seenImgs = new Set();
-            VERIFIED_BUSINESSES_FALLBACK.concat(newBusinesses).forEach(function (b) {
+            newBusinesses.concat(VERIFIED_BUSINESSES_FALLBACK).forEach(function (b) {
               if (!b || !b.title || !b.imageUrl || merged.length >= 12) return;
+              const bId = b.id ? String(b.id).trim() : "";
               const nName = b.title.trim().toLowerCase();
               const nImg = String(b.imageUrl).split("?")[0].trim().toLowerCase();
-              if (seenNames.has(nName) || seenImgs.has(nImg)) return;
+              if ((bId && seenIds.has(bId)) || seenNames.has(nName) || seenImgs.has(nImg)) return;
+              if (bId) seenIds.add(bId);
               seenNames.add(nName);
               seenImgs.add(nImg);
               merged.push(b);
@@ -6836,11 +6889,55 @@
 
       function syncHeroDynamicHighlights(data) {
         if (!data) return;
+        const now = new Date();
+
+        // 1. Píldora de campaña activa en portada
         if (data.campaigns && data.campaigns.length > 0) {
-          const topCamp = data.campaigns[0];
+          const topActiveCamp = data.campaigns.find(function (c) {
+            return !c.isFuture;
+          }) || data.campaigns[0];
           const badgeEl = document.getElementById("heroLiveCampaignBadge");
-          if (badgeEl && topCamp.title) {
-            badgeEl.textContent = "Activo hoy: " + topCamp.title;
+          if (badgeEl && topActiveCamp && topActiveCamp.title) {
+            const prefix = topActiveCamp.isFuture ? "Próximamente: " : "Activo hoy: ";
+            badgeEl.textContent = prefix + topActiveCamp.title;
+          }
+        }
+
+        // 2. Ficha destacada del Hero (Hero Slot Curation comercial/editorial)
+        const heroSlot = EDITORIAL_CURATION_CONFIG.heroSlot;
+        let featuredBiz = null;
+        if (heroSlot && heroSlot.isActive !== false && (!heroSlot.startsAt || new Date(heroSlot.startsAt) <= now) && (!heroSlot.endsAt || new Date(heroSlot.endsAt) >= now)) {
+          if (data.businesses) {
+            featuredBiz = data.businesses.find(function (b) { return b.id === heroSlot.id; });
+          }
+        }
+        // Si no está fijado o ya no está activo en Supabase, tomamos el negocio de mayor calidad disponible
+        if (!featuredBiz && data.businesses && data.businesses.length > 0) {
+          featuredBiz = data.businesses[0];
+        }
+
+        if (featuredBiz) {
+          const cardEl = document.getElementById("heroFeaturedBizCard");
+          const imgEl = document.getElementById("heroFeaturedBizImg");
+          const nameEl = document.getElementById("heroFeaturedBizName");
+          const metaEl = document.getElementById("heroFeaturedBizMeta");
+          if (cardEl) {
+            cardEl.setAttribute("href", "/negocio/" + encodeURIComponent(featuredBiz.id));
+            cardEl.setAttribute("data-card-kind", "business");
+            cardEl.setAttribute("data-card-title", featuredBiz.title);
+            cardEl.setAttribute("data-card-href", "/negocio/" + encodeURIComponent(featuredBiz.id));
+          }
+          if (imgEl && featuredBiz.imageUrl) {
+            imgEl.setAttribute("src", featuredBiz.imageUrl);
+            imgEl.setAttribute("alt", featuredBiz.title + " en Recién Abierto");
+          }
+          if (nameEl && featuredBiz.title) {
+            nameEl.textContent = featuredBiz.title;
+          }
+          if (metaEl) {
+            const loc = featuredBiz.location || "Castellón";
+            const tag = featuredBiz.badgeText || "Recién abierto";
+            metaEl.textContent = tag + " · " + loc;
           }
         }
       }
@@ -6878,13 +6975,62 @@
           const businessesUrl = SUPABASE_URL +
             "/rest/v1/businesses_v2?select=id,name,description,category,municipality,city,opening_date,start_date,end_date,is_event,is_temporary,is_featured,image_url,campaign_slug,campaign_slugs,opening_status&is_event=eq.false&order=is_featured.desc,created_at.desc&limit=80";
 
-          const [campRes, bizRes] = await Promise.all([
+          const curatedSlotsUrl = SUPABASE_URL +
+            "/rest/v1/landing_curated_slots?select=*&territory=eq." +
+            encodeURIComponent(EDITORIAL_CURATION_CONFIG.activeTerritory || "castellon") +
+            "&is_active=eq.true&order=priority_order.asc";
+
+          const [campRes, bizRes, curatedRes] = await Promise.all([
             fetch(campaignsUrl, { headers: headers, signal: controller ? controller.signal : undefined }),
-            fetch(businessesUrl, { headers: headers, signal: controller ? controller.signal : undefined })
+            fetch(businessesUrl, { headers: headers, signal: controller ? controller.signal : undefined }),
+            fetch(curatedSlotsUrl, { headers: headers, signal: controller ? controller.signal : undefined }).catch(function () { return null; })
           ]);
 
           if (timeoutId) clearTimeout(timeoutId);
           if (!campRes.ok || !bizRes.ok) throw new Error("Error HTTP Supabase");
+
+          // Si la tabla landing_curated_slots está disponible en Supabase y devuelve registros, hidratamos la configuración dinámicamente
+          if (curatedRes && curatedRes.ok) {
+            try {
+              const remoteSlots = await curatedRes.json();
+              if (Array.isArray(remoteSlots)) {
+                const newCampaignSlots = [];
+                const newOpeningSlots = [];
+                let newHeroSlot = null;
+
+                remoteSlots.forEach(function (slot) {
+                  if (!slot || !slot.is_active) return;
+                  const item = {
+                    kind: slot.item_kind,
+                    id: slot.item_ref,
+                    slug: slot.item_ref,
+                    priorityOrder: Number(slot.priority_order) || 1,
+                    territory: slot.territory || "castellon",
+                    badgeType: slot.badge_type || "editorial",
+                    badgeLabel: slot.badge_label || (slot.badge_type === "sponsored" ? "Patrocinado" : "Destacado"),
+                    customTitle: slot.custom_title || null,
+                    customSubtitle: slot.custom_subtitle || null,
+                    customImageUrl: slot.custom_image_url || null,
+                    startsAt: slot.starts_at,
+                    endsAt: slot.ends_at,
+                    isActive: slot.is_active
+                  };
+                  if (slot.slot_target === "hero_card" && !newHeroSlot) {
+                    newHeroSlot = item;
+                  } else if (slot.slot_target === "campaigns_row1") {
+                    newCampaignSlots.push(item);
+                  } else if (slot.slot_target === "openings_row2") {
+                    newOpeningSlots.push(item);
+                  }
+                });
+
+                EDITORIAL_CURATION_CONFIG.heroSlot = newHeroSlot;
+                EDITORIAL_CURATION_CONFIG.campaignSlots = newCampaignSlots;
+                EDITORIAL_CURATION_CONFIG.openingSlots = newOpeningSlots;
+                EDITORIAL_CURATION_CONFIG.pinnedSlots = newCampaignSlots.concat(newOpeningSlots);
+              }
+            } catch (errCurated) {}
+          }
 
           const [campaigns, businesses] = await Promise.all([campRes.json(), bizRes.json()]);
           const loadedData = processSupabaseFeed(campaigns, businesses);
@@ -6918,7 +7064,7 @@
           group: "institucional",
           src: "/assets/institucional-onda-4x3.jpg",
           alt: "Fira d'Onda 2026 en el mapa interactivo de Recién Abierto",
-          badge: "Caso real · Fiestas patronales",
+          badge: "Caso real · Campaña realizada",
           title: "Fira d'Onda 2026 · Programación geolocalizada",
           desc: "Del 16 al 25 de octubre de 2026 · Conciertos, recintos taurinos y mesón en Onda",
           appHref: "/descargar"
@@ -6928,7 +7074,7 @@
           group: "institucional",
           src: "/assets/institucional-ruta-tapas-mapa.jpg",
           alt: "Cartel y mapa oficial de la 17.ª Ruta de Tapas Sabores Castellón",
-          badge: "Campaña activa · Ruta gastronómica",
+          badge: "Caso real · Campaña activa",
           title: "17.ª Ruta de Tapas Sabores Castellón · Cartel y plano",
           desc: "Del 15 de octubre al 7 de noviembre de 2026 · Todas las tapas y locales en la palma de tu mano",
           appHref: "/descargar"
@@ -6938,7 +7084,7 @@
           group: "institucional",
           src: "/assets/institucional-ruta-tapas-clara.jpg",
           alt: "Ficha interactiva de tapa de la Ruta de Sabores en Recién Abierto",
-          badge: "Ficha interactiva en la app",
+          badge: "Caso real · Ficha en la app",
           title: "Sabores Castellón · Ficha y geolocalización de tapa",
           desc: "Ficha detallada con foto, precio, descripción de tapa y cómo llegar a cada local participante",
           appHref: "/descargar"
@@ -6948,7 +7094,7 @@
           group: "institucional",
           src: "/assets/institucional-vilafames-cartel.jpg",
           alt: "Cartel oficial II Trobada d'Ordes Militars en Vilafamés",
-          badge: "Cartel oficial · II Trobada d'Ordes Militars",
+          badge: "Caso real · II Trobada d'Ordes Militars",
           title: "Vilafamés · Cartel oficial de la campaña",
           desc: "Diseño oficial de la II Trobada d'Ordes Militars integrado en la ficha municipal de Recién Abierto",
           appHref: "/descargar"
@@ -6958,7 +7104,7 @@
           group: "institucional",
           src: "/assets/institucional-vilafames-mapa.jpg",
           alt: "Mapa satélite interactivo con puntos de interés de Vilafamés",
-          badge: "Vista en mapa satélite · Geolocalización real",
+          badge: "Caso real · Geolocalización en mapa",
           title: "Vilafamés · Puntos de interés en mapa satélite",
           desc: "Castillo medieval, plaza mayor, accesos y actividades geolocalizados punto por punto",
           appHref: "/descargar"
@@ -6967,40 +7113,40 @@
           id: "inst-benicassim",
           group: "institucional",
           src: "/assets/institucional-benicassim-4x3.png",
-          alt: "Fiestas de Benicàssim en el mapa de Recién Abierto",
-          badge: "Caso real · Campaña realizada",
-          title: "Fiestas de Benicàssim · Mapa de actos y recintos",
-          desc: "Conciertos, recintos festivos, programación infantil y gastronomía en el mapa",
+          alt: "Simulación de fiestas de Benicàssim en el mapa de Recién Abierto",
+          badge: "Ejemplo demostrativo · Modelo de fiestas",
+          title: "Benicàssim · Simulación de fiestas y recintos",
+          desc: "Ejemplo demostrativo de conciertos, recintos festivos, zonas infantiles y gastronomía en el mapa",
           appHref: "/descargar"
         },
         {
           id: "inst-almassora",
           group: "institucional",
           src: "/assets/institucional-almassora-4x3.png",
-          alt: "Festes del Roser de Almassora en Recién Abierto",
-          badge: "Caso real · Campaña realizada",
-          title: "Festes del Roser · Almassora en el mapa",
-          desc: "Guía interactiva de actos festivos, mesón gastronómico y recintos en el móvil",
+          alt: "Ejemplo demostrativo de programación municipal de Almassora en Recién Abierto",
+          badge: "Ejemplo demostrativo · Fiestas patronales",
+          title: "Almassora · Formato de fiestas y agenda en mapa",
+          desc: "Modelo demostrativo de actos festivos, recinto de conciertos y recintos en el móvil",
           appHref: "/descargar"
         },
         {
           id: "inst-oropesa",
           group: "institucional",
           src: "/assets/institucional-oropesa-4x3.png",
-          alt: "Fiestas de Oropesa del Mar en Recién Abierto",
-          badge: "Caso real · Campaña realizada",
-          title: "Fiestas de Oropesa del Mar · Guía geolocalizada",
-          desc: "Plano interactivo con los escenarios y actos festivos repartidos por el municipio",
+          alt: "Ejemplo demostrativo de guía de fiestas de Oropesa del Mar en Recién Abierto",
+          badge: "Ejemplo demostrativo · Guía turística",
+          title: "Oropesa del Mar · Modelo de actos y turismo local",
+          desc: "Ejemplo demostrativo con escenarios y actividades festivas repartidas por el municipio",
           appHref: "/descargar"
         },
         {
           id: "inst-moncofa",
           group: "institucional",
           src: "/assets/institucional-moncofa-4x3.png",
-          alt: "Festes de Sant Antoni de Moncofa en Recién Abierto",
-          badge: "Caso real · Campaña realizada",
-          title: "Festes de Sant Antoni · Moncofa",
-          desc: "Actos tradicionales, hoguera y actividades geolocalizadas punto por punto",
+          alt: "Ejemplo demostrativo de actos tradicionales de Moncofa en Recién Abierto",
+          badge: "Ejemplo demostrativo · Formato tradicional",
+          title: "Moncofa · Eventos tradicionales sobre el mapa",
+          desc: "Ejemplo demostrativo de actos tradicionales, hoguera y actividades geolocalizadas punto por punto",
           appHref: "/descargar"
         }
       ];
