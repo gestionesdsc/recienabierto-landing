@@ -17,6 +17,15 @@
             "/": "/negocio/*"
           },
           {
+            "/": "/campana/*"
+          },
+          {
+            "/": "/campaña/*"
+          },
+          {
+            "/": "/sorteos*"
+          },
+          {
             "/": "*",
             "exclude": true
           }

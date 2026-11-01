@@ -1,1 +1,5 @@
 /negocio/*  /redirect.html  200
+/campana/*  /campana/index.html  200
+/campaña/*  /campana/index.html  200
+/sorteos/*  /sorteos/index.html  200
+/sorteos    /sorteos/index.html  200

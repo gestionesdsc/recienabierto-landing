@@ -337,6 +337,22 @@
       border-color: var(--orange);
       transform: translateY(-1px);
     }
+    .nav-links a.sorteos-highlight {
+      color: var(--navy);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: linear-gradient(120deg, rgba(249, 115, 22, 0.12), rgba(245, 158, 11, 0.16));
+      border: 1px solid rgba(249, 115, 22, 0.32);
+      padding: 6px 12px;
+      border-radius: 999px;
+    }
+    .nav-links a.sorteos-highlight:hover {
+      border-color: var(--orange);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.18);
+    }
 
     .header-actions {
       display: flex;
@@ -563,6 +579,24 @@
       transform: translateY(-1px);
     }
     .kicker-club-badge .star-accent { color: var(--orange-bright); }
+    .kicker-sorteos-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+      color: var(--white);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(249, 115, 22, 0.25);
+    }
+    .kicker-sorteos-badge:hover {
+      background: linear-gradient(135deg, var(--orange-bright) 0%, var(--orange) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(249, 115, 22, 0.32);
+      color: var(--white);
+    }
 
     .kicker-live-pill {
       display: inline-flex;
@@ -3763,6 +3797,7 @@
       </div>
 
       <nav class="nav-links" aria-label="Navegación principal">
+        <a href="/sorteos" class="sorteos-highlight" data-track-action="interaction_sorteos">🎁 Sorteos</a>
         <a href="#club" class="club-highlight" data-track-action="interaction_club">★ Club Recién Abierto</a>
         <a href="#actualidad">Qué está pasando</a>
         <a href="#para-negocios" data-track-action="interaction_business_cta">Para negocios</a>
@@ -3792,6 +3827,7 @@
     <!-- Menú desplegable móvil -->
     <div class="mobile-nav-drawer" id="mobileNavDrawer">
       <div class="mobile-nav-list">
+        <a href="/sorteos" style="font-weight:700;color:var(--orange);">🎁 Sorteos y Premios</a>
         <a href="#club">★ Club Recién Abierto</a>
         <a href="#actualidad">Qué está pasando hoy</a>
         <a href="#para-negocios">Para negocios (Primeros 12 meses)</a>
@@ -3811,6 +3847,10 @@
         <div class="hero-grid">
           <div class="hero-copy reveal is-visible">
             <div class="hero-kicker-row">
+              <a href="/sorteos" class="kicker-sorteos-badge" data-track-action="interaction_sorteos">
+                <span>🎁</span>
+                <span>Sorteos activos · Gana premios</span>
+              </a>
               <a href="#club" class="kicker-club-badge" data-track-action="interaction_club">
                 <span class="star-accent">★</span>
                 <span>Club Recién Abierto · Recompensas reales con QR</span>
@@ -5297,6 +5337,7 @@
         </a>
 
         <div class="footer-links">
+          <a href="/sorteos">Sorteos activos</a>
           <a href="#club" data-track-action="interaction_club">Club Recién Abierto</a>
           <a href="#actualidad">Qué está pasando</a>
           <a href="#para-negocios" data-track-action="interaction_business_cta">Para negocios</a>

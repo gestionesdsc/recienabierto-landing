@@ -1,0 +1,12 @@
+{
+  "name": "recienabierto-landing",
+  "version": "1.0.0",
+  "description": "Landing y enlaces profundos de Recién Abierto",
+  "private": true,
+  "scripts": {
+    "build": "node --use-system-ca build-campaigns.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1"
+  }
+}

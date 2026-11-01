@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sorteos y Premios Exclusivos · Recién Abierto</title>
+  <meta name="description" content="Participa gratis en los sorteos de Recién Abierto y gana entradas, experiencias gastronómicas y premios de los mejores negocios y eventos de tu ciudad.">
+
+  <!-- Open Graph / Meta Ads / WhatsApp / Telegram -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://recienabierto.com/sorteos">
+  <meta property="og:title" content="🎁 Sorteos y Premios Exclusivos · Recién Abierto">
+  <meta property="og:description" content="Gana entradas, experiencias gastronómicas y premios exclusivos. Participa gratis desde la aplicación Recién Abierto.">
+  <meta property="og:image" content="https://www.recienabierto.com/og-recien-abierto.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Recién Abierto">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://recienabierto.com/sorteos">
+  <meta name="twitter:title" content="🎁 Sorteos y Premios Exclusivos · Recién Abierto">
+  <meta name="twitter:description" content="Gana entradas, experiencias gastronómicas y premios exclusivos. Participa gratis desde la aplicación Recién Abierto.">
+  <meta name="twitter:image" content="https://www.recienabierto.com/og-recien-abierto.jpg">
+
+  <link rel="canonical" href="https://recienabierto.com/sorteos">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://ioghcoouqehcpplhspyd.supabase.co" crossorigin>
+
+  <style>
+    :root {
+      --cream: #fbf8f3;
+      --cream-warm: #f4ede1;
+      --white: #ffffff;
+      --navy: #0b1324;
+      --navy-mid: #121f3a;
+      --navy-soft: #1e293b;
+      --teal: #18a4a4;
+      --teal-dark: #0e7474;
+      --teal-tint: #e6f6f6;
+      --orange: #f97316;
+      --orange-dark: #ea580c;
+      --orange-tint: #fff7ed;
+      --purple: #8b5cf6;
+      --purple-dark: #7c3aed;
+      --purple-tint: #f5f3ff;
+      --text-dark: #0b1324;
+      --text-body: #334155;
+      --text-muted: #64748b;
+      --border: rgba(11, 19, 36, 0.08);
+      --border-strong: rgba(11, 19, 36, 0.14);
+      --radius-sm: 12px;
+      --radius-md: 18px;
+      --radius-lg: 24px;
+      --shadow-sm: 0 4px 12px rgba(11, 19, 36, 0.05);
+      --shadow-md: 0 10px 25px -5px rgba(11, 19, 36, 0.08), 0 8px 10px -6px rgba(11, 19, 36, 0.04);
+      --shadow-lg: 0 20px 35px -10px rgba(11, 19, 36, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--cream);
+      color: var(--text-body);
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* HEADER */
+    .header {
+      background: rgba(251, 248, 243, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 20px;
+    }
+    .header-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 17px;
+      letter-spacing: -0.3px;
+    }
+    .logo-img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+    .header-cta {
+      background-color: var(--teal);
+      color: #fff !important;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background-color 0.15s ease, transform 0.1s ease;
+      box-shadow: 0 2px 8px rgba(24, 164, 164, 0.28);
+    }
+    .header-cta:hover {
+      background-color: var(--teal-dark);
+    }
+    .header-cta:active {
+      transform: scale(0.98);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 38px 20px 24px;
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      background: var(--purple-tint);
+      color: var(--purple-dark);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      border-radius: 999px;
+      border: 1px solid #ddd6fe;
+      margin-bottom: 14px;
+    }
+    .hero-title {
+      font-size: clamp(26px, 4.8vw, 36px);
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.18;
+      letter-spacing: -0.6px;
+      margin-bottom: 12px;
+    }
+    .hero-title span {
+      color: var(--orange-dark);
+    }
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* MAIN CONTAINER */
+    .container {
+      max-width: 1080px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 20px 48px;
+      flex: 1;
+    }
+
+    /* LOADING & SPINNER */
+    .loading-block {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .spinner {
+      margin: 0 auto 16px;
+      border: 4px solid #f1f5f9;
+      border-top: 4px solid var(--teal);
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .loading-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* SECTION HEADERS */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      margin-top: 28px;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.3px;
+    }
+    .section-count {
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--navy);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+
+    /* CARDS ESCAPARATE GRID SYSTEM */
+    /* Modo 1 sorteo: Tarjeta Hero protagonista centrada */
+    .grid-single {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+    .grid-single .card {
+      max-width: 560px;
+      width: 100%;
+    }
+    .grid-single .card-img {
+      height: 290px;
+    }
+
+    /* Modo 2 sorteos: 2 tarjetas equilibradas */
+    .grid-double {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .grid-double .card-img {
+      height: 230px;
+    }
+
+    /* Modo 3+ sorteos: Cuadrícula responsive */
+    .grid-multi {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 22px;
+    }
+    .grid-multi .card-img {
+      height: 200px;
+    }
+
+    /* TARJETA DE SORTEO */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      position: relative;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-img-wrap {
+      position: relative;
+      width: 100%;
+      background-color: #e2e8f0;
+      overflow: hidden;
+    }
+    .card-img {
+      width: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .card:hover .card-img {
+      transform: scale(1.02);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      z-index: 2;
+    }
+    .badge-active {
+      background: #10b981;
+      color: #fff;
+    }
+    .badge-ending-soon {
+      background: var(--orange-dark);
+      color: #fff;
+      animation: pulseEnding 1.8s infinite;
+    }
+    @keyframes pulseEnding {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+    .badge-upcoming {
+      background: var(--purple-dark);
+      color: #fff;
+    }
+    .badge-ended {
+      background: #64748b;
+      color: #fff;
+    }
+
+    .card-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .organizer-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .organizer-icon {
+      font-size: 14px;
+      color: var(--teal);
+    }
+    .organizer-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--teal-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.32;
+      letter-spacing: -0.3px;
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.48;
+      margin-bottom: 18px;
+      flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-footer {
+      border-top: 1px solid #f1f5f9;
+      padding-top: 16px;
+      margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .timing-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: #475569;
+    }
+    .timing-icon {
+      font-size: 14px;
+    }
+
+    .btn-participate {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 13px 18px;
+      background: linear-gradient(135deg, var(--teal) 0%, #139ca9 100%);
+      color: #ffffff !important;
+      font-size: 13.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 4px 14px rgba(24, 164, 164, 0.35);
+      border: none;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+    .btn-participate:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 6px rgba(24, 164, 164, 0.25);
+    }
+
+    /* ESTADO TERMINADO (Visual atenuado) */
+    .card-ended {
+      opacity: 0.82;
+      background: #fafafa;
+      border-color: #e2e8f0;
+    }
+    .card-ended .card-img {
+      filter: grayscale(35%);
+    }
+    .btn-ended-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      padding: 11px 16px;
+      background: #f1f5f9;
+      color: #64748b;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-radius: var(--radius-sm);
+      border: 1px solid #e2e8f0;
+    }
+
+    /* ESTADO VACÍO (SIN ACTIVOS) */
+    .empty-state {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 38px 24px;
+      text-align: center;
+      border: 1px dashed var(--border-strong);
+      max-width: 520px;
+      margin: 16px auto 32px;
+      box-shadow: var(--shadow-sm);
+    }
+    .empty-icon {
+      font-size: 44px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .empty-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+    .empty-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+      line-height: 1.5;
+    }
+
+    /* MODAL DE DESCARGA / APERTURA DIRECTA */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(11, 19, 36, 0.65);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      position: relative;
+      animation: modalPop 0.22s ease-out;
+    }
+    @keyframes modalPop {
+      0% { opacity: 0; transform: scale(0.92); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: #f1f5f9;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 15px;
+      font-size: 18px;
+      cursor: pointer;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-img {
+      width: 100%;
+      height: 160px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      margin-bottom: 16px;
+      background: #f1f5f9;
+    }
+    .modal-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .modal-desc {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.45;
+    }
+    .modal-btn-download {
+      display: block;
+      width: 100%;
+      padding: 14px 20px;
+      background-color: var(--teal);
+      color: #ffffff !important;
+      font-size: 13.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 4px 14px rgba(24, 164, 164, 0.35);
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+    .modal-btn-open {
+      display: block;
+      width: 100%;
+      padding: 11px 20px;
+      background-color: #f1f5f9;
+      color: var(--navy) !important;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      border: 1px solid #cbd5e1;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 20px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      background: rgba(251, 248, 243, 0.7);
+    }
+
+    @media (max-width: 640px) {
+      .grid-double {
+        grid-template-columns: 1fr;
+      }
+      .grid-single .card-img {
+        height: 220px;
+      }
+      .hero {
+        padding-top: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="/" class="logo-link">
+        <img src="/logo-recien-abierto.png" alt="Recién Abierto" class="logo-img" onerror="this.style.display='none'">
+        <span>Recién Abierto</span>
+      </a>
+      <a href="javascript:void(0)" onclick="openAppDirectly()" class="header-cta">Abrir App</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">🎁 Sorteos exclusivos</div>
+    <h1 class="hero-title">Participa y gana experiencias en <span>tu ciudad</span></h1>
+    <p class="hero-subtitle">
+      Descubre los sorteos activos, consigue participaciones gratis invitando a amigos y canjea premios reales directamente en los establecimientos.
+    </p>
+  </section>
+
+  <!-- MAIN CONTAINER -->
+  <main class="container">
+    <!-- SPINNER INICIAL -->
+    <div id="loading-view" class="loading-block">
+      <div class="spinner"></div>
+      <p class="loading-text">Cargando sorteos actualizados...</p>
+    </div>
+
+    <!-- CONTENEDOR DINÁMICO -->
+    <div id="content-view" style="display: none;">
+      <!-- SECCIÓN A: ACTIVOS -->
+      <section id="sec-active">
+        <div class="section-header">
+          <h2 class="section-title">Sorteos activos</h2>
+          <span id="active-count" class="section-count">0</span>
+        </div>
+        <div id="active-grid"></div>
+      </section>
+
+      <!-- SECCIÓN B: PRÓXIMAMENTE (Oculta si no hay) -->
+      <section id="sec-upcoming" style="display: none;">
+        <div class="section-header">
+          <h2 class="section-title">Próximamente</h2>
+          <span id="upcoming-count" class="section-count">0</span>
+        </div>
+        <div id="upcoming-grid" class="grid-multi"></div>
+      </section>
+
+      <!-- SECCIÓN C: ANTERIORES / FINALIZADOS -->
+      <section id="sec-ended" style="display: none;">
+        <div class="section-header">
+          <h2 class="section-title">Sorteos anteriores</h2>
+          <span id="ended-count" class="section-count">0</span>
+        </div>
+        <div id="ended-grid" class="grid-multi"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- MODAL PARTICIPAR / DESCARGAR -->
+  <div id="download-modal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+      <img id="modal-img" src="/og-recien-abierto.jpg" alt="Premio" class="modal-img">
+      <h3 id="modal-title" class="modal-title">Participar en el sorteo</h3>
+      <p id="modal-desc" class="modal-desc">Para conseguir participaciones y ganar este premio, abre la app de Recién Abierto.</p>
+      
+      <a id="modal-download-link" href="#" class="modal-btn-download">DESCARGAR APP GRATIS</a>
+      <a id="modal-open-link" href="#" class="modal-btn-open">¿Ya tienes la app? Entrar al sorteo</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 Recién Abierto · Las participaciones y sorteos se gestionan íntegramente dentro de la aplicación móvil oficial.</p>
+  </footer>
+
+  <script>
+    (function() {
+      var SUPABASE_URL = 'https://ioghcoouqehcpplhspyd.supabase.co';
+      var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlvZ2hjb291cWVoY3BwbGhzcHlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4NTQ1NDksImV4cCI6MjA3NTQzMDU0OX0.4ynUrBlb1eMZA5gptIxjunfveIwTdVDpSRjeF2mc-g0';
+      var FALLBACK_CORP_IMG = 'https://www.recienabierto.com/og-recien-abierto.jpg';
+
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      var isIOS = /iPad|iPhone|iPod/i.test(userAgent) && !window.MSStream;
+      var isAndroid = /Android/i.test(userAgent);
+
+      var selectedPromoForModal = null;
+
+      // 1. Detección automática al cargar: Si el usuario viene con la app instalada
+      function checkAutoRedirect() {
+        var params = new URLSearchParams(window.location.search);
+        var targetPromoId = params.get('promo') || params.get('id');
+        var appUrl = 'recienabierto://sorteos' + (targetPromoId ? '/' + targetPromoId : '') + window.location.search;
+
+        if (isAndroid || isIOS) {
+          // Intentar abrir app inmediatamente si se autoriza o procede de link directo
+          var hasTried = sessionStorage.getItem('ra_sorteos_redirect_attempted');
+          if (!hasTried && (params.get('open') === 'app' || params.has('src'))) {
+            sessionStorage.setItem('ra_sorteos_redirect_attempted', 'true');
+            window.location.replace(appUrl);
+          }
+        }
+      }
+      checkAutoRedirect();
+
+      // Formatear fechas amigables
+      function formatTiming(startsAtStr, endsAtStr, status) {
+        var now = new Date();
+        var ends = endsAtStr ? new Date(endsAtStr) : null;
+        var starts = startsAtStr ? new Date(startsAtStr) : null;
+
+        if (status === 'ended' || (ends && ends < now)) {
+          return { text: 'Sorteo finalizado', isEndingSoon: false, isEnded: true };
+        }
+
+        if (starts && starts > now) {
+          var diffDays = Math.ceil((starts - now) / (1000 * 60 * 60 * 24));
+          return { text: 'Empieza en ' + diffDays + ' día' + (diffDays > 1 ? 's' : ''), isEndingSoon: false, isUpcoming: true };
+        }
+
+        if (ends) {
+          var diffHours = Math.round((ends - now) / (1000 * 60 * 60));
+          if (diffHours <= 48 && diffHours > 0) {
+            return { text: '¡Últimas ' + diffHours + ' horas!', isEndingSoon: true };
+          }
+          var daysLeft = Math.ceil((ends - now) / (1000 * 60 * 60 * 24));
+          return { text: 'Quedan ' + daysLeft + ' día' + (daysLeft > 1 ? 's' : '') + ' para el sorteo', isEndingSoon: false };
+        }
+
+        return { text: 'Activo', isEndingSoon: false };
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      // Cargar sorteos y negocios asociados
+      async function loadSorteos() {
+        try {
+          // 1. RPC de promociones públicas
+          var rpcRes = await fetch(SUPABASE_URL + '/rest/v1/rpc/get_public_promotions', {
+            method: 'POST',
+            headers: {
+              'apikey': SUPABASE_KEY,
+              'Authorization': 'Bearer ' + SUPABASE_KEY,
+              'Content-Type': 'application/json'
+            },
+            body: '{}'
+          });
+
+          if (!rpcRes.ok) throw new Error('HTTP ' + rpcRes.status);
+          var allPromos = await rpcRes.json();
+
+          // 2. Extraer business_ids para obtener sus imágenes de ficha (businesses_v2)
+          var bizIds = [];
+          allPromos.forEach(function(p) {
+            if (p.business_id && bizIds.indexOf(p.business_id) === -1) {
+              bizIds.push(p.business_id);
+            }
+          });
+
+          var bizMap = {};
+          if (bizIds.length > 0) {
+            try {
+              var bizRes = await fetch(SUPABASE_URL + '/rest/v1/businesses_v2?id=in.(' + bizIds.join(',') + ')&select=id,name,image_url,city,category', {
+                headers: {
+                  'apikey': SUPABASE_KEY,
+                  'Authorization': 'Bearer ' + SUPABASE_KEY,
+                }
+              });
+              if (bizRes.ok) {
+                var bizList = await bizRes.json();
+                bizList.forEach(function(b) {
+                  bizMap[b.id] = b;
+                });
+              }
+            } catch (err) {
+              console.warn('[Sorteos] Could not fetch businesses_v2:', err);
+            }
+          }
+
+          renderPage(allPromos, bizMap);
+        } catch (err) {
+          console.error('[Sorteos] Error cargando:', err);
+          document.getElementById('loading-view').innerHTML = '<p style="color:#ef4444;font-weight:700;">No se pudieron cargar los sorteos en este momento. Por favor recarga la página.</p>';
+        }
+      }
+
+      function renderPage(promos, bizMap) {
+        var now = new Date();
+        var activeList = [];
+        var upcomingList = [];
+        var endedList = [];
+
+        promos.forEach(function(p) {
+          var starts = p.starts_at ? new Date(p.starts_at) : null;
+          var ends = p.ends_at ? new Date(p.ends_at) : null;
+          var biz = bizMap[p.business_id];
+
+          // Jerarquía de imagen: 1) image_url propia del sorteo, 2) ficha de negocio/evento, 3) recurso corporativo
+          var finalImage = p.image_url || p.prize_image_url || (biz && biz.image_url) || FALLBACK_CORP_IMG;
+          
+          // Extraer nombre discreto del organizador si no viene en negocio
+          var organizerName = (biz && biz.name) ? biz.name : '';
+          if (!organizerName && p.title) {
+            var match = p.title.match(/(?:para|con|en)\s+([A-Za-zÁÉÍÓÚáéíóúñÑ0-9\s·]+)/i);
+            if (match && match[1]) organizerName = match[1].trim();
+          }
+          if (!organizerName) organizerName = 'Recién Abierto';
+
+          var enriched = {
+            id: p.id,
+            title: p.title || 'Sorteo especial',
+            prize: p.prize || p.title,
+            description: p.description || p.prize || '',
+            starts_at: p.starts_at,
+            ends_at: p.ends_at,
+            image: finalImage,
+            organizer: organizerName,
+            business_id: p.business_id,
+            status: p.status,
+            is_active: p.is_active
+          };
+
+          // A. ACTIVOS: is_active=true, status='active', starts_at <= now <= ends_at
+          if (p.is_active === true && p.status === 'active' && (!starts || starts <= now) && (!ends || ends >= now)) {
+            activeList.push(enriched);
+          }
+          // B. PRÓXIMAMENTE: is_active=true, status='active', starts_at > now
+          else if (p.is_active === true && p.status === 'active' && starts && starts > now) {
+            upcomingList.push(enriched);
+          }
+          // C. ANTERIORES: status='ended' o ends_at < now
+          else if (p.status === 'ended' || (ends && ends < now)) {
+            endedList.push(enriched);
+          }
+        });
+
+        // Ordenación de activos: los más próximos a finalizar primero
+        activeList.sort(function(a, b) {
+          var tA = a.ends_at ? new Date(a.ends_at).getTime() : Infinity;
+          var tB = b.ends_at ? new Date(b.ends_at).getTime() : Infinity;
+          return tA - tB;
+        });
+
+        // Ocultar loading y mostrar contenido
+        document.getElementById('loading-view').style.display = 'none';
+        document.getElementById('content-view').style.display = 'block';
+
+        renderActiveSection(activeList);
+        renderUpcomingSection(upcomingList);
+        renderEndedSection(endedList.slice(0, 6)); // Máximo 6 sorteos finalizados para no recargar
+      }
+
+      function renderActiveSection(list) {
+        var sec = document.getElementById('sec-active');
+        var count = document.getElementById('active-count');
+        var grid = document.getElementById('active-grid');
+        count.textContent = list.length;
+
+        if (list.length === 0) {
+          grid.innerHTML = `
+            <div class="empty-state">
+              <span class="empty-icon">🎁</span>
+              <h3 class="empty-title">Pronto llegarán nuevos sorteos</h3>
+              <p class="empty-desc">Estamos preparando nuevas experiencias, entradas y premios. Descarga Recién Abierto en tu móvil y sé el primero en enterarte.</p>
+              <a href="javascript:void(0)" onclick="openAppDirectly()" class="btn-participate" style="max-width:280px;margin:0 auto;">DESCARGAR LA APP</a>
+            </div>
+          `;
+          return;
+        }
+
+        // Diseño adaptativo según el número de sorteos:
+        // 1 sorteo -> grid-single (tarjeta grande y centrada)
+        // 2 sorteos -> grid-double (2 tarjetas equilibradas)
+        // 3+ sorteos -> grid-multi (cuadrícula completa responsive)
+        var layoutClass = 'grid-single';
+        if (list.length === 2) layoutClass = 'grid-double';
+        else if (list.length >= 3) layoutClass = 'grid-multi';
+
+        grid.className = layoutClass;
+        grid.innerHTML = list.map(function(item) {
+          var timing = formatTiming(item.starts_at, item.ends_at, item.status);
+          var badgeHtml = timing.isEndingSoon 
+            ? '<span class="card-badge badge-ending-soon">⏰ ' + timing.text + '</span>'
+            : '<span class="card-badge badge-active">🟢 Activo</span>';
+
+          return `
+            <article class="card">
+              <div class="card-img-wrap">
+                <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" class="card-img" onerror="this.src='${FALLBACK_CORP_IMG}'">
+                ${badgeHtml}
+              </div>
+              <div class="card-body">
+                <div class="organizer-row">
+                  <span class="organizer-icon">📍</span>
+                  <span class="organizer-name">${escapeHtml(item.organizer)}</span>
+                </div>
+                <h3 class="card-title">${escapeHtml(item.title)}</h3>
+                <p class="card-desc">${escapeHtml(item.description)}</p>
+                <div class="card-footer">
+                  <div class="timing-row">
+                    <span class="timing-icon">📅</span>
+                    <span>${escapeHtml(timing.text)}</span>
+                  </div>
+                  <button type="button" class="btn-participate" onclick='openModalForPromo(${JSON.stringify(item).replace(/'/g, "&#39;")})'>
+                    <span>Participar en la app</span>
+                    <span>→</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      function renderUpcomingSection(list) {
+        var sec = document.getElementById('sec-upcoming');
+        var count = document.getElementById('upcoming-count');
+        var grid = document.getElementById('upcoming-grid');
+
+        if (list.length === 0) {
+          sec.style.display = 'none';
+          return;
+        }
+
+        sec.style.display = 'block';
+        count.textContent = list.length;
+        grid.innerHTML = list.map(function(item) {
+          var timing = formatTiming(item.starts_at, item.ends_at, item.status);
+          return `
+            <article class="card">
+              <div class="card-img-wrap">
+                <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" class="card-img" onerror="this.src='${FALLBACK_CORP_IMG}'">
+                <span class="card-badge badge-upcoming">🗓️ Próximamente</span>
+              </div>
+              <div class="card-body">
+                <div class="organizer-row">
+                  <span class="organizer-icon">📍</span>
+                  <span class="organizer-name">${escapeHtml(item.organizer)}</span>
+                </div>
+                <h3 class="card-title">${escapeHtml(item.title)}</h3>
+                <p class="card-desc">${escapeHtml(item.description)}</p>
+                <div class="card-footer">
+                  <div class="timing-row">
+                    <span class="timing-icon">⏳</span>
+                    <span>${escapeHtml(timing.text)}</span>
+                  </div>
+                  <button type="button" class="btn-participate" style="background:var(--navy-soft);" onclick='openModalForPromo(${JSON.stringify(item).replace(/'/g, "&#39;")})'>
+                    <span>Ver en la app</span>
+                  </button>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      function renderEndedSection(list) {
+        var sec = document.getElementById('sec-ended');
+        var count = document.getElementById('ended-count');
+        var grid = document.getElementById('ended-grid');
+
+        if (list.length === 0) {
+          sec.style.display = 'none';
+          return;
+        }
+
+        sec.style.display = 'block';
+        count.textContent = list.length;
+        grid.innerHTML = list.map(function(item) {
+          return `
+            <article class="card card-ended">
+              <div class="card-img-wrap">
+                <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.title)}" class="card-img" onerror="this.src='${FALLBACK_CORP_IMG}'">
+                <span class="card-badge badge-ended">Finalizado</span>
+              </div>
+              <div class="card-body">
+                <div class="organizer-row">
+                  <span class="organizer-name" style="color:#64748b;">${escapeHtml(item.organizer)}</span>
+                </div>
+                <h3 class="card-title" style="color:#475569;">${escapeHtml(item.title)}</h3>
+                <p class="card-desc">${escapeHtml(item.description)}</p>
+                <div class="card-footer">
+                  <div class="btn-ended-label">🏆 Ganador adjudicado</div>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      // MODAL Y APERTURA DE LA APP
+      window.openModalForPromo = function(item) {
+        selectedPromoForModal = item;
+        var modal = document.getElementById('download-modal');
+        var img = document.getElementById('modal-img');
+        var title = document.getElementById('modal-title');
+        var desc = document.getElementById('modal-desc');
+        var dlLink = document.getElementById('modal-download-link');
+        var openLink = document.getElementById('modal-open-link');
+
+        img.src = item.image;
+        title.textContent = item.title;
+        desc.textContent = 'Gana este premio de ' + item.organizer + '. Para conseguir tus participaciones gratuitas entra en Recién Abierto.';
+
+        var appSchemeUrl = 'recienabierto://sorteos/' + item.id + window.location.search;
+        openLink.href = appSchemeUrl;
+
+        if (isAndroid) {
+          dlLink.textContent = 'DESCARGAR EN GOOGLE PLAY';
+          dlLink.href = 'intent://details?id=com.recienabierto.recienabierto#Intent;scheme=market;package=com.android.vending;end';
+        } else if (isIOS) {
+          dlLink.textContent = 'DESCARGAR EN APP STORE';
+          dlLink.href = 'itms-apps://apps.apple.com/app/id6766087032';
+        } else {
+          dlLink.textContent = 'DESCARGAR PARA MÓVIL';
+          dlLink.href = 'https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto';
+        }
+
+        // Intento directo si está en móvil
+        if (isAndroid || isIOS) {
+          window.location.replace(appSchemeUrl);
+        }
+
+        modal.style.display = 'flex';
+      };
+
+      window.closeModal = function() {
+        document.getElementById('download-modal').style.display = 'none';
+      };
+
+      window.openAppDirectly = function() {
+        var appUrl = 'recienabierto://sorteos' + window.location.search;
+        if (isAndroid || isIOS) {
+          window.location.replace(appUrl);
+          setTimeout(function() {
+            if (!document.hidden) {
+              if (isAndroid) {
+                window.location.href = 'https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto';
+              } else if (isIOS) {
+                window.location.href = 'https://apps.apple.com/es/app/recien-abierto/id6766087032';
+              }
+            }
+          }, 1400);
+        } else {
+          window.location.href = 'https://play.google.com/store/apps/details?id=com.recienabierto.recienabierto';
+        }
+      };
+
+      // Inicialización y refresco automático al regresar de segundo plano
+      loadSorteos();
+
+      document.addEventListener('visibilitychange', function() {
+        if (!document.hidden) {
+          // Refrescar si lleva más de 30 segundos inactivo
+          loadSorteos();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

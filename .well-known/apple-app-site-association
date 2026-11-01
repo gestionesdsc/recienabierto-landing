@@ -5,7 +5,10 @@
       {
         "appID": "9BMFWMV8JQ.com.recienabierto.recienabierto",
         "paths": [
-          "/negocio/*"
+          "/negocio/*",
+          "/campana/*",
+          "/campaña/*",
+          "/sorteos*"
         ]
       }
     ]
