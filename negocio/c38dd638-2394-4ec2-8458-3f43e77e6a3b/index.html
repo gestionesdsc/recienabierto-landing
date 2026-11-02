@@ -189,7 +189,7 @@
     <h1 class="app-title">Circo Raluy Histórico · TERRA</h1>
     <p class="app-desc">Disfruta de la magia del Circo Raluy Histórico en Castellón. Descubre el espectáculo TERRA en Recién Abierto.</p>
     <a id="btn-download-android" href="intent://details?id=com.recienabierto.recienabierto#Intent;scheme=market;package=com.android.vending;end" class="btn-download">DESCARGAR EN GOOGLE PLAY</a>
-    <a href="recienabierto://negocio/c38dd638-2394-4ec2-8458-3f43e77e6a3b" class="btn-open-app">¿Ya tienes la app? Abrir aquí</a>
+    <a id="btn-open-app-android" href="recienabierto://negocio/c38dd638-2394-4ec2-8458-3f43e77e6a3b" class="btn-open-app">¿Ya tienes la app? Abrir aquí</a>
     <p class="app-note">Instala la app para ver horarios, ubicación y participar en sorteos exclusivos.</p>
   </div>
 
@@ -200,7 +200,7 @@
     <h1 class="app-title">Circo Raluy Histórico · TERRA</h1>
     <p class="app-desc">Disfruta de la magia del Circo Raluy Histórico en Castellón. Descubre el espectáculo TERRA en Recién Abierto.</p>
     <a id="btn-download-ios" href="itms-apps://apps.apple.com/app/id6766087032" class="btn-download">DESCARGAR EN APP STORE</a>
-    <a href="recienabierto://negocio/c38dd638-2394-4ec2-8458-3f43e77e6a3b" class="btn-open-app">¿Ya tienes la app? Abrir aquí</a>
+    <a id="btn-open-app-ios" href="recienabierto://negocio/c38dd638-2394-4ec2-8458-3f43e77e6a3b" class="btn-open-app">¿Ya tienes la app? Abrir aquí</a>
     <p class="app-note">Instala la app para ver horarios, ubicación y participar en sorteos exclusivos.</p>
   </div>
 
@@ -236,10 +236,21 @@
         if (document.hidden) cancelFallback();
       });
 
+      var resolvedSchemeUrl = fallbackScheme;
+
+      function updateManualOpenButtons(url) {
+        if (!url) return;
+        resolvedSchemeUrl = url;
+        var btnAndroid = document.getElementById('btn-open-app-android');
+        if (btnAndroid) btnAndroid.setAttribute('href', url);
+        var btnIos = document.getElementById('btn-open-app-ios');
+        if (btnIos) btnIos.setAttribute('href', url);
+      }
+
       function navigateToAppOnce(url) {
         if (appNavigationAttempted) return;
         appNavigationAttempted = true;
-        window.location.replace(url || fallbackScheme);
+        window.location.replace(url || resolvedSchemeUrl);
       }
 
       // 1) Si es móvil, intentar abrir inmediatamente la app por custom scheme preservando ?ref y parámetros
@@ -250,18 +261,25 @@
               window.PromotionReferrals.processAndRedirect(window.location)
             ).then(
               function (res) {
-                navigateToAppOnce((res && res.schemeUrl) || fallbackScheme);
+                var target = (res && res.schemeUrl) || fallbackScheme;
+                updateManualOpenButtons(target);
+                navigateToAppOnce(target);
               },
               function () {
+                updateManualOpenButtons(fallbackScheme);
                 navigateToAppOnce(fallbackScheme);
               }
             );
           } else {
+            updateManualOpenButtons(fallbackScheme);
             navigateToAppOnce(fallbackScheme);
           }
         } catch (e) {
+          updateManualOpenButtons(fallbackScheme);
           navigateToAppOnce(fallbackScheme);
         }
+      } else {
+        updateManualOpenButtons(fallbackScheme);
       }
 
       // 2) Tratamiento diferenciado si la app no está instalada
