@@ -7,20 +7,45 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
+const tls = require('tls');
+
 const SUPABASE_URL = process.env.SUPABASE_URL || 'https://ioghcoouqehcpplhspyd.supabase.co';
 const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlvZ2hjb291cWVoY3BwbGhzcHlkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk4NTQ1NDksImV4cCI6MjA3NTQzMDU0OX0.4ynUrBlb1eMZA5gptIxjunfveIwTdVDpSRjeF2mc-g0';
+
+function getTrustedCAs() {
+  const cas = [];
+  // En entornos locales de desarrollo con escaneos antivirus (Avast/proxy), incluir la CA local para validación criptográfica estricta
+  const potentialPaths = [
+    path.join(__dirname, 'local-ca.pem'),
+    'C:\\Users\\ACER\\avast-root.pem'
+  ];
+  for (const p of potentialPaths) {
+    if (fs.existsSync(p)) {
+      try {
+        cas.push(fs.readFileSync(p));
+      } catch (_) {}
+    }
+  }
+  if (cas.length > 0 && Array.isArray(tls.rootCertificates)) {
+    return [...tls.rootCertificates, ...cas];
+  }
+  return undefined;
+}
 
 function fetchActiveCampaigns() {
   return new Promise((resolve, reject) => {
     const url = `${SUPABASE_URL}/rest/v1/special_campaigns?select=id,slug,name,banner_text,hero_image_url,is_active&is_active=eq.true`;
-    const agent = new https.Agent({ rejectUnauthorized: false });
-    const req = https.get(url, {
-      agent,
+    const ca = getTrustedCAs();
+    const reqOptions = {
       headers: {
         'apikey': SUPABASE_ANON_KEY,
         'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
       },
-    }, (res) => {
+    };
+    if (ca) {
+      reqOptions.ca = ca;
+    }
+    const req = https.get(url, reqOptions, (res) => {
       let data = '';
       res.on('data', chunk => { data += chunk; });
       res.on('end', () => {
@@ -378,9 +403,8 @@ async function main() {
   try {
     campaigns = await fetchActiveCampaigns();
   } catch (err) {
-    console.warn('⚠️ Advertencia consultando Supabase en build:', err.message);
-    console.warn('   Continuando build para no bloquear el despliegue en Netlify.');
-    return;
+    console.error('❌ ERROR consultando Supabase en build:', err.message);
+    process.exit(1);
   }
 
   const baseDir = path.resolve(__dirname);
@@ -442,6 +466,6 @@ async function main() {
 }
 
 main().catch(err => {
-  console.warn('⚠️ Build warning:', err);
-  process.exit(0);
+  console.error('❌ Build failure:', err);
+  process.exit(1);
 });
