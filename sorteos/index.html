@@ -817,8 +817,14 @@
           var ends = p.ends_at ? new Date(p.ends_at) : null;
           var biz = bizMap[p.business_id];
 
-          // Jerarquía de imagen: 1) image_url propia del sorteo, 2) ficha de negocio/evento, 3) recurso corporativo
-          var finalImage = p.image_url || p.prize_image_url || (biz && biz.image_url) || FALLBACK_CORP_IMG;
+          // Jerarquía de imagen: 1) image_url propia del sorteo (si no es soundcloud obsoleto), 2) ficha de negocio/evento, 3) recurso corporativo
+          var finalImage = p.image_url;
+          if ((!finalImage || finalImage.indexOf('sndcdn.com') !== -1) && biz && biz.image_url) {
+            finalImage = biz.image_url;
+          }
+          if (!finalImage) {
+            finalImage = p.prize_image_url || (biz && biz.image_url) || FALLBACK_CORP_IMG;
+          }
           
           // Extraer nombre discreto del organizador si no viene en negocio
           var organizerName = (biz && biz.name) ? biz.name : '';

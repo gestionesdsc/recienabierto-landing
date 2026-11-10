@@ -264,9 +264,17 @@ export default async (req: Request, context: Context) => {
       );
     }
 
-    // Jerarquía de imagen obligatoria
-    if (promoData.image_url && promoData.image_url.trim()) {
-      ogImage = promoData.image_url.trim();
+    // Jerarquía de imagen obligatoria:
+    // 1) promotions.image_url (siempre que no sea portada obsoleta de SoundCloud)
+    // 2) negocios.image_url (ficha del evento / negocio en alta definición)
+    // 3) CORPORATE_OG_IMAGE
+    let chosenImg = promoData.image_url && promoData.image_url.trim();
+    if ((!chosenImg || chosenImg.includes("sndcdn.com")) && promoData.business_image_url && promoData.business_image_url.trim()) {
+      chosenImg = promoData.business_image_url.trim();
+    }
+
+    if (chosenImg) {
+      ogImage = chosenImg;
     } else if (promoData.business_image_url && promoData.business_image_url.trim()) {
       ogImage = promoData.business_image_url.trim();
     } else {

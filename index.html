@@ -1651,7 +1651,68 @@
       color: var(--orange-bright);
     }
 
-    /* Tarjeta ejemplo real Circo Raluy Histórico */
+    /* Tarjeta y contenedor dinámico de sorteos del Club */
+    .home-raffle-container {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .home-raffle-nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      padding: 0 4px;
+    }
+    .home-raffle-counter {
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--teal-bright);
+    }
+    .home-raffle-nav-btns {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .home-raffle-nav-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: var(--white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.8rem;
+      line-height: 1;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .home-raffle-nav-btn:hover {
+      background: var(--teal);
+      border-color: var(--teal-bright);
+    }
+    .home-raffle-all-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--orange-bright);
+      text-decoration: none;
+      margin-top: 12px;
+      text-align: center;
+      transition: color 0.2s ease;
+    }
+    .home-raffle-all-link:hover {
+      color: var(--white);
+      text-decoration: underline;
+    }
     .raffle-real-example-card {
       background: #0b1324;
       border: 1px solid rgba(255, 255, 255, 0.18);
@@ -4102,7 +4163,7 @@
               <!-- Tarjeta 3: Sorteos participativos -->
               <article class="club-promo-card club-promo-neutral">
                 <div class="club-promo-media">
-                  <img src="/assets/sorteo-circo-raluy.jpg"
+                  <img src="https://ioghcoouqehcpplhspyd.supabase.co/storage/v1/object/public/business-images/covers/ede96261-d2ce-4812-9670-69e7aebec012/cover_1794328625876.jpg?t=1794328625876"
                        onerror="this.src='/placeholder-recien-abierto.jpg'"
                        alt="Sorteos participativos compartiendo tus planes favoritos" loading="lazy" />
                   <div class="club-promo-top-badges">
@@ -4200,7 +4261,7 @@
           </div>
         </div>
 
-        <!-- UTILIDAD 2 DEL CLUB: SORTEOS QUE GENERAN DESCUBRIMIENTO Y VISIBILIDAD (CON EJEMPLO REAL CIRCO RALUY) -->
+        <!-- UTILIDAD 2 DEL CLUB: SORTEOS QUE GENERAN DESCUBRIMIENTO Y VISIBILIDAD -->
         <div class="club-raffles-stage reveal" id="sorteos-club">
           <div>
             <span class="slot-pill-tag orange">🎟️ Segunda utilidad del Club · Sorteos participativos</span>
@@ -4243,43 +4304,52 @@
             </div>
           </div>
 
-          <!-- Ejemplo real autenticado de Supabase: Circo Raluy Histórico · TERRA -->
-          <article class="raffle-real-example-card">
-            <div class="raffle-real-media">
-              <img src="/assets/sorteo-circo-raluy.jpg"
-                   width="1448"
-                   height="911"
-                   alt="Sorteo real en Recién Abierto: Circo Raluy Histórico · TERRA en Castellón"
-                   loading="lazy" />
-              <div class="raffle-real-badges">
-                <span class="raffle-live-pill">🎪 Ejemplo real en la app</span>
-                <span class="club-municipality-pill">📍 Castelló de la Plana</span>
+          <!-- Bloque dinámico de sorteos del Club: muestra sorteos activos sincronizados con Supabase -->
+          <div id="homeClubRaffleContainer" class="home-raffle-container">
+            <article class="raffle-real-example-card" data-raffle-id="bc91567a-a67b-48cc-bd35-8f3ac61196b5">
+              <div class="raffle-real-media">
+                <img src="https://ioghcoouqehcpplhspyd.supabase.co/storage/v1/object/public/business-images/covers/ede96261-d2ce-4812-9670-69e7aebec012/cover_1794328625876.jpg?t=1794328625876"
+                     width="1200"
+                     height="675"
+                     alt="Sorteo activo en Recién Abierto: Aaron Sevilla by MEEM · Onda"
+                     loading="lazy"
+                     onerror="this.onerror=null;this.src='/placeholder-recien-abierto.jpg';" />
+                <div class="raffle-real-badges">
+                  <span class="raffle-live-pill">🟢 Sorteo activo</span>
+                  <span class="club-municipality-pill">📍 Recinto Multiusos · Onda</span>
+                </div>
               </div>
+              <div class="raffle-real-body">
+                <span style="font-size:0.74rem;font-weight:800;color:var(--teal-bright);text-transform:uppercase;letter-spacing:0.04em;">
+                  Aaron Sevilla by MEEM · Onda (Concierto 21 nov 2026)
+                </span>
+                <h4>🎟️ Gana 2 entradas para Aaron Sevilla · Onda</h4>
+                <p>
+                  Sigue la ficha oficial de <strong>Aaron Sevilla by MEEM · Onda</strong> en Recién Abierto y comparte tu enlace personal. Cada visita única válida suma 1 participación (hasta 10 por sorteo).
+                </p>
+                <div class="raffle-real-rule-box">
+                  <strong>Regla transparente:</strong> Compartir el enlace no suma por sí solo; cuenta cuando otra persona diferente entra y descubre el evento desde tu enlace personal.
+                </div>
+                <div class="raffle-real-footer">
+                  <span class="club-validity-tag">🗓️ Participa hasta el 19 nov (23:59 h)</span>
+                  <a href="/sorteos/bc91567a-a67b-48cc-bd35-8f3ac61196b5"
+                     class="club-promo-cta"
+                     data-raffle-biz-id="ede96261-d2ce-4812-9670-69e7aebec012"
+                     data-raffle-biz-name="Aaron Sevilla by MEEM · Onda"
+                     data-raffle-reward="2 entradas para Aaron Sevilla · Onda">
+                    <span>Participar en la app</span>
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+            <div style="text-align:center;">
+              <a href="/sorteos" class="home-raffle-all-link">
+                <span>Explorar todos los sorteos del Club</span>
+                <span aria-hidden="true">→</span>
+              </a>
             </div>
-            <div class="raffle-real-body">
-              <span style="font-size:0.74rem;font-weight:800;color:var(--teal-bright);text-transform:uppercase;letter-spacing:0.04em;">
-                Circo Raluy Histórico · Espectáculo TERRA (21 oct – 8 nov 2026)
-              </span>
-              <h4>Sorteo de un pack familiar de 4 entradas</h4>
-              <p>
-                Los usuarios siguen la ficha oficial del <strong>Circo Raluy Histórico · TERRA</strong> en Recién Abierto y comparten su enlace personal. Al abrir sus contactos la ficha para conocer horarios, ubicación y funciones, cada visita única válida genera 1 participación (hasta 10 por sorteo).
-              </p>
-              <div class="raffle-real-rule-box">
-                <strong>Regla transparente:</strong> Compartir el enlace por sí solo no suma; cuenta cuando otra persona diferente entra y descubre la ficha desde ese enlace personal.
-              </div>
-              <div class="raffle-real-footer">
-                <span class="club-validity-tag">🗓️ Campaña real de 3 sorteos en Castellón</span>
-                <a href="/negocio/c38dd638-2394-4ec2-8458-3f43e77e6a3b"
-                   class="club-promo-cta"
-                   data-club-biz-id="c38dd638-2394-4ec2-8458-3f43e77e6a3b"
-                   data-club-biz-name="Circo Raluy Histórico · TERRA"
-                   data-club-reward="Sorteo de un pack familiar de 4 entradas">
-                  <span>Ver ficha del sorteo en la app</span>
-                  <span aria-hidden="true">→</span>
-                </a>
-              </div>
-            </div>
-          </article>
+          </div>
         </div>
       </div>
 
@@ -5944,7 +6014,7 @@
       }
 
       // =========================================================================
-      // 6. CLUB RECIÉN ABIERTO · CARRUSEL DE RECOMPENSAS QR Y SORTEO CIRCO RALUY
+      // 6. CLUB RECIÉN ABIERTO · CARRUSEL DE RECOMPENSAS QR Y SORTEOS ACTIVOS
       // =========================================================================
 
       function renderClubNeutralPresentation() {
@@ -6010,7 +6080,7 @@
           '</article>' +
           '<article class="club-promo-card club-promo-neutral">' +
             '<div class="club-promo-media">' +
-              '<img src="/assets/sorteo-circo-raluy.jpg" onerror="this.src=\'/placeholder-recien-abierto.jpg\'" alt="Sorteos participativos compartiendo tus planes favoritos" loading="lazy" />' +
+              '<img src="https://ioghcoouqehcpplhspyd.supabase.co/storage/v1/object/public/business-images/covers/ede96261-d2ce-4812-9670-69e7aebec012/cover_1794328625876.jpg?t=1794328625876" onerror="this.src=\'/placeholder-recien-abierto.jpg\'" alt="Sorteos participativos compartiendo tus planes favoritos" loading="lazy" />' +
               '<div class="club-promo-top-badges">' +
                 '<span class="club-stars-pill">🎟️ Dinamización</span>' +
                 '<span class="club-municipality-pill">📍 Eventos y planes</span>' +
@@ -6073,25 +6143,30 @@
         });
       }
 
-      document.querySelectorAll("[data-raffle-biz-id]").forEach(function (linkEl) {
-        linkEl.addEventListener("click", function (ev) {
-          const bizId = linkEl.getAttribute("data-raffle-biz-id");
-          const bizName = linkEl.getAttribute("data-raffle-biz-name") || "Sorteo en Recién Abierto";
-          const href = "/negocio/" + encodeURIComponent(bizId);
-          RAWebTelemetry.record("interaction_club_raffle", { businessId: bizId, businessName: bizName });
+      function bindRaffleCtaClicks(container) {
+        const root = container || document;
+        root.querySelectorAll("[data-raffle-biz-id]").forEach(function (linkEl) {
+          linkEl.addEventListener("click", function (ev) {
+            const bizId = linkEl.getAttribute("data-raffle-biz-id");
+            const bizName = linkEl.getAttribute("data-raffle-biz-name") || "Sorteo en Recién Abierto";
+            const href = linkEl.getAttribute("href") || ("/negocio/" + encodeURIComponent(bizId));
+            RAWebTelemetry.record("interaction_club_raffle", { businessId: bizId, businessName: bizName });
 
-          if (!isMobileDevice()) {
-            ev.preventDefault();
-            document.getElementById("appPromptItemName").textContent = bizName + " · Sorteo en la app";
-            document.getElementById("appPromptItemDesc").textContent =
-              "Descarga o abre Recién Abierto en tu teléfono para entrar en la ficha de «" + bizName + "», compartir tu enlace personal y sumar participaciones en el sorteo.";
-            const directLinkEl = document.getElementById("appPromptDirectLink");
-            directLinkEl.setAttribute("href", href);
-            directLinkEl.style.display = "inline-block";
-            openModal(appPromptModal, null);
-          }
+            if (!isMobileDevice()) {
+              ev.preventDefault();
+              document.getElementById("appPromptItemName").textContent = bizName + " · Sorteo en la app";
+              document.getElementById("appPromptItemDesc").textContent =
+                "Descarga o abre Recién Abierto en tu teléfono para entrar en la ficha de «" + bizName + "», compartir tu enlace personal y sumar participaciones en el sorteo.";
+              const directLinkEl = document.getElementById("appPromptDirectLink");
+              directLinkEl.setAttribute("href", href);
+              directLinkEl.style.display = "inline-block";
+              openModal(appPromptModal, null);
+            }
+          });
         });
-      });
+      }
+
+      bindRaffleCtaClicks(document);
 
       function renderClubPromotionsGrid(promos) {
         const grid = document.getElementById("clubPromotionsGrid");
@@ -6223,6 +6298,179 @@
         } catch (e) {
           // Si Supabase falla o no hay conexión, mostramos la presentación neutral informativa del Club
           renderClubNeutralPresentation();
+        }
+      }
+
+      // =========================================================================
+      // 6.2 CLUB RECIÉN ABIERTO · HIDRATACIÓN DINÁMICA DE SORTEOS ACTIVOS
+      // =========================================================================
+      let homeSorteosActiveList = [];
+      let homeSorteosCurrentIdx = 0;
+      let homeSorteosBizMap = {};
+
+      function renderHomeSorteoCardHtml(p, biz, totalCount, currentIdx) {
+        let img = p.image_url;
+        if ((!img || img.indexOf("sndcdn.com") !== -1) && biz && biz.image_url) {
+          img = biz.image_url;
+        }
+        if (!img) img = p.prize_image_url || (biz && biz.image_url) || OFFICIAL_PLACEHOLDER;
+
+        const orgName = (biz && biz.name) || "Recién Abierto";
+        const city = (biz && biz.city) || (biz && biz.municipality) || "Castellón";
+        const validityText = p.ends_at ? ("🗓️ Participa hasta el " + formatSpanishDate(p.ends_at)) : "🗓️ Sorteo activo en la app";
+        const href = "/sorteos/" + encodeURIComponent(p.id);
+
+        let navBarHtml = "";
+        if (totalCount > 1) {
+          navBarHtml = (
+            '<div class="home-raffle-nav-bar">' +
+              '<span class="home-raffle-counter">Sorteo activo ' + (currentIdx + 1) + ' de ' + totalCount + '</span>' +
+              '<div class="home-raffle-nav-btns">' +
+                '<button type="button" class="home-raffle-nav-btn" onclick="window.prevHomeSorteo()" aria-label="Sorteo anterior">‹</button>' +
+                '<button type="button" class="home-raffle-nav-btn" onclick="window.nextHomeSorteo()" aria-label="Sorteo siguiente">›</button>' +
+              '</div>' +
+            '</div>'
+          );
+        }
+
+        return (
+          navBarHtml +
+          '<article class="raffle-real-example-card" data-raffle-id="' + escapeHtml(p.id) + '">' +
+            '<div class="raffle-real-media">' +
+              '<img src="' + escapeHtml(img) + '" width="1200" height="675" alt="' + escapeHtml(p.title) + '" loading="lazy" onerror="this.onerror=null;this.src=\'/placeholder-recien-abierto.jpg\';" />' +
+              '<div class="raffle-real-badges">' +
+                '<span class="raffle-live-pill">🟢 Sorteo activo</span>' +
+                '<span class="club-municipality-pill">📍 ' + escapeHtml(city) + '</span>' +
+              '</div>' +
+            '</div>' +
+            '<div class="raffle-real-body">' +
+              '<span style="font-size:0.74rem;font-weight:800;color:var(--teal-bright);text-transform:uppercase;letter-spacing:0.04em;">' +
+                escapeHtml(orgName) +
+              '</span>' +
+              '<h4>' + escapeHtml(p.title) + '</h4>' +
+              '<p>' +
+                'Sigue la ficha oficial de <strong>' + escapeHtml(orgName) + '</strong> en Recién Abierto y comparte tu enlace personal. Cada visita única válida suma 1 participación conforme a las reglas del sorteo.' +
+              '</p>' +
+              '<div class="raffle-real-rule-box">' +
+                '<strong>Regla transparente:</strong> Compartir el enlace no suma por sí solo; cuenta cuando otra persona diferente entra y descubre el evento desde tu enlace personal.' +
+              '</div>' +
+              '<div class="raffle-real-footer">' +
+                '<span class="club-validity-tag">' + escapeHtml(validityText) + '</span>' +
+                '<a href="' + escapeHtml(href) + '" class="club-promo-cta" ' +
+                   'data-raffle-biz-id="' + escapeHtml(p.business_id || "") + '" ' +
+                   'data-raffle-biz-name="' + escapeHtml(orgName) + '" ' +
+                   'data-raffle-reward="' + escapeHtml(p.prize || p.title) + '">' +
+                  '<span>Participar en la app</span>' +
+                  '<span aria-hidden="true">→</span>' +
+                '</a>' +
+              '</div>' +
+            '</div>' +
+          '</article>' +
+          '<div style="text-align:center;">' +
+            '<a href="/sorteos" class="home-raffle-all-link">' +
+              '<span>Explorar todos los sorteos del Club' + (totalCount > 1 ? ' (' + totalCount + ' activos)' : '') + '</span>' +
+              '<span aria-hidden="true">→</span>' +
+            '</a>' +
+          '</div>'
+        );
+      }
+
+      function updateHomeSorteoDisplay() {
+        const container = document.getElementById("homeClubRaffleContainer");
+        if (!container || homeSorteosActiveList.length === 0) return;
+        const p = homeSorteosActiveList[homeSorteosCurrentIdx];
+        const biz = homeSorteosBizMap[p.business_id];
+        container.innerHTML = renderHomeSorteoCardHtml(p, biz, homeSorteosActiveList.length, homeSorteosCurrentIdx);
+        bindRaffleCtaClicks(container);
+      }
+
+      window.prevHomeSorteo = function () {
+        if (homeSorteosActiveList.length <= 1) return;
+        homeSorteosCurrentIdx = (homeSorteosCurrentIdx - 1 + homeSorteosActiveList.length) % homeSorteosActiveList.length;
+        updateHomeSorteoDisplay();
+      };
+
+      window.nextHomeSorteo = function () {
+        if (homeSorteosActiveList.length <= 1) return;
+        homeSorteosCurrentIdx = (homeSorteosCurrentIdx + 1) % homeSorteosActiveList.length;
+        updateHomeSorteoDisplay();
+      };
+
+      async function loadHomeSorteosFromSupabase() {
+        const container = document.getElementById("homeClubRaffleContainer");
+        if (!container) return;
+
+        try {
+          const res = await fetch(SUPABASE_URL + "/rest/v1/rpc/get_public_promotions", {
+            method: "POST",
+            headers: {
+              "apikey": SUPABASE_ANON_KEY,
+              "Authorization": "Bearer " + SUPABASE_ANON_KEY,
+              "Content-Type": "application/json"
+            },
+            body: "{}"
+          });
+          if (!res.ok) return;
+          const data = await res.json();
+          if (!Array.isArray(data)) return;
+
+          const now = new Date();
+          const activeList = data.filter(function (p) {
+            if (p.status === "draft") return false;
+            const starts = p.starts_at ? new Date(p.starts_at) : null;
+            const ends = p.ends_at ? new Date(p.ends_at) : null;
+            return p.is_active === true && p.status === "active" && (!starts || starts <= now) && (!ends || ends >= now);
+          });
+
+          if (activeList.length === 0) {
+            container.innerHTML = (
+              '<article class="raffle-real-example-card">' +
+                '<div class="raffle-real-body" style="padding: 36px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 240px;">' +
+                  '<span style="font-size: 2.2rem; margin-bottom: 8px;">🎁</span>' +
+                  '<h4 style="font-size: 1.22rem; margin-bottom: 8px;">Pronto anunciaremos nuevos sorteos en el Club</h4>' +
+                  '<p style="max-width: 420px; margin-bottom: 20px;">Estamos preparando nuevas experiencias, entradas y premios de locales y eventos en Castellón.</p>' +
+                  '<a href="/sorteos" class="club-promo-cta" style="margin: 0 auto;">' +
+                    '<span>Ver histórico y novedades</span><span aria-hidden="true">→</span>' +
+                  '</a>' +
+                '</div>' +
+              '</article>'
+            );
+            return;
+          }
+
+          const bizIds = [];
+          activeList.forEach(function (p) {
+            if (p.business_id && bizIds.indexOf(p.business_id) === -1) {
+              bizIds.push(p.business_id);
+            }
+          });
+
+          const bizMap = {};
+          if (bizIds.length > 0) {
+            try {
+              const bRes = await fetch(SUPABASE_URL + "/rest/v1/businesses_v2?id=in.(" + bizIds.join(",") + ")&select=id,name,image_url,city,category", {
+                headers: {
+                  "apikey": SUPABASE_ANON_KEY,
+                  "Authorization": "Bearer " + SUPABASE_ANON_KEY
+                }
+              });
+              if (bRes.ok) {
+                const bList = await bRes.json();
+                bList.forEach(function (b) {
+                  bizMap[b.id] = b;
+                });
+              }
+            } catch (err) {
+              console.warn("[HomeSorteos] Could not load businesses_v2:", err);
+            }
+          }
+
+          homeSorteosActiveList = activeList;
+          homeSorteosBizMap = bizMap;
+          homeSorteosCurrentIdx = 0;
+          updateHomeSorteoDisplay();
+        } catch (err) {
+          console.warn("[HomeSorteos] Error fetching promotions:", err);
         }
       }
 
@@ -7366,11 +7614,11 @@
         };
         window.ImageLightbox = instance;
         return instance;
-      })();   // Circo Raluy poster kept as normal card without lightbox
+      })();
 
-      
       loadLiveContent();
       loadClubPromotionsFromSupabase();
+      loadHomeSorteosFromSupabase();
     })();
   </script>
 </body>
