@@ -1,9 +1,9 @@
 [build]
   publish = "."
-  command = "npm run build || true"
+  command = "node build-campaigns.js || true"
 
 [build.environment]
-  NODE_VERSION = "24"
+  NODE_VERSION = "22"
 
 [[edge_functions]]
   path = ["/sorteos/*", "/sorteos", "/sorteo/*", "/sorteo", "/negocio/*"]
