@@ -50,7 +50,6 @@ async function fetchPromotionMetadata(
     "Content-Type": "application/json",
   };
 
-  // 1. Intento principal: RPC get_promotion_public_og
   try {
     const rpcRes = await fetch(`${SUPABASE_URL}/rest/v1/rpc/get_promotion_public_og`, {
       method: "POST",
@@ -68,106 +67,7 @@ async function fetchPromotionMetadata(
       }
     }
   } catch (_e) {
-    // Si la RPC no responde, continuar al fallback directo REST
-  }
-
-  // 2. Fallback REST por promoId
-  if (promoId) {
-    try {
-      const promoRes = await fetch(
-        `${SUPABASE_URL}/rest/v1/promotions?id=eq.${encodeURIComponent(promoId)}&select=id,title,prize,description,image_url,business_id`,
-        { headers }
-      );
-      if (promoRes.ok) {
-        const promos = await promoRes.json();
-        if (Array.isArray(promos) && promos.length > 0) {
-          const promo = promos[0];
-          let bizName: string | null = null;
-          let bizImg: string | null = null;
-          if (promo.business_id) {
-            try {
-              const bRes = await fetch(
-                `${SUPABASE_URL}/rest/v1/businesses_v2?id=eq.${encodeURIComponent(promo.business_id)}&select=name,image_url`,
-                { headers }
-              );
-              if (bRes.ok) {
-                const bList = await bRes.json();
-                if (bList.length > 0) {
-                  bizName = bList[0].name;
-                  bizImg = bList[0].image_url;
-                }
-              }
-            } catch (_err) {}
-          }
-          return {
-            id: promo.id,
-            title: promo.title,
-            prize: promo.prize,
-            description: promo.description,
-            image_url: promo.image_url,
-            business_id: promo.business_id,
-            business_name: bizName,
-            business_image_url: bizImg,
-          };
-        }
-      }
-    } catch (_err) {}
-  }
-
-  // 3. Fallback REST por businessId
-  if (businessId) {
-    try {
-      // Buscar sorteo activo del negocio
-      const promoRes = await fetch(
-        `${SUPABASE_URL}/rest/v1/promotions?business_id=eq.${encodeURIComponent(businessId)}&is_active=eq.true&order=starts_at.desc&limit=1&select=id,title,prize,description,image_url,business_id`,
-        { headers }
-      );
-      const bizRes = await fetch(
-        `${SUPABASE_URL}/rest/v1/businesses_v2?id=eq.${encodeURIComponent(businessId)}&select=name,image_url,description`,
-        { headers }
-      );
-      let bizName: string | null = null;
-      let bizImg: string | null = null;
-      let bizDesc: string | null = null;
-      if (bizRes.ok) {
-        const bList = await bizRes.json();
-        if (bList.length > 0) {
-          bizName = bList[0].name;
-          bizImg = bList[0].image_url;
-          bizDesc = bList[0].description;
-        }
-      }
-
-      if (promoRes.ok) {
-        const promos = await promoRes.json();
-        if (Array.isArray(promos) && promos.length > 0) {
-          const promo = promos[0];
-          return {
-            id: promo.id,
-            title: promo.title,
-            prize: promo.prize,
-            description: promo.description,
-            image_url: promo.image_url,
-            business_id: promo.business_id,
-            business_name: bizName,
-            business_image_url: bizImg,
-          };
-        }
-      }
-
-      if (bizName) {
-        return {
-          id: null,
-          title: bizName,
-          prize: null,
-          description: bizDesc,
-          image_url: null,
-          business_id: businessId,
-          business_name: bizName,
-          business_image_url: bizImg,
-        };
-      }
-    } catch (_err) {}
+    // Si la función RPC no responde o no encuentra registros válidos, retornar null
   }
 
   return null;
