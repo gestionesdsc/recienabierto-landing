@@ -6,5 +6,21 @@
   NODE_VERSION = "22"
 
 [[edge_functions]]
-  path = ["/sorteos/*", "/sorteos", "/sorteo/*", "/sorteo", "/negocio/*"]
+  path = "/sorteos/*"
+  function = "og-preview"
+
+[[edge_functions]]
+  path = "/sorteos"
+  function = "og-preview"
+
+[[edge_functions]]
+  path = "/sorteo/*"
+  function = "og-preview"
+
+[[edge_functions]]
+  path = "/sorteo"
+  function = "og-preview"
+
+[[edge_functions]]
+  path = "/negocio/*"
   function = "og-preview"
