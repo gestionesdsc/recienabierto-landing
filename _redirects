@@ -3,3 +3,5 @@
 /campaña/*  /campana/index.html  200
 /sorteos/*  /sorteos/index.html  200
 /sorteos    /sorteos/index.html  200
+/sorteo/*   /sorteos/index.html  200
+/sorteo     /sorteos/index.html  200

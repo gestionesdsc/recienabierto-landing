@@ -692,16 +692,24 @@
 
       var selectedPromoForModal = null;
 
+      function getTargetPromoId() {
+        var params = new URLSearchParams(window.location.search);
+        var queryPromo = params.get('promo') || params.get('id');
+        if (queryPromo) return queryPromo.trim().toLowerCase();
+        var pathMatch = window.location.pathname.match(/\/sorteos?\/([a-f0-9-]{36})/i);
+        return pathMatch ? pathMatch[1].trim().toLowerCase() : null;
+      }
+
       // 1. Detección automática al cargar: Si el usuario viene con la app instalada
       function checkAutoRedirect() {
-        var params = new URLSearchParams(window.location.search);
-        var targetPromoId = params.get('promo') || params.get('id');
+        var targetPromoId = getTargetPromoId();
         var appUrl = 'recienabierto://sorteos' + (targetPromoId ? '/' + targetPromoId : '') + window.location.search;
 
         if (isAndroid || isIOS) {
-          // Intentar abrir app inmediatamente si se autoriza o procede de link directo
+          // Intentar abrir app inmediatamente si se autoriza o procede de link directo o específico
           var hasTried = sessionStorage.getItem('ra_sorteos_redirect_attempted');
-          if (!hasTried && (params.get('open') === 'app' || params.has('src'))) {
+          var searchParams = new URLSearchParams(window.location.search);
+          if (!hasTried && (targetPromoId || searchParams.get('open') === 'app' || searchParams.has('src'))) {
             sessionStorage.setItem('ra_sorteos_redirect_attempted', 'true');
             window.location.replace(appUrl);
           }
@@ -862,6 +870,18 @@
         renderActiveSection(activeList);
         renderUpcomingSection(upcomingList);
         renderEndedSection(endedList.slice(0, 6)); // Máximo 6 sorteos finalizados para no recargar
+
+        // Si se abrió un sorteo específico y no se ha redirigido a la app, mostrar su modal
+        var targetPromoId = getTargetPromoId();
+        if (targetPromoId) {
+          var allList = activeList.concat(upcomingList).concat(endedList);
+          var matching = allList.find(function(it) {
+            return it.id && it.id.toLowerCase() === targetPromoId;
+          });
+          if (matching && typeof window.openModalForPromo === 'function') {
+            window.openModalForPromo(matching);
+          }
+        }
       }
 
       function renderActiveSection(list) {
