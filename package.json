@@ -4,7 +4,7 @@
   "description": "Landing y enlaces profundos de Recién Abierto",
   "private": true,
   "scripts": {
-    "build": "node --use-system-ca build-campaigns.js"
+    "build": "node build-campaigns.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.1"

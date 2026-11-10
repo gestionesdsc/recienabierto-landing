@@ -28,8 +28,9 @@
     (function () {
       var userAgent = navigator.userAgent || navigator.vendor || window.opera;
       
-      // Detection of iOS devices (iPhone, iPad, iPod)
-      var isIOS = /iPad|iPhone|iPod/i.test(userAgent) && !window.MSStream;
+      // Detection of iOS devices (iPhone, iPad, iPod, iPadOS)
+      var isIOS = (/iPad|iPhone|iPod/i.test(userAgent) && !window.MSStream) ||
+                  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
       // Detection of Android devices
       var isAndroid = /Android/i.test(userAgent);
 
